@@ -8,18 +8,35 @@ Delivery over the rooftop and along ziplines. Grapples included!
 - [Swingzip](#swingzip)
 - [Play here](#play-here)
 - [How to play](#how-to-play)
+- [Roadmap](#roadmap)
 - [Credits](#credits)
 - [License: BSD-3-Clause](#license-bsd-3-clause)
 
 
 # Play here
 
-// TODO
+// Under construction
 
 # How to play
 
-// TODO
+Touch screen:
 
+- **Tap-hold** to swing
+- **Double tap** to zip to point
+- **Tap shortly** to do air dash
+- **Swipe or use on-screen joystick** to fine-tune
+
+PC:
+
+- **Click-hold** to swing
+- **Double-click** to zip to point
+- **Click shortly** to do air dash
+- **WASD / Arrows** to fine-tune
+
+
+# Roadmap
+
+https://trello.com/b/FNVqm3XG/swingzip
 
 # Credits
 

@@ -108,19 +108,21 @@ public class Controller2D : RaycastController {
 			rayOrigin += Vector2.right * (verticalRaySpacing * i + moveAmount.x);
 			RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
 
-			Debug.DrawRay(rayOrigin, Vector2.up * directionY,Color.red);
+			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
 			if (hit) {
 				if (hit.collider.tag == "Through") {
 					if (directionY == 1 || hit.distance == 0) {
 						continue;
 					}
-					if (collisions.fallingThroughPlatform) {
-						continue;
+					if (collisions.fallingThroughPlatform)
+                    {
+                        collisions.fallingThroughPlatform = false;
+                        continue;
 					}
 					if (playerInput.y == -1) {
 						collisions.fallingThroughPlatform = true;
-						Invoke("ResetFallingThroughPlatform",.5f);
+						//Invoke("ResetFallingThroughPlatform",.5f);
 						continue;
 					}
 				}
