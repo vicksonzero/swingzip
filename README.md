@@ -36,7 +36,7 @@ PC:
 
 # Roadmap
 
-https://trello.com/b/FNVqm3XG/swingzip
+https://github.com/vicksonzero/swingzip/projects/1
 
 # Credits
 
