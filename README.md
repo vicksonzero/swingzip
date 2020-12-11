@@ -24,14 +24,14 @@ Touch screen:
 
 - **Tap-hold** to swing
 - **Double tap** to zip to point
-- **Tap shortly** to do air dash
+- **Tap shortly** to jump / air dash
 - **Swipe or use on-screen joystick** to fine-tune
 
 PC:
 
 - **Click-hold** to swing
 - **Double-click** to zip to point
-- **Click shortly** to do air dash
+- **Click shortly** to jump / air dash
 - **WASD / Arrows** to fine-tune
 
 
