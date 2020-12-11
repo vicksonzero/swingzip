@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof (Player))]
-public class PlayerInput : MonoBehaviour {
+[RequireComponent (typeof (BPlayer))]
+public class BPlayerInput : MonoBehaviour {
 
-	Player player;
+	BPlayer player;
 
 	void Start () {
-		player = GetComponent<Player> ();
+		player = GetComponent<BPlayer> ();
 	}
 
 	void Update () {

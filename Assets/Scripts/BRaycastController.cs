@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent (typeof (BoxCollider2D))]
-public class RaycastController : MonoBehaviour {
+public class BRaycastController : MonoBehaviour {
 
 	public LayerMask collisionMask;
 	

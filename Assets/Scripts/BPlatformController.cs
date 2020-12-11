@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlatformController : RaycastController {
+public class BPlatformController : BRaycastController {
 
 	public LayerMask passengerMask;
 
@@ -20,7 +20,7 @@ public class PlatformController : RaycastController {
 	float nextMoveTime;
 
 	List<PassengerMovement> passengerMovement;
-	Dictionary<Transform,Controller2D> passengerDictionary = new Dictionary<Transform, Controller2D>();
+	Dictionary<Transform,BPlayerController> passengerDictionary = new Dictionary<Transform, BPlayerController>();
 	
 	public override void Start () {
 		base.Start ();
@@ -83,7 +83,7 @@ public class PlatformController : RaycastController {
 	void MovePassengers(bool beforeMovePlatform) {
 		foreach (PassengerMovement passenger in passengerMovement) {
 			if (!passengerDictionary.ContainsKey(passenger.transform)) {
-				passengerDictionary.Add(passenger.transform,passenger.transform.GetComponent<Controller2D>());
+				passengerDictionary.Add(passenger.transform,passenger.transform.GetComponent<BPlayerController>());
 			}
 
 			if (passenger.moveBeforePlatform == beforeMovePlatform) {

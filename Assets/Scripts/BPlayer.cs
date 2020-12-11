@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof (Controller2D))]
-public class Player : MonoBehaviour {
+[RequireComponent (typeof (BPlayerController))]
+public class BPlayer : MonoBehaviour {
 
 	public float maxJumpHeight = 4;
 	public float minJumpHeight = 1;
@@ -25,14 +25,14 @@ public class Player : MonoBehaviour {
 	Vector3 velocity;
 	float velocityXSmoothing;
 
-	Controller2D controller;
+	BPlayerController controller;
 
 	Vector2 directionalInput;
 	bool wallSliding;
 	int wallDirX;
 
 	void Start() {
-		controller = GetComponent<Controller2D> ();
+		controller = GetComponent<BPlayerController> ();
 
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
