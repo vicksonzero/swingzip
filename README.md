@@ -9,6 +9,7 @@ Delivery over the rooftop and along ziplines. Grapples included!
 - [Play here](#play-here)
 - [How to play](#how-to-play)
 - [Roadmap](#roadmap)
+- [Documents](#documents)
 - [Credits](#credits)
 - [License: BSD-3-Clause](#license-bsd-3-clause)
 
@@ -37,6 +38,10 @@ PC:
 # Roadmap
 
 https://github.com/vicksonzero/swingzip/projects/1
+
+# Documents
+
+https://github.com/vicksonzero/swingzip/wiki
 
 # Credits
 
