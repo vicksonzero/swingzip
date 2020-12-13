@@ -9,6 +9,7 @@ Delivery over the rooftop and along ziplines. Grapples included!
 - [Play here](#play-here)
 - [How to play](#how-to-play)
 - [Roadmap](#roadmap)
+- [Documents](#documents)
 - [Credits](#credits)
 - [License: BSD-3-Clause](#license-bsd-3-clause)
 
@@ -23,20 +24,24 @@ Touch screen:
 
 - **Tap-hold** to swing
 - **Double tap** to zip to point
-- **Tap shortly** to do air dash
+- **Tap shortly** to jump / air dash
 - **Swipe or use on-screen joystick** to fine-tune
 
 PC:
 
 - **Click-hold** to swing
 - **Double-click** to zip to point
-- **Click shortly** to do air dash
+- **Click shortly** to jump / air dash
 - **WASD / Arrows** to fine-tune
 
 
 # Roadmap
 
-https://trello.com/b/FNVqm3XG/swingzip
+https://github.com/vicksonzero/swingzip/projects/1
+
+# Documents
+
+https://github.com/vicksonzero/swingzip/wiki
 
 # Credits
 
