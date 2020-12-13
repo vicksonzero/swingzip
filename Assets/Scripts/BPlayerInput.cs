@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 [RequireComponent (typeof (BPlayer))]
 public class BPlayerInput : MonoBehaviour {
 
 	BPlayer player;
 
+    public float xDir = 0;
+
 	void Start () {
 		player = GetComponent<BPlayer> ();
 	}
 
 	void Update () {
-		Vector2 directionalInput = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
+        // uses update instead of FixedUpdate, input can be lost between FixedUpdate calls
+
+        Vector2 directionalInput = new Vector2 (xDir, Input.GetAxisRaw ("Vertical"));
 		player.SetDirectionalInput (directionalInput);
 
 		if (Input.GetKeyDown (KeyCode.Space)) {
@@ -21,4 +26,14 @@ public class BPlayerInput : MonoBehaviour {
 			player.OnJumpInputUp ();
 		}
 	}
+
+    public void OnVirtualPointerDown(BaseEventData evt)
+    {
+        
+    }
+
+    public void OnVirtualPointerUp(BaseEventData evt)
+    {
+
+    }
 }
