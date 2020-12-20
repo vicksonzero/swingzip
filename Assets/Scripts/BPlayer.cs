@@ -31,7 +31,13 @@ public class BPlayer : MonoBehaviour {
 	bool wallSliding;
 	int wallDirX;
 
-	void Start() {
+
+    public float xDir = 0;
+
+    public int jumpDownFrames = 0;
+    public int jumpUpFrames = 0;
+
+    void Start() {
 		controller = GetComponent<BPlayerController> ();
 
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
@@ -40,7 +46,7 @@ public class BPlayer : MonoBehaviour {
 	}
 
 	void Update() {
-		CalculateVelocity ();
+		UpdateTargetVelocity ();
 		HandleWallSliding ();
 
 		controller.Move (velocity * Time.deltaTime, directionalInput);
@@ -54,7 +60,7 @@ public class BPlayer : MonoBehaviour {
 		}
 	}
 
-	public void SetDirectionalInput (Vector2 input) {
+	public void OnDirectionalInput (Vector2 input) {
 		directionalInput = input;
 	}
 
@@ -121,7 +127,7 @@ public class BPlayer : MonoBehaviour {
 
 	}
 
-	void CalculateVelocity() {
+	void UpdateTargetVelocity() {
 		float targetVelocityX = directionalInput.x * moveSpeed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 		velocity.y += gravity * Time.deltaTime;
