@@ -11,7 +11,9 @@ public class BPlayer : MonoBehaviour {
 	float accelerationTimeGrounded = .1f;
 	float moveSpeed = 6;
 
-	public Vector2 wallJumpClimb;
+	public float maxFallingSpeed = 6;
+
+    public Vector2 wallJumpClimb;
 	public Vector2 wallJumpOff;
 	public Vector2 wallLeap;
 
@@ -122,14 +124,18 @@ public class BPlayer : MonoBehaviour {
 			else {
 				timeToWallUnstick = wallStickTime;
 			}
-
 		}
-
 	}
 
 	void UpdateTargetVelocity() {
 		float targetVelocityX = directionalInput.x * moveSpeed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 		velocity.y += gravity * Time.deltaTime;
-	}
+
+        if(velocity.y < -maxFallingSpeed)
+        {
+            velocity.y = -maxFallingSpeed;
+        }
+
+    }
 }
