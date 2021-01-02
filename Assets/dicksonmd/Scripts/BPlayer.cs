@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(BPlayerController))]
 public class BPlayer : MonoBehaviour
@@ -67,6 +68,10 @@ public class BPlayer : MonoBehaviour
         {
             UpdateMovement();
         }
+        if (grapple != null && grapple.isActive)
+        {
+            UpdateGrappleLine();
+        }
     }
 
     private bool CanDoSwing()
@@ -96,10 +101,13 @@ public class BPlayer : MonoBehaviour
         DoGrappleConstraint();
 
         DisplaceSelf();
-
         grapple.wasComplete = true;
     }
 
+    private void UpdateGrappleLine()
+    {
+        grapple.UpdateLineRenderer(transform.position);
+    }
 
     private void DoWallSliding()
     {
@@ -176,6 +184,8 @@ public class BPlayer : MonoBehaviour
     {
         // init grapple length
         grapple.grappleLength = grapple.DistanceTo(transform);
+
+        UpdateGrappleLine();
     }
 
     private void DoGrappleConstraint()

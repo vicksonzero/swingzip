@@ -6,9 +6,16 @@ public class BGrapple : MonoBehaviour
     public bool wasComplete = false;
     public bool isActive = false;
     public float grappleLength = 0;
+    public LineRenderer lineRenderer;
 
-    private float grappleCompleteTime = 0;
-    
+    public float grappleCompleteTime = 0;
+
+    void Start()
+    {
+        //lineRenderer.SetPosition(1, Vector3.zero);
+        //lineRenderer.startColor = new Color(1, 1, 1, 0.5f);
+        //lineRenderer.endColor = new Color(1, 1, 1, 0.5f);
+    }
 
     public void StartGrapple()
     {
@@ -35,12 +42,19 @@ public class BGrapple : MonoBehaviour
             return 1;
         }
 
-        return (grappleCompleteTime - Time.time) / (grappleTime / 1000f);
+        return Mathf.Clamp01(1 - (grappleCompleteTime - Time.time) / (grappleTime / 1000f));
     }
 
     public float DistanceTo(Transform t)
     {
         Vector2 displacement = t.position - transform.position;
         return displacement.magnitude;
+    }
+
+    public void UpdateLineRenderer(Vector3 swingPos)
+    {
+        Vector2 lineVector = swingPos - transform.position;
+        lineRenderer.SetPosition(0, lineVector);
+        lineRenderer.SetPosition(1, lineVector * (1 - GetGrapplePercent()));
     }
 }

@@ -40,7 +40,6 @@ public class BPlayerInput : MonoBehaviour
 
     public void OnVirtualPointerUp(BaseEventData evt)
     {
-
         player.RemoveGrapple();
     }
 }
