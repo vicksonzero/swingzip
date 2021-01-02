@@ -13,7 +13,6 @@ public class BPlayerController : BRaycastController
     {
         base.Start();
         collisions.faceDir = 1;
-
     }
 
     public void Move(Vector2 moveAmount, bool standingOnPlatform)

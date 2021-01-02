@@ -6,9 +6,6 @@ public class BPlayerInput : MonoBehaviour
 {
 
     BPlayer player;
-    public Transform grapplePrefab;
-
-    Transform grappleHead;
 
     void Start()
     {
@@ -38,21 +35,12 @@ public class BPlayerInput : MonoBehaviour
         var pos = Input.mousePosition;
         pos.z = 10.0f;
         Vector2 pos2 = Camera.main.ScreenToWorldPoint(pos);
-
-        if (grappleHead == null)
-        {
-            grappleHead = Instantiate(grapplePrefab);
-        }
-        grappleHead.gameObject.SetActive(true);
-        grappleHead.transform.position = pos2;
+        player.PutGrapple(pos2);
     }
 
     public void OnVirtualPointerUp(BaseEventData evt)
     {
 
-        if (grappleHead != null)
-        {
-            grappleHead.gameObject.SetActive(false);
-        }
+        player.RemoveGrapple();
     }
 }
