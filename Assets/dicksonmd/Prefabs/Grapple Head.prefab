@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f540cf17ab99af4eb7cc5b2b5cfb468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grappleTime: 180
+  grappleTime: 220
   wasComplete: 0
   isActive: 0
   grappleLength: 0

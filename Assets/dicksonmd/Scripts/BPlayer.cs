@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(BPlayerController))]
 public class BPlayer : MonoBehaviour
@@ -36,6 +35,12 @@ public class BPlayer : MonoBehaviour
 
 
     public BGrapple grapplePrefab;
+
+    internal bool IsDashing()
+    {
+        return Time.time < dashUntil;
+    }
+
     BGrapple grapple;
 
 
@@ -43,6 +48,15 @@ public class BPlayer : MonoBehaviour
 
     public int jumpDownFrames = 0;
     public int jumpUpFrames = 0;
+
+    public float dashDistance = 10;
+    public float dashTime = 1; // seconds
+    Vector3 dashTarget;
+    public float dashUntil = 0;
+    public float dashEndSpeed = 0; // per second
+    public float dashSpeed = 0; // per second
+    public float dashDeceleratation = 0; // per second squared
+    public float dashSpeedProgress = 0; // per second
 
     void Start()
     {
@@ -56,11 +70,18 @@ public class BPlayer : MonoBehaviour
             grapple = Instantiate(grapplePrefab);
             grapple.gameObject.SetActive(false);
         }
+
+        dashSpeed = 2 * dashDistance / dashTime - dashEndSpeed;// Mathf.Sqrt(2 * dashDistance * dashDeceleratation);//dashDistance / dashTime + 0.5f * dashDeceleratation * dashTime;
+        dashDeceleratation = (dashSpeed * dashSpeed - dashEndSpeed * dashEndSpeed) / 2 / dashDistance;
     }
 
     void Update()
     {
-        if (CanDoSwing())
+        if (Time.time < dashUntil)
+        {
+            UpdateDash();
+        }
+        else if (CanDoSwing())
         {
             UpdateSwing();
         }
@@ -68,6 +89,8 @@ public class BPlayer : MonoBehaviour
         {
             UpdateMovement();
         }
+
+
         if (grapple != null && grapple.isActive)
         {
             UpdateGrappleLine();
@@ -107,6 +130,15 @@ public class BPlayer : MonoBehaviour
     private void UpdateGrappleLine()
     {
         grapple.UpdateLineRenderer(transform.position);
+    }
+
+    private void UpdateDash()
+    {
+        var remainingDisplacement = dashTarget - transform.position;
+        velocity = remainingDisplacement.normalized * dashSpeedProgress;
+        controller.Move(velocity * Time.deltaTime, directionalInput);
+        Debug.Log(dashTime - dashUntil + Time.time);
+        dashSpeedProgress = dashSpeed - dashDeceleratation * (dashTime - dashUntil + Time.time);
     }
 
     private void DoWallSliding()
@@ -273,14 +305,25 @@ public class BPlayer : MonoBehaviour
 
     public void RemoveGrapple()
     {
-        if (grapple == null)
+        if (grapple == null || !grapple.gameObject.activeSelf)
         {
             return;
+        }
+
+        if (!grapple.IsComplete())
+        {
+            StartDash();
         }
 
         grapple.EndGrapple();
         grapple.gameObject.SetActive(false);
     }
 
-
+    public void StartDash()
+    {
+        Vector2 displacementToGrapple = grapple.transform.position - transform.position;
+        dashTarget = transform.position + ((Vector3)displacementToGrapple.normalized * dashDistance);
+        dashUntil = Time.time + dashTime;
+        dashSpeedProgress = dashSpeed;
+    }
 }

@@ -32,10 +32,13 @@ public class BPlayerInput : MonoBehaviour
 
     public void OnVirtualPointerDown(BaseEventData evt)
     {
-        var pos = Input.mousePosition;
-        pos.z = 10.0f;
-        Vector2 pos2 = Camera.main.ScreenToWorldPoint(pos);
-        player.PutGrapple(pos2);
+        if (!player.IsDashing() || player.dashSpeedProgress < 0.2f * player.dashSpeed)
+        {
+            var pos = Input.mousePosition;
+            pos.z = 10.0f;
+            Vector2 pos2 = Camera.main.ScreenToWorldPoint(pos);
+            player.PutGrapple(pos2);
+        }
     }
 
     public void OnVirtualPointerUp(BaseEventData evt)
