@@ -301,6 +301,7 @@ public class BPlayer : MonoBehaviour
         grapple.gameObject.SetActive(true);
         grapple.transform.position = pos;
         grapple.StartGrapple();
+        dashUntil = Time.time;
     }
 
     public void RemoveGrapple()

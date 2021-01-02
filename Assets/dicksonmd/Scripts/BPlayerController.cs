@@ -78,6 +78,11 @@ public class BPlayerController : BRaycastController
                     continue;
                 }
 
+                if (hit.collider.tag == "Through")
+                {
+                    continue;
+                }
+
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
                 if (i == 0 && slopeAngle <= maxSlopeAngle)
