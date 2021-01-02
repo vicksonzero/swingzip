@@ -81,7 +81,7 @@ public class BPlayer : MonoBehaviour
         {
             UpdateDash();
         }
-        else if (CanDoSwing())
+        else if (IsSwinging())
         {
             UpdateSwing();
         }
@@ -97,7 +97,7 @@ public class BPlayer : MonoBehaviour
         }
     }
 
-    private bool CanDoSwing()
+    private bool IsSwinging()
     {
         return grapple != null && grapple.isActive && grapple.IsComplete();
     }
@@ -135,10 +135,15 @@ public class BPlayer : MonoBehaviour
     private void UpdateDash()
     {
         var remainingDisplacement = dashTarget - transform.position;
+
+        dashSpeedProgress = dashSpeed - dashDeceleratation * Mathf.Clamp(dashTime - dashUntil + Time.time, 0, dashTime);
         velocity = remainingDisplacement.normalized * dashSpeedProgress;
+
+        if (remainingDisplacement.magnitude < dashSpeedProgress * Time.deltaTime)
+        {
+            return;
+        }
         controller.Move(velocity * Time.deltaTime, directionalInput);
-        Debug.Log(dashTime - dashUntil + Time.time);
-        dashSpeedProgress = dashSpeed - dashDeceleratation * (dashTime - dashUntil + Time.time);
     }
 
     private void DoWallSliding()
