@@ -3,7 +3,10 @@
 [RequireComponent(typeof(BPlayerController))]
 public class BPlayer : MonoBehaviour
 {
+    BPlayerController controller;
+    Vector2 directionalInput;
 
+    [Header("Basic")]
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
@@ -13,6 +16,13 @@ public class BPlayer : MonoBehaviour
 
     public float maxFallingSpeed = 6;
 
+    float gravity;
+    float maxJumpVelocity;
+    float minJumpVelocity;
+    Vector3 velocity;
+    float velocityXSmoothing;
+
+    [Header("Wall")]
     public Vector2 wallJumpClimb;
     public Vector2 wallJumpOff;
     public Vector2 wallLeap;
@@ -20,43 +30,47 @@ public class BPlayer : MonoBehaviour
     public float wallSlideSpeedMax = 3;
     public float wallStickTime = .25f;
     float timeToWallUnstick;
-
-    float gravity;
-    float maxJumpVelocity;
-    float minJumpVelocity;
-    Vector3 velocity;
-    float velocityXSmoothing;
-
-    BPlayerController controller;
-
-    Vector2 directionalInput;
     bool wallSliding;
     int wallDirX;
 
 
+    [Header("Grapple")]
     public BGrapple grapplePrefab;
-
-    internal bool IsDashing()
-    {
-        return Time.time < dashUntil;
-    }
 
     BGrapple grapple;
 
-
-    public float xDir = 0;
-
-    public int jumpDownFrames = 0;
-    public int jumpUpFrames = 0;
-
+    [Header("Dash")]
     public float dashDistance = 10;
     public float dashTime = 1; // seconds
     Vector3 dashTarget;
+
     public float dashUntil = 0;
     public float dashEndSpeed = 0; // per second
     public float dashSpeed = 0; // per second
     public float dashDeceleratation = 0; // per second squared
     public float dashSpeedProgress = 0; // per second
+
+    public bool IsDashing()
+    {
+        return Time.time < dashUntil;
+    }
+
+    [Header("Zip-to-point")]
+    public BZipButton zipButtonPrefab;
+    public BZipButton zipButton;
+    public Vector3 zipTarget;
+    public float zipEndSpeed = 0; // per second
+    public float zipSpeed = 0; // per second
+    public float zipAcceleratation = 0; // per second squared
+    public float zipSpeedProgress = 0; // per second
+
+
+    [Header("Auto-move")]
+    public float xDir = 0;
+
+    [Header("Input Buffers")]
+    public int jumpDownFrames = 0;
+    public int jumpUpFrames = 0;
 
     void Start()
     {
@@ -69,6 +83,11 @@ public class BPlayer : MonoBehaviour
         {
             grapple = Instantiate(grapplePrefab);
             grapple.gameObject.SetActive(false);
+        }
+        if (zipButton == null)
+        {
+            zipButton = Instantiate(zipButtonPrefab);
+            zipButton.gameObject.SetActive(false);
         }
 
         dashSpeed = 2 * dashDistance / dashTime - dashEndSpeed;// Mathf.Sqrt(2 * dashDistance * dashDeceleratation);//dashDistance / dashTime + 0.5f * dashDeceleratation * dashTime;
@@ -319,6 +338,8 @@ public class BPlayer : MonoBehaviour
         if (!grapple.IsComplete())
         {
             StartDash();
+            zipButton.gameObject.SetActive(true);
+            zipButton.InitButton(grapple.transform.position);
         }
 
         grapple.EndGrapple();
@@ -331,5 +352,10 @@ public class BPlayer : MonoBehaviour
         dashTarget = transform.position + ((Vector3)displacementToGrapple.normalized * dashDistance);
         dashUntil = Time.time + dashTime;
         dashSpeedProgress = dashSpeed;
+    }
+
+    public void StartZipToPoint(Vector3 position)
+    {
+        Debug.Log("StartZipToPoint!");
     }
 }

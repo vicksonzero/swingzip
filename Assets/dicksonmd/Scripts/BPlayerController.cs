@@ -80,6 +80,7 @@ public class BPlayerController : BRaycastController
 
                 if (hit.collider.tag == "Through")
                 {
+                    // old one-way platforms. can only handle horizontal
                     continue;
                 }
 
@@ -137,6 +138,7 @@ public class BPlayerController : BRaycastController
             {
                 if (hit.collider.tag == "Through")
                 {
+                    // old one-way platforms. can only handle horizontal
                     if (directionY == 1 || hit.distance == 0)
                     {
                         continue;

@@ -48,7 +48,7 @@ https://github.com/vicksonzero/swingzip/wiki
 - Forked from ***2D Platformer Controller (Unity 5)*** by **Sebastian Lague**
   - https://www.youtube.com/playlist?list=PLFt_AvWsXl0f0hqURlhyIoAabKPgRsqjz  
   - https://github.com/SebLague/2DPlatformer-Tutorial/
-
+- DOTween (HOTween v2) from Demigiant
 
 # License: BSD-3-Clause
 

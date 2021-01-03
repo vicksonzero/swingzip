@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 public class BGrapple : MonoBehaviour
 {
@@ -7,18 +8,18 @@ public class BGrapple : MonoBehaviour
     public bool isActive = false;
     public float grappleLength = 0;
     public LineRenderer lineRenderer;
+    public Transform buttonSprite;
 
     public float grappleCompleteTime = 0;
 
     void Start()
     {
-        //lineRenderer.SetPosition(1, Vector3.zero);
-        //lineRenderer.startColor = new Color(1, 1, 1, 0.5f);
-        //lineRenderer.endColor = new Color(1, 1, 1, 0.5f);
     }
 
     public void StartGrapple()
     {
+        buttonSprite.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        buttonSprite.transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.1f);
         grappleCompleteTime = Time.time + grappleTime / 1000f;
         isActive = true;
     }
