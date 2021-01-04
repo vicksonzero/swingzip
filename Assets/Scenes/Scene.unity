@@ -987,9 +987,9 @@ MonoBehaviour:
     type: 3}
   zipButton: {fileID: 0}
   zipTarget: {fileID: 0}
-  zipSpeed: 4
-  zipStartSpeedCap: 2.5
-  zipAcceleration: 12
+  zipSpeed: 8
+  zipStartSpeedCap: 1
+  zipAcceleration: 8
   zipSpeedProgress: 0
   zipUntil: 0
   xDir: 0

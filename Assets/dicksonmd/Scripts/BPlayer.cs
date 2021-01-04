@@ -210,7 +210,7 @@ public class BPlayer : MonoBehaviour
         Vector2 remainingDisplacement = zipTarget.transform.position - transform.position;
 
         zipSpeedProgress += zipAcceleration * Time.deltaTime;
-
+        zipSpeedProgress = Mathf.Clamp(zipSpeedProgress, 0, zipSpeed);
         velocity = remainingDisplacement.normalized * zipSpeedProgress;
 
         if (Time.time > zipUntil)
@@ -454,12 +454,27 @@ public class BPlayer : MonoBehaviour
         zipSpeedProgress = Mathf.Clamp(velocity.magnitude, 0, zipStartSpeedCap);
         velocity = velocity.normalized * zipSpeedProgress;
 
-        var s = displacementToZipTarget.magnitude;
         var a = zipAcceleration;
-        var u = zipSpeedProgress;
+        var u = zipSpeedProgress; // starting speed
+        var v = zipSpeed; // peak speed
 
-        zipUntil = Time.time + (-u + Mathf.Sqrt(2 * a * s + u * u)) / a;
-        Debug.Log(Time.time + " " + zipUntil);
+        // distance for accel phase
+        var s_accel = (v * v - u * u) / 2 / a;
+        if (s_accel >= displacementToZipTarget.magnitude)
+        {
+            // only accel phase is needed
+            var s = displacementToZipTarget.magnitude;
+            zipUntil = Time.time + (-u + Mathf.Sqrt(2 * a * s + u * u)) / a;
+        }
+        else
+        {
+            // accel phase + constant phase
+            var s1 = s_accel;
+            // s2 = remaining distance, aka at constant speed
+            var s2 = displacementToZipTarget.magnitude - s_accel;
+            zipUntil = Time.time + ((-u + Mathf.Sqrt(2 * a * s1 + u * u)) / a) + (s2 / v);
+        }
+
     }
 
     #endregion
