@@ -6,6 +6,7 @@ public class BPlayerInput : MonoBehaviour
 {
 
     BPlayer player;
+    public Transform zipTargetPrefab;
 
     void Start()
     {
@@ -34,7 +35,8 @@ public class BPlayerInput : MonoBehaviour
     {
         if (player.zipButton != null && player.zipButton.gameObject.activeSelf)
         {
-            player.StartZipToPoint(player.zipButton.transform.position);
+            var zipTarget = Instantiate(zipTargetPrefab, player.zipButton.transform.position, Quaternion.identity);
+            player.StartZipToPoint(zipTarget);
         }
         else
         {
@@ -48,10 +50,5 @@ public class BPlayerInput : MonoBehaviour
     public void OnVirtualPointerUp(BaseEventData evt)
     {
         player.RemoveGrapple();
-    }
-
-    public void OnZipPointPointerDown(Transform point)
-    {
-        player.StartZipToPoint(point.position);
     }
 }

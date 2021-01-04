@@ -6,6 +6,12 @@ public class BPlayer : MonoBehaviour
     BPlayerController controller;
     Vector2 directionalInput;
 
+    public enum EPlayerStates { FREE, SWINGING, DASHING, ZIPPING_TO_POINT, RUN, WALL_RUN };
+
+    public EPlayerStates currentState = EPlayerStates.FREE;
+
+    #region Basic Fields
+
     [Header("Basic")]
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
@@ -22,6 +28,10 @@ public class BPlayer : MonoBehaviour
     Vector3 velocity;
     float velocityXSmoothing;
 
+    #endregion
+
+    #region Wall Fields
+
     [Header("Wall")]
     public Vector2 wallJumpClimb;
     public Vector2 wallJumpOff;
@@ -33,37 +43,45 @@ public class BPlayer : MonoBehaviour
     bool wallSliding;
     int wallDirX;
 
+    #endregion
+
+    #region Grapple Fields
 
     [Header("Grapple")]
     public BGrapple grapplePrefab;
 
     BGrapple grapple;
 
+    #endregion
+
+    #region Dash Fields
+
     [Header("Dash")]
     public float dashDistance = 10;
     public float dashTime = 1; // seconds
     Vector3 dashTarget;
-
     public float dashUntil = 0;
     public float dashEndSpeed = 0; // per second
     public float dashSpeed = 0; // per second
-    public float dashDeceleratation = 0; // per second squared
+    public float dashDeceleration = 0; // per second squared
     public float dashSpeedProgress = 0; // per second
 
-    public bool IsDashing()
-    {
-        return Time.time < dashUntil;
-    }
+    #endregion
+
+    #region Zip-to-point Fields
 
     [Header("Zip-to-point")]
     public BZipButton zipButtonPrefab;
     public BZipButton zipButton;
-    public Vector3 zipTarget;
+    public Transform zipTarget;
     public float zipEndSpeed = 0; // per second
     public float zipSpeed = 0; // per second
-    public float zipAcceleratation = 0; // per second squared
+    public float zipAcceleration = 0; // per second squared
     public float zipSpeedProgress = 0; // per second
 
+    #endregion
+
+    #region Auto-move Fields
 
     [Header("Auto-move")]
     public float xDir = 0;
@@ -71,6 +89,8 @@ public class BPlayer : MonoBehaviour
     [Header("Input Buffers")]
     public int jumpDownFrames = 0;
     public int jumpUpFrames = 0;
+
+    #endregion
 
     void Start()
     {
@@ -91,35 +111,59 @@ public class BPlayer : MonoBehaviour
         }
 
         dashSpeed = 2 * dashDistance / dashTime - dashEndSpeed;// Mathf.Sqrt(2 * dashDistance * dashDeceleratation);//dashDistance / dashTime + 0.5f * dashDeceleratation * dashTime;
-        dashDeceleratation = (dashSpeed * dashSpeed - dashEndSpeed * dashEndSpeed) / 2 / dashDistance;
+        dashDeceleration = (dashSpeed * dashSpeed - dashEndSpeed * dashEndSpeed) / 2 / dashDistance;
     }
 
     void Update()
     {
-        if (Time.time < dashUntil)
+        if (IsZippingToPoint())
         {
+            currentState = EPlayerStates.ZIPPING_TO_POINT;
+            UpdateZipToPoint();
+        }
+        else if (IsDashing())
+        {
+            currentState = EPlayerStates.DASHING;
             UpdateDash();
         }
         else if (IsSwinging())
         {
+            currentState = EPlayerStates.SWINGING;
             UpdateSwing();
         }
         else
         {
+            currentState = EPlayerStates.FREE;
             UpdateMovement();
         }
 
 
         if (grapple != null && grapple.isActive)
         {
-            UpdateGrappleLine();
+            RenderGrappleLine();
         }
     }
 
-    private bool IsSwinging()
+    #region State Accessors Methods
+
+    public bool IsZippingToPoint()
+    {
+        return zipTarget != null;
+    }
+
+    public bool IsDashing()
+    {
+        return Time.time < dashUntil;
+    }
+
+    public bool IsSwinging()
     {
         return grapple != null && grapple.isActive && grapple.IsComplete();
     }
+
+    #endregion
+
+    #region State Handlers Methods
 
     void UpdateMovement()
     {
@@ -146,16 +190,11 @@ public class BPlayer : MonoBehaviour
         grapple.wasComplete = true;
     }
 
-    private void UpdateGrappleLine()
-    {
-        grapple.UpdateLineRenderer(transform.position);
-    }
-
     private void UpdateDash()
     {
         var remainingDisplacement = dashTarget - transform.position;
 
-        dashSpeedProgress = dashSpeed - dashDeceleratation * Mathf.Clamp(dashTime - dashUntil + Time.time, 0, dashTime);
+        dashSpeedProgress = dashSpeed - dashDeceleration * Mathf.Clamp(dashTime - dashUntil + Time.time, 0, dashTime);
         velocity = remainingDisplacement.normalized * dashSpeedProgress;
 
         if (remainingDisplacement.magnitude < dashSpeedProgress * Time.deltaTime)
@@ -163,6 +202,34 @@ public class BPlayer : MonoBehaviour
             return;
         }
         controller.Move(velocity * Time.deltaTime, directionalInput);
+    }
+
+    private void UpdateZipToPoint()
+    {
+        var remainingDisplacement = zipTarget.position - transform.position;
+
+        zipSpeedProgress += zipAcceleration * Time.deltaTime;
+
+        velocity = remainingDisplacement.normalized * zipSpeedProgress;
+        if (remainingDisplacement.magnitude < zipSpeedProgress * Time.deltaTime)
+        {
+            // snap to end point
+            controller.Move(remainingDisplacement, directionalInput);
+            zipTarget = null;
+        }
+        else
+        {
+            // normal zip to point
+            controller.Move(velocity * Time.deltaTime, directionalInput);
+        }
+    }
+
+    #endregion
+
+    #region Constraints Methods
+    private void RenderGrappleLine()
+    {
+        grapple.UpdateLineRenderer(transform.position);
     }
 
     private void DoWallSliding()
@@ -203,7 +270,6 @@ public class BPlayer : MonoBehaviour
     {
         float targetVelocityX = directionalInput.x * moveSpeed;
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-
     }
 
     private void DoGravity()
@@ -236,14 +302,6 @@ public class BPlayer : MonoBehaviour
         controller.Move(velocity * Time.deltaTime, directionalInput);
     }
 
-    private void InitGrapple()
-    {
-        // init grapple length
-        grapple.grappleLength = grapple.DistanceTo(transform);
-
-        UpdateGrappleLine();
-    }
-
     private void DoGrappleConstraint()
     {
         if (grapple == null)
@@ -264,6 +322,10 @@ public class BPlayer : MonoBehaviour
             velocity = targetMovement / Time.deltaTime;
         }
     }
+
+    #endregion
+
+    #region Input / State Change / Init Methods
 
     public void OnDirectionalInput(Vector2 input)
     {
@@ -314,6 +376,14 @@ public class BPlayer : MonoBehaviour
             velocity.y = minJumpVelocity;
         }
     }
+    private void InitGrapple()
+    {
+        Debug.Log("InitGrapple");
+        // init grapple length
+        grapple.grappleLength = grapple.DistanceTo(transform);
+
+        RenderGrappleLine();
+    }
 
     public void PutGrapple(Vector2 pos)
     {
@@ -348,14 +418,20 @@ public class BPlayer : MonoBehaviour
 
     public void StartDash()
     {
+        Debug.Log("StartDash");
         Vector2 displacementToGrapple = grapple.transform.position - transform.position;
         dashTarget = transform.position + ((Vector3)displacementToGrapple.normalized * dashDistance);
         dashUntil = Time.time + dashTime;
         dashSpeedProgress = dashSpeed;
     }
 
-    public void StartZipToPoint(Vector3 position)
+    public void StartZipToPoint(Transform zipTarget)
     {
         Debug.Log("StartZipToPoint!");
+        this.zipTarget = zipTarget;
+        zipSpeedProgress = 0;
+        velocity = Vector3.zero;
     }
+
+    #endregion
 }
