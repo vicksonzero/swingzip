@@ -74,8 +74,8 @@ public class BPlayer : MonoBehaviour
     public BZipButton zipButtonPrefab;
     public BZipButton zipButton;
     public BZipTarget zipTarget;
-    public float zipEndSpeed = 0; // per second
     public float zipSpeed = 0; // per second
+    public float zipStartSpeedCap = 3; // per second
     public float zipAcceleration = 0; // per second squared
     public float zipSpeedProgress = 0; // per second
     public float zipUntil = 0;
@@ -440,13 +440,24 @@ public class BPlayer : MonoBehaviour
     {
         Debug.Log("StartZipToPoint!");
         this.zipTarget = zipTarget;
-        zipSpeedProgress = 0;
-        velocity = Vector3.zero;
 
-        // make t the subject of s=ut+0.5at^2, where u=0
-        // t^2 = 2s / a
+        if (zipButton == null)
+        {
+            zipButton.StopButton();
+        }
+
+        // make t the subject of s=ut+0.5at^2, where u !=0
+        // (-u + sqrt(2 a s + u^2))/a
         Vector2 displacementToZipTarget = zipTarget.transform.position - transform.position;
-        zipUntil = Time.time + Mathf.Sqrt(2 * displacementToZipTarget.magnitude / zipAcceleration);
+        velocity = Vector3.Project(velocity, displacementToZipTarget);
+        zipSpeedProgress = Mathf.Clamp(velocity.magnitude, 0, zipStartSpeedCap);
+        velocity = velocity.normalized * zipSpeedProgress;
+
+        var s = displacementToZipTarget.magnitude;
+        var a = zipAcceleration;
+        var u = zipSpeedProgress;
+
+        zipUntil = Time.time + (-u + Mathf.Sqrt(2 * a * s + u * u)) / a;
         Debug.Log(Time.time + " " + zipUntil);
     }
 

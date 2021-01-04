@@ -39,6 +39,15 @@ public class BZipButton : MonoBehaviour
         sleepTimer = StartCoroutine(SleepAfter(zipToPointInputWindow));
     }
 
+    public void StopButton()
+    {
+        if (sleepTimer != null)
+        {
+            StopCoroutine(sleepTimer);
+        }
+        gameObject.SetActive(false);
+    }
+
     IEnumerator SleepAfter(float amount)
     {
         yield return new WaitForSeconds(amount);
