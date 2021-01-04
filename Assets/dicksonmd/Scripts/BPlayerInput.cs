@@ -38,7 +38,7 @@ public class BPlayerInput : MonoBehaviour
             var zipTarget = Instantiate(zipTargetPrefab, player.zipButton.transform.position, Quaternion.identity);
             player.StartZipToPoint(zipTarget);
         }
-        else
+        else if(IsZippingToPoint())
         {
             var pos = Input.mousePosition;
             pos.z = 10.0f;

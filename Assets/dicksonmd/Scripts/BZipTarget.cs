@@ -9,6 +9,6 @@ public class BZipTarget : MonoBehaviour
     public void UpdateLineRenderer(Vector3 swingPos)
     {
         lineRenderer.SetPosition(0, Vector3.zero);
-        lineRenderer.SetPosition(1, swingPos);
+        lineRenderer.SetPosition(1, swingPos - transform.position);
     }
 }

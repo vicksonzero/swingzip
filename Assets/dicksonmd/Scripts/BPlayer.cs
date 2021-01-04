@@ -210,6 +210,7 @@ public class BPlayer : MonoBehaviour
         Vector2 remainingDisplacement = zipTarget.transform.position - transform.position;
 
         zipSpeedProgress += zipAcceleration * Time.deltaTime;
+
         velocity = remainingDisplacement.normalized * zipSpeedProgress;
 
         if (Time.time > zipUntil)
@@ -441,7 +442,7 @@ public class BPlayer : MonoBehaviour
         Debug.Log("StartZipToPoint!");
         this.zipTarget = zipTarget;
 
-        if (zipButton == null)
+        if (zipButton != null)
         {
             zipButton.StopButton();
         }
