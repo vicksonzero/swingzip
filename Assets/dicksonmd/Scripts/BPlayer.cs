@@ -79,6 +79,7 @@ public class BPlayer : MonoBehaviour
     public float zipAcceleration = 0; // per second squared
     public float zipSpeedProgress = 0; // per second
     public float zipUntil = 0;
+    public float zipTimeBuffer = 0.1f;
 
     #endregion
 
@@ -475,6 +476,8 @@ public class BPlayer : MonoBehaviour
             zipUntil = Time.time + ((-u + Mathf.Sqrt(2 * a * s1 + u * u)) / a) + (s2 / v);
         }
 
+        // add artificial buffer in case colliding on walls
+        zipUntil *= (1 + zipTimeBuffer);
     }
 
     #endregion
