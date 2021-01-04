@@ -6,7 +6,7 @@ public class BPlayerInput : MonoBehaviour
 {
 
     BPlayer player;
-    public Transform zipTargetPrefab;
+    public BZipTarget zipTargetPrefab;
 
     void Start()
     {

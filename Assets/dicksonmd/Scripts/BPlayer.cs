@@ -73,11 +73,12 @@ public class BPlayer : MonoBehaviour
     [Header("Zip-to-point")]
     public BZipButton zipButtonPrefab;
     public BZipButton zipButton;
-    public Transform zipTarget;
+    public BZipTarget zipTarget;
     public float zipEndSpeed = 0; // per second
     public float zipSpeed = 0; // per second
     public float zipAcceleration = 0; // per second squared
     public float zipSpeedProgress = 0; // per second
+    public float zipUntil = 0;
 
     #endregion
 
@@ -206,21 +207,31 @@ public class BPlayer : MonoBehaviour
 
     private void UpdateZipToPoint()
     {
-        var remainingDisplacement = zipTarget.position - transform.position;
+        Vector2 remainingDisplacement = zipTarget.transform.position - transform.position;
 
         zipSpeedProgress += zipAcceleration * Time.deltaTime;
-
         velocity = remainingDisplacement.normalized * zipSpeedProgress;
-        if (remainingDisplacement.magnitude < zipSpeedProgress * Time.deltaTime)
+
+        if (Time.time > zipUntil)
+        {
+            Destroy(zipTarget.gameObject);
+            zipTarget = null;
+
+            return;
+        }
+
+        if (remainingDisplacement.magnitude <= zipSpeedProgress * Time.deltaTime)
         {
             // snap to end point
             controller.Move(remainingDisplacement, directionalInput);
+            Destroy(zipTarget.gameObject);
             zipTarget = null;
         }
         else
         {
             // normal zip to point
             controller.Move(velocity * Time.deltaTime, directionalInput);
+            zipTarget.UpdateLineRenderer(transform.position);
         }
     }
 
@@ -425,12 +436,18 @@ public class BPlayer : MonoBehaviour
         dashSpeedProgress = dashSpeed;
     }
 
-    public void StartZipToPoint(Transform zipTarget)
+    public void StartZipToPoint(BZipTarget zipTarget)
     {
         Debug.Log("StartZipToPoint!");
         this.zipTarget = zipTarget;
         zipSpeedProgress = 0;
         velocity = Vector3.zero;
+
+        // make t the subject of s=ut+0.5at^2, where u=0
+        // t^2 = 2s / a
+        Vector2 displacementToZipTarget = zipTarget.transform.position - transform.position;
+        zipUntil = Time.time + Mathf.Sqrt(2 * displacementToZipTarget.magnitude / zipAcceleration);
+        Debug.Log(Time.time + " " + zipUntil);
     }
 
     #endregion
