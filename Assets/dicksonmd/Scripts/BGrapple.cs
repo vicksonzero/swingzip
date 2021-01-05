@@ -10,7 +10,7 @@ public class BGrapple : MonoBehaviour
     public float grappleLength = 0;
     public LineRenderer lineRenderer;
     public Transform buttonSprite;
-
+    public Transform buttonSprite2;
     public float grappleCompleteTime = 0;
 
     void Start()
@@ -21,16 +21,11 @@ public class BGrapple : MonoBehaviour
     {
         isSolidGrapple = isOnBackWall;
 
-        if (isSolidGrapple)
-        {
-            buttonSprite.transform.localScale = Vector3.one * 0.3f;
-            buttonSprite.transform.DOScale(Vector3.one * 0.5f, 0.1f);
-        }
-        else
-        {
-            lineRenderer.SetPosition(0, Vector3.zero);
-            lineRenderer.SetPosition(1, Vector3.zero);
-        }
+        buttonSprite.transform.localScale = Vector3.one * 0.1f;
+        buttonSprite.transform.DOScale(Vector3.one * 0.3f, 0.1f);
+
+        buttonSprite2.transform.localScale = Vector3.one * 0.1f;
+
         grappleCompleteTime = Time.time + grappleTime / 1000f;
         isActive = true;
     }
@@ -40,6 +35,16 @@ public class BGrapple : MonoBehaviour
         isActive = false;
         wasComplete = false;
         grappleCompleteTime = 0;
+    }
+
+    public void PlayAnchorTweens()
+    {
+        buttonSprite.transform.localScale = Vector3.one * 0.3f;
+        buttonSprite.transform.rotation = Quaternion.identity;
+        buttonSprite.transform.DORotate(new Vector3(0, 0, 90f), 0.4f);
+
+        buttonSprite2.transform.localScale = Vector3.one * 0.1f;
+        buttonSprite2.transform.DOScale(Vector3.one * 0.6f, 0.2f);
     }
 
     public bool IsComplete()
@@ -65,7 +70,6 @@ public class BGrapple : MonoBehaviour
 
     public void UpdateLineRenderer(Vector3 swingPos)
     {
-        if (!isSolidGrapple) return;
         Vector2 lineVector = swingPos - transform.position;
         lineRenderer.SetPosition(0, lineVector);
         lineRenderer.SetPosition(1, lineVector * (1 - GetGrapplePercent()));

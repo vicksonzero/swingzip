@@ -143,6 +143,10 @@ public class BPlayer : MonoBehaviour
         if (grapple != null && grapple.isActive)
         {
             RenderGrappleLine();
+            if (!grapple.isSolidGrapple && grapple.IsComplete())
+            {
+                RemoveGrapple();
+            }
         }
     }
 
@@ -394,7 +398,8 @@ public class BPlayer : MonoBehaviour
         Debug.Log("InitGrapple");
         // init grapple length
         grapple.grappleLength = grapple.DistanceTo(transform);
-
+        
+        grapple.PlayAnchorTweens();
         RenderGrappleLine();
     }
 
