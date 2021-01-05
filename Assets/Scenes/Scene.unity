@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 371540411}
   - component: {fileID: 371540410}
   m_Layer: 10
-  m_Name: Obstacle (5)
+  m_Name: Back Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -808,7 +808,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7925f48f74fa68140a389457a560ae02, type: 2}
+  - {fileID: 2100000, guid: bfba0fe27407dfd41b3beff38d27c9c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -957,7 +957,7 @@ GameObject:
   - component: {fileID: 466365344}
   - component: {fileID: 466365343}
   m_Layer: 10
-  m_Name: Obstacle (4)
+  m_Name: Back Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1033,7 +1033,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7925f48f74fa68140a389457a560ae02, type: 2}
+  - {fileID: 2100000, guid: bfba0fe27407dfd41b3beff38d27c9c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2058,7 +2058,7 @@ GameObject:
   - component: {fileID: 871537436}
   - component: {fileID: 871537439}
   m_Layer: 10
-  m_Name: Obstacle (2)
+  m_Name: Back Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2108,7 +2108,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1041c65420bf60d42a7df0ab63428a18, type: 2}
+  - {fileID: 2100000, guid: 7925f48f74fa68140a389457a560ae02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4630,7 +4630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1360464732}
   m_Layer: 0
-  m_Name: Walls
+  m_Name: Back Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6330,7 +6330,7 @@ GameObject:
   - component: {fileID: 1820047841}
   - component: {fileID: 1820047844}
   m_Layer: 10
-  m_Name: Obstacle
+  m_Name: Back Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6380,7 +6380,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1041c65420bf60d42a7df0ab63428a18, type: 2}
+  - {fileID: 2100000, guid: 7925f48f74fa68140a389457a560ae02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6449,7 +6449,7 @@ GameObject:
   - component: {fileID: 1836837518}
   - component: {fileID: 1836837519}
   m_Layer: 10
-  m_Name: Obstacle (3)
+  m_Name: Back Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6487,7 +6487,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bfba0fe27407dfd41b3beff38d27c9c7, type: 2}
+  - {fileID: 2100000, guid: 1041c65420bf60d42a7df0ab63428a18, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7428,7 +7428,7 @@ GameObject:
   - component: {fileID: 2034091499}
   - component: {fileID: 2034091502}
   m_Layer: 10
-  m_Name: Obstacle (1)
+  m_Name: Back Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7478,7 +7478,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1041c65420bf60d42a7df0ab63428a18, type: 2}
+  - {fileID: 2100000, guid: 7925f48f74fa68140a389457a560ae02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

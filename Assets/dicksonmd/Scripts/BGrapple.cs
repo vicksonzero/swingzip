@@ -21,10 +21,16 @@ public class BGrapple : MonoBehaviour
     {
         isSolidGrapple = isOnBackWall;
 
-        buttonSprite.transform.localScale = Vector3.one * 0.1f;
-        buttonSprite.transform.DOScale(Vector3.one * 0.3f, 0.1f);
-
-        buttonSprite2.transform.localScale = Vector3.one * 0.1f;
+        if (isSolidGrapple)
+        {
+            buttonSprite.transform.localScale = Vector3.one * 0.2f;
+            buttonSprite2.transform.localScale = Vector3.one * 0.4f;
+        }
+        else
+        {
+            buttonSprite.transform.localScale = Vector3.one * 0.1f;
+            buttonSprite2.transform.localScale = Vector3.one * 0.1f;
+        }
 
         grappleCompleteTime = Time.time + grappleTime / 1000f;
         isActive = true;
