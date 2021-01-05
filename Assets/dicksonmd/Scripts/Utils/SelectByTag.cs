@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SelectByTag : MonoBehaviour
 {
-
+    #if UNITY_EDITOR
     private static string SelectedTag = "Through";
 
     [MenuItem("Helpers/Select By Tag")]
@@ -12,4 +12,5 @@ public class SelectByTag : MonoBehaviour
         GameObject[] objects = GameObject.FindGameObjectsWithTag(SelectedTag);
         Selection.objects = objects;
     }
+    #endif
 }
