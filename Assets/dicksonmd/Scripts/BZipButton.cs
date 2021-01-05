@@ -31,10 +31,12 @@ public class BZipButton : MonoBehaviour
         transform.position = position;
 
         buttonSprite.transform.rotation = Quaternion.identity;
-        buttonSprite2.transform.rotation = Quaternion.identity;
+        buttonSprite.transform.DORotate(new Vector3(0, 0, -45), 0.2f);
 
-        buttonSprite.transform.DORotate(new Vector3(0, 0, -45-90), 0.2f);
+        buttonSprite2.transform.rotation = Quaternion.identity;
+        buttonSprite2.transform.localScale = Vector3.one * 0.4f;
         buttonSprite2.transform.DORotate(new Vector3(0, 0, 45), 0.2f);
+        buttonSprite2.transform.DOScale(Vector3.one * 0.7f, 0.2f);
 
         sleepTimer = StartCoroutine(SleepAfter(zipToPointInputWindow));
     }
