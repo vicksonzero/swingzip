@@ -160,7 +160,7 @@ public class BPlayer : MonoBehaviour
 
     public bool IsSwinging()
     {
-        return grapple != null && grapple.isActive && grapple.IsComplete();
+        return grapple != null && grapple.isActive && grapple.isSolidGrapple && grapple.IsComplete();
     }
 
     #endregion
@@ -407,7 +407,19 @@ public class BPlayer : MonoBehaviour
 
         grapple.gameObject.SetActive(true);
         grapple.transform.position = pos;
-        grapple.StartGrapple();
+        var hitColliders = Physics2D.OverlapCircleAll(pos, 0.5f);
+
+        Debug.Log(hitColliders.Length);
+        var hasBackWall = false;
+        foreach (var collider in hitColliders)
+        {
+            if (collider.GetComponent<BBackWall>() != null)
+            {
+                hasBackWall = true;
+                break;
+            }
+        }
+        grapple.StartGrapple(hasBackWall);
         dashUntil = Time.time;
     }
 

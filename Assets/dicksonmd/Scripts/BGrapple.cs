@@ -6,6 +6,7 @@ public class BGrapple : MonoBehaviour
     public int grappleTime = 500; // in ms, TODO: Change to frames
     public bool wasComplete = false;
     public bool isActive = false;
+    public bool isSolidGrapple = false;
     public float grappleLength = 0;
     public LineRenderer lineRenderer;
     public Transform buttonSprite;
@@ -16,10 +17,20 @@ public class BGrapple : MonoBehaviour
     {
     }
 
-    public void StartGrapple()
+    public void StartGrapple(bool isOnBackWall)
     {
-        buttonSprite.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-        buttonSprite.transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.1f);
+        isSolidGrapple = isOnBackWall;
+
+        if (isSolidGrapple)
+        {
+            buttonSprite.transform.localScale = Vector3.one * 0.3f;
+            buttonSprite.transform.DOScale(Vector3.one * 0.5f, 0.1f);
+        }
+        else
+        {
+            lineRenderer.SetPosition(0, Vector3.zero);
+            lineRenderer.SetPosition(1, Vector3.zero);
+        }
         grappleCompleteTime = Time.time + grappleTime / 1000f;
         isActive = true;
     }
@@ -54,6 +65,7 @@ public class BGrapple : MonoBehaviour
 
     public void UpdateLineRenderer(Vector3 swingPos)
     {
+        if (!isSolidGrapple) return;
         Vector2 lineVector = swingPos - transform.position;
         lineRenderer.SetPosition(0, lineVector);
         lineRenderer.SetPosition(1, lineVector * (1 - GetGrapplePercent()));
