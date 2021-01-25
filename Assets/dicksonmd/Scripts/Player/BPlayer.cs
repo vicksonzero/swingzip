@@ -6,7 +6,7 @@ public class BPlayer : MonoBehaviour
     BPlayerController controller;
     Vector2 directionalInput;
 
-    public enum EPlayerStates { FREE, SWINGING, DASHING, ZIPPING_TO_POINT, RUN, WALL_RUN };
+    public enum EPlayerStates { FREE, SWINGING, DASH_START, DASHING, ZIPPING_TO_POINT, RUN, WALL_RUN };
 
     public EPlayerStates currentState = EPlayerStates.FREE;
 

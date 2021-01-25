@@ -20,7 +20,9 @@ public class BPlayerInput : MonoBehaviour
         // uses update instead of FixedUpdate, input can be lost between FixedUpdate calls
 
         // keyboard-specific controls
-        Vector2 directionalInput = mobileJoystick.isDown ? mobileJoystick.joystickInput : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector2 directionalInput = (mobileJoystick.isDown ? mobileJoystick.joystickInput
+            : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
+        );
         player.OnDirectionalInput(directionalInput);
 
         if (Input.GetKeyDown(KeyCode.W))
