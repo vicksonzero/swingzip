@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(BPlayer))]
+
 public class BPlayerInput : MonoBehaviour
 {
 

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
+
 [RequireComponent(typeof(BPlayerController))]
 public class BPlayer : MonoBehaviour
 {
-    BPlayerController controller;
+    public BPlayerController controller;
     Vector2 directionalInput;
 
     public enum EPlayerStates { FREE, SWINGING, DASH_START, DASHING, ZIPPING_TO_POINT, RUN, WALL_RUN };
@@ -25,10 +26,15 @@ public class BPlayer : MonoBehaviour
     float gravity;
     float maxJumpVelocity;
     float minJumpVelocity;
-    Vector3 velocity;
+    public Vector3 velocity;
     float velocityXSmoothing;
 
     #endregion
+
+    [Header("MovementStates")]
+    public BPlayerSwing playerSwing;
+    public BGrapple grapplePrefab;
+    public BGrapple grapple;
 
     #region Wall Fields
 
@@ -42,15 +48,6 @@ public class BPlayer : MonoBehaviour
     float timeToWallUnstick;
     bool wallSliding;
     int wallDirX;
-
-    #endregion
-
-    #region Grapple Fields
-
-    [Header("Grapple")]
-    public BGrapple grapplePrefab;
-
-    BGrapple grapple;
 
     #endregion
 
@@ -111,6 +108,7 @@ public class BPlayer : MonoBehaviour
             zipButton = Instantiate(zipButtonPrefab);
             zipButton.gameObject.SetActive(false);
         }
+        playerSwing = GetComponent<BPlayerSwing>();
 
         dashSpeed = 2 * dashDistance / dashTime - dashEndSpeed;// Mathf.Sqrt(2 * dashDistance * dashDeceleratation);//dashDistance / dashTime + 0.5f * dashDeceleratation * dashTime;
         dashDeceleration = (dashSpeed * dashSpeed - dashEndSpeed * dashEndSpeed) / 2 / dashDistance;
@@ -128,25 +126,15 @@ public class BPlayer : MonoBehaviour
             currentState = EPlayerStates.DASHING;
             UpdateDash();
         }
-        else if (IsSwinging())
+        else if (playerSwing.IsSwinging())
         {
             currentState = EPlayerStates.SWINGING;
-            UpdateSwing();
+            playerSwing.UpdateSwing();
         }
         else
         {
             currentState = EPlayerStates.FREE;
             UpdateMovement();
-        }
-
-
-        if (grapple != null && grapple.isActive)
-        {
-            RenderGrappleLine();
-            if (!grapple.isSolidGrapple && grapple.IsComplete())
-            {
-                RemoveGrapple();
-            }
         }
     }
 
@@ -162,11 +150,6 @@ public class BPlayer : MonoBehaviour
         return Time.time < dashUntil;
     }
 
-    public bool IsSwinging()
-    {
-        return grapple != null && grapple.isActive && grapple.isSolidGrapple && grapple.IsComplete();
-    }
-
     #endregion
 
     #region State Handlers Methods
@@ -180,20 +163,6 @@ public class BPlayer : MonoBehaviour
         DisplaceSelf();
 
         OverrideVelocity();
-    }
-
-    void UpdateSwing()
-    {
-        if (!grapple.wasComplete)
-        {
-            InitGrapple();
-        }
-        DoGravity();
-
-        DoGrappleConstraint();
-
-        DisplaceSelf();
-        grapple.wasComplete = true;
     }
 
     private void UpdateDash()
@@ -244,10 +213,6 @@ public class BPlayer : MonoBehaviour
     #endregion
 
     #region Constraints Methods
-    private void RenderGrappleLine()
-    {
-        grapple.UpdateLineRenderer(transform.position);
-    }
 
     private void DoWallSliding()
     {
@@ -289,7 +254,7 @@ public class BPlayer : MonoBehaviour
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
     }
 
-    private void DoGravity()
+    public void DoGravity()
     {
         velocity.y += gravity * Time.deltaTime;
 
@@ -314,31 +279,11 @@ public class BPlayer : MonoBehaviour
         }
     }
 
-    private void DisplaceSelf()
+    public void DisplaceSelf()
     {
         controller.Move(velocity * Time.deltaTime, directionalInput);
     }
 
-    private void DoGrappleConstraint()
-    {
-        if (grapple == null)
-        {
-            return;
-        }
-
-        var nextPosition = transform.position + velocity * Time.deltaTime;
-
-        Vector2 displacementFromGrapple = nextPosition - grapple.transform.position;
-        var dist = displacementFromGrapple.magnitude;
-        if (dist > grapple.grappleLength)
-        {
-            Vector3 targetDisplacementFromGrapple = displacementFromGrapple.normalized * grapple.grappleLength;
-            Vector3 targetPosition = grapple.transform.position + targetDisplacementFromGrapple;
-            Vector3 targetMovement = targetPosition - transform.position;
-            controller.Move(targetMovement, Vector3.zero);
-            velocity = targetMovement / Time.deltaTime;
-        }
-    }
 
     #endregion
 
@@ -393,59 +338,17 @@ public class BPlayer : MonoBehaviour
             velocity.y = minJumpVelocity;
         }
     }
-    private void InitGrapple()
-    {
-        Debug.Log("InitGrapple");
-        // init grapple length
-        grapple.grappleLength = grapple.DistanceTo(transform);
-        
-        grapple.PlayAnchorTweens();
-        RenderGrappleLine();
-    }
 
     public void PutGrapple(Vector2 pos)
     {
-        if (grapple == null)
-        {
-            grapple = Instantiate(grapplePrefab);
-        }
-
-        grapple.gameObject.SetActive(true);
-        grapple.transform.position = pos;
-        var hitColliders = Physics2D.OverlapCircleAll(pos, 0.5f);
-
-        Debug.Log(hitColliders.Length);
-        var hasBackWall = false;
-        foreach (var collider in hitColliders)
-        {
-            if (collider.GetComponent<BBackWall>() != null)
-            {
-                hasBackWall = true;
-                break;
-            }
-        }
-        grapple.StartGrapple(hasBackWall);
-        dashUntil = Time.time;
+        playerSwing.PutGrapple(pos);
     }
 
     public void RemoveGrapple()
     {
-        if (grapple == null || !grapple.gameObject.activeSelf)
-        {
-            return;
-        }
-
-        if (!grapple.IsComplete())
-        {
-            StartDash();
-            zipButton.gameObject.SetActive(true);
-            zipButton.InitButton(grapple.transform.position);
-        }
-
-        grapple.EndGrapple();
-        grapple.gameObject.SetActive(false);
+        playerSwing.RemoveGrapple();
     }
-
+    
     public void StartDash()
     {
         Debug.Log("StartDash");
