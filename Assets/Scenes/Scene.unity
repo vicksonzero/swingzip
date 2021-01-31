@@ -1280,16 +1280,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  directionalInput: {x: 0, y: 0}
   currentState: 0
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.6
   maxFallingSpeed: 30
   velocity: {x: 0, y: 0, z: 0}
-  swingState: {fileID: 0}
+  playerSwing: {fileID: 584929689}
   grapplePrefab: {fileID: -1283763016822938459, guid: 25033951705a461498b99aaee51dc6af,
     type: 3}
   grapple: {fileID: 0}
+  playerZipToPoint: {fileID: 584929688}
+  zipButtonPrefab: {fileID: 988548787861339873, guid: 85f43364e5ef37341bd989688cf3b1c4,
+    type: 3}
+  zipButton: {fileID: 0}
+  zipTarget: {fileID: 0}
   wallJumpClimb: {x: 8, y: 17}
   wallJumpOff: {x: 13, y: 17}
   wallLeap: {x: 13, y: 17}
@@ -1302,16 +1308,6 @@ MonoBehaviour:
   dashSpeed: 0
   dashDeceleration: 0
   dashSpeedProgress: 0
-  zipButtonPrefab: {fileID: 988548787861339873, guid: 85f43364e5ef37341bd989688cf3b1c4,
-    type: 3}
-  zipButton: {fileID: 0}
-  zipTarget: {fileID: 0}
-  zipSpeed: 20
-  zipStartSpeedCap: 1
-  zipAcceleration: 10
-  zipSpeedProgress: 0
-  zipUntil: 0
-  zipTimeBuffer: 0
   xDir: 0
   jumpDownFrames: 0
   jumpUpFrames: 0
@@ -1452,6 +1448,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3c046eea3bc76449354d0fcc709e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zipSpeedProgress: 0
+  zipUntil: 0
+  zipToPointLimits: {fileID: 0}
+  zipStartSpeedCap: 1
+  zipAcceleration: 12
+  zipSpeed: 20
+  zipEndSpeedCap: -1
+  zipDeceleration: 0
+  zipTimeBuffer: 0.1
+  canInterrupt: 0
+  interruptByPointerUp: 0
 --- !u!114 &584929689
 MonoBehaviour:
   m_ObjectHideFlags: 0

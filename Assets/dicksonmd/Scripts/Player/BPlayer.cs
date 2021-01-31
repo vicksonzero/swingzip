@@ -4,8 +4,9 @@
 [RequireComponent(typeof(BPlayerController))]
 public class BPlayer : MonoBehaviour
 {
+    [HideInInspector]
     public BPlayerController controller;
-    Vector2 directionalInput;
+    public Vector2 directionalInput;
 
     public enum EPlayerStates { FREE, SWINGING, DASH_START, DASHING, ZIPPING_TO_POINT, RUN, WALL_RUN };
 
@@ -31,10 +32,22 @@ public class BPlayer : MonoBehaviour
 
     #endregion
 
-    [Header("MovementStates")]
+    [Header("Swing")]
+    [HideInInspector]
     public BPlayerSwing playerSwing;
     public BGrapple grapplePrefab;
+    [HideInInspector]
     public BGrapple grapple;
+
+    [Header("Zip-to-point")]
+    [HideInInspector]
+    public BPlayerZipToPoint playerZipToPoint;
+    public BZipButton zipButtonPrefab;
+    [HideInInspector]
+    public BZipButton zipButton;
+    [HideInInspector]
+    public BZipTarget zipTarget;
+
 
     #region Wall Fields
 
@@ -65,20 +78,6 @@ public class BPlayer : MonoBehaviour
 
     #endregion
 
-    #region Zip-to-point Fields
-
-    [Header("Zip-to-point")]
-    public BZipButton zipButtonPrefab;
-    public BZipButton zipButton;
-    public BZipTarget zipTarget;
-    public float zipSpeed = 0; // per second
-    public float zipStartSpeedCap = 3; // per second
-    public float zipAcceleration = 0; // per second squared
-    public float zipSpeedProgress = 0; // per second
-    public float zipUntil = 0;
-    public float zipTimeBuffer = 0.1f;
-
-    #endregion
 
     #region Auto-move Fields
 
@@ -109,6 +108,7 @@ public class BPlayer : MonoBehaviour
             zipButton.gameObject.SetActive(false);
         }
         playerSwing = GetComponent<BPlayerSwing>();
+        playerZipToPoint = GetComponent<BPlayerZipToPoint>();
 
         dashSpeed = 2 * dashDistance / dashTime - dashEndSpeed;// Mathf.Sqrt(2 * dashDistance * dashDeceleratation);//dashDistance / dashTime + 0.5f * dashDeceleratation * dashTime;
         dashDeceleration = (dashSpeed * dashSpeed - dashEndSpeed * dashEndSpeed) / 2 / dashDistance;
@@ -119,7 +119,7 @@ public class BPlayer : MonoBehaviour
         if (IsZippingToPoint())
         {
             currentState = EPlayerStates.ZIPPING_TO_POINT;
-            UpdateZipToPoint();
+            playerZipToPoint.UpdateZipToPoint();
         }
         else if (IsDashing())
         {
@@ -179,36 +179,6 @@ public class BPlayer : MonoBehaviour
         controller.Move(velocity * Time.deltaTime, directionalInput);
     }
 
-    private void UpdateZipToPoint()
-    {
-        Vector2 remainingDisplacement = zipTarget.transform.position - transform.position;
-
-        zipSpeedProgress += zipAcceleration * Time.deltaTime;
-        zipSpeedProgress = Mathf.Clamp(zipSpeedProgress, 0, zipSpeed);
-        velocity = remainingDisplacement.normalized * zipSpeedProgress;
-
-        if (Time.time > zipUntil)
-        {
-            Destroy(zipTarget.gameObject);
-            zipTarget = null;
-
-            return;
-        }
-
-        if (remainingDisplacement.magnitude <= zipSpeedProgress * Time.deltaTime)
-        {
-            // snap to end point
-            controller.Move(remainingDisplacement, directionalInput);
-            Destroy(zipTarget.gameObject);
-            zipTarget = null;
-        }
-        else
-        {
-            // normal zip to point
-            controller.Move(velocity * Time.deltaTime, directionalInput);
-            zipTarget.UpdateLineRenderer(transform.position);
-        }
-    }
 
     #endregion
 
@@ -358,46 +328,8 @@ public class BPlayer : MonoBehaviour
         dashSpeedProgress = dashSpeed;
     }
 
-    public void StartZipToPoint(BZipTarget zipTarget)
-    {
-        Debug.Log("StartZipToPoint!");
-        this.zipTarget = zipTarget;
-
-        if (zipButton != null)
-        {
-            zipButton.StopButton();
-        }
-
-        // make t the subject of s=ut+0.5at^2, where u !=0
-        // (-u + sqrt(2 a s + u^2))/a
-        Vector2 displacementToZipTarget = zipTarget.transform.position - transform.position;
-        velocity = Vector3.Project(velocity, displacementToZipTarget);
-        zipSpeedProgress = Mathf.Clamp(velocity.magnitude, 0, zipStartSpeedCap);
-        velocity = velocity.normalized * zipSpeedProgress;
-
-        var a = zipAcceleration;
-        var u = zipSpeedProgress; // starting speed
-        var v = zipSpeed; // peak speed
-
-        // distance for accel phase
-        var s_accel = (v * v - u * u) / 2 / a;
-        if (s_accel >= displacementToZipTarget.magnitude)
-        {
-            // only accel phase is needed
-            var s = displacementToZipTarget.magnitude;
-            zipUntil = Time.time + (-u + Mathf.Sqrt(2 * a * s + u * u)) / a;
-        }
-        else
-        {
-            // accel phase + constant phase
-            var s1 = s_accel;
-            // s2 = remaining distance, aka at constant speed
-            var s2 = displacementToZipTarget.magnitude - s_accel;
-            zipUntil = Time.time + ((-u + Mathf.Sqrt(2 * a * s1 + u * u)) / a) + (s2 / v);
-        }
-
-        // add artificial buffer in case colliding on walls
-        zipUntil *= (1 + zipTimeBuffer);
+    public void StartZipToPoint(BZipTarget zipTarget){
+        playerZipToPoint.StartZipToPoint(zipTarget);
     }
 
     #endregion

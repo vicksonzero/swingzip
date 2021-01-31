@@ -36,10 +36,7 @@ public class BPlayerSwing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (player == null)
-        {
-            player = GetComponent<BPlayer>();
-        }
+        player = GetComponent<BPlayer>();
     }
 
     // Update is called once per frame
