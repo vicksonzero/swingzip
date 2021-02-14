@@ -1287,9 +1287,9 @@ MonoBehaviour:
   timeToJumpApex: 0.6
   maxFallingSpeed: 30
   velocity: {x: 0, y: 0, z: 0}
-  playerSwing: {fileID: 584929689}
   grapplePrefab: {fileID: -1283763016822938459, guid: 25033951705a461498b99aaee51dc6af,
     type: 3}
+  playerSwing: {fileID: 584929689}
   grapple: {fileID: 0}
   playerZipToPoint: {fileID: 584929688}
   zipButtonPrefab: {fileID: 988548787861339873, guid: 85f43364e5ef37341bd989688cf3b1c4,
@@ -1301,13 +1301,7 @@ MonoBehaviour:
   wallLeap: {x: 13, y: 17}
   wallSlideSpeedMax: 3
   wallStickTime: 0.1
-  dashDistance: 4
-  dashTime: 0.4
-  dashUntil: 0
-  dashEndSpeed: 6
-  dashSpeed: 0
-  dashDeceleration: 0
-  dashSpeedProgress: 0
+  playerDash: {fileID: 0}
   xDir: 0
   jumpDownFrames: 0
   jumpUpFrames: 0
@@ -1450,7 +1444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zipSpeedProgress: 0
   zipUntil: 0
-  zipToPointLimits: {fileID: 0}
+  limits: {fileID: 11400000, guid: 4e5688f147a4f5241967c7658a138a41, type: 2}
   zipStartSpeedCap: 1
   zipAcceleration: 12
   zipSpeed: 20
@@ -1476,7 +1470,7 @@ MonoBehaviour:
   isSolidGrapple: 0
   grappleLength: 0
   grappleCompleteTime: 0
-  swingLimits: {fileID: 11400000, guid: 96fd7346f047efe48b810cfd19bb7141, type: 2}
+  limits: {fileID: 11400000, guid: 96fd7346f047efe48b810cfd19bb7141, type: 2}
   grappleShootTime: 220
   tangentSpeedKept: 0.7
   swingSpeedBonusPerTick: 0
@@ -1494,6 +1488,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f4423e8f2afd54fa5741f6f9de3c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashUntil: 0
+  dashSpeedProgress: 0
+  dashSpeed: 0
+  dashDeceleration: 0
+  limits: {fileID: 11400000, guid: e3bb1785052dde443b6c6d00bdd1acf5, type: 2}
+  dashDistance: 4
+  dashTime: 0.4
+  dashEndSpeed: 6
 --- !u!1 &611018437
 GameObject:
   m_ObjectHideFlags: 0
@@ -7572,7 +7574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919517434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5099602, y: -2.7592514, z: 0}
+  m_LocalPosition: {x: 3.27, y: -1.75, z: 0}
   m_LocalScale: {x: 3.1520357, y: 0.37499967, z: 0}
   m_Children: []
   m_Father: {fileID: 1287935850}

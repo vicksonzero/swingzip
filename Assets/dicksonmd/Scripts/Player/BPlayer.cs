@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 [RequireComponent(typeof(BPlayerController))]
@@ -31,11 +32,11 @@ public class BPlayer : MonoBehaviour
     float velocityXSmoothing;
 
     #endregion
-
     [Header("Swing")]
+    public BGrapple grapplePrefab;
+
     [HideInInspector]
     public BPlayerSwing playerSwing;
-    public BGrapple grapplePrefab;
     [HideInInspector]
     public BGrapple grapple;
 
@@ -67,14 +68,10 @@ public class BPlayer : MonoBehaviour
     #region Dash Fields
 
     [Header("Dash")]
-    public float dashDistance = 10;
-    public float dashTime = 1; // seconds
-    Vector3 dashTarget;
-    public float dashUntil = 0;
-    public float dashEndSpeed = 0; // per second
-    public float dashSpeed = 0; // per second
-    public float dashDeceleration = 0; // per second squared
-    public float dashSpeedProgress = 0; // per second
+
+    
+    [HideInInspector]
+    public BPlayerDash playerDash;
 
     #endregion
 
@@ -109,9 +106,8 @@ public class BPlayer : MonoBehaviour
         }
         playerSwing = GetComponent<BPlayerSwing>();
         playerZipToPoint = GetComponent<BPlayerZipToPoint>();
-
-        dashSpeed = 2 * dashDistance / dashTime - dashEndSpeed;// Mathf.Sqrt(2 * dashDistance * dashDeceleratation);//dashDistance / dashTime + 0.5f * dashDeceleratation * dashTime;
-        dashDeceleration = (dashSpeed * dashSpeed - dashEndSpeed * dashEndSpeed) / 2 / dashDistance;
+        playerDash = GetComponent<BPlayerDash>();
+        
     }
 
     void Update()
@@ -124,7 +120,7 @@ public class BPlayer : MonoBehaviour
         else if (IsDashing())
         {
             currentState = EPlayerStates.DASHING;
-            UpdateDash();
+            playerDash.UpdateDash();
         }
         else if (playerSwing.IsSwinging())
         {
@@ -147,7 +143,7 @@ public class BPlayer : MonoBehaviour
 
     public bool IsDashing()
     {
-        return Time.time < dashUntil;
+        return Time.time < playerDash.dashUntil;
     }
 
     #endregion
@@ -165,19 +161,6 @@ public class BPlayer : MonoBehaviour
         OverrideVelocity();
     }
 
-    private void UpdateDash()
-    {
-        var remainingDisplacement = dashTarget - transform.position;
-
-        dashSpeedProgress = dashSpeed - dashDeceleration * Mathf.Clamp(dashTime - dashUntil + Time.time, 0, dashTime);
-        velocity = remainingDisplacement.normalized * dashSpeedProgress;
-
-        if (remainingDisplacement.magnitude < dashSpeedProgress * Time.deltaTime)
-        {
-            return;
-        }
-        controller.Move(velocity * Time.deltaTime, directionalInput);
-    }
 
 
     #endregion
@@ -216,6 +199,16 @@ public class BPlayer : MonoBehaviour
                 timeToWallUnstick = wallStickTime;
             }
         }
+    }
+
+    public void StartDash()
+    {
+        playerDash.StartDash();
+    }
+
+    public void StopDash()
+    {
+        playerDash.StopDash();
     }
 
     private void DetermineTargetVelocity()
@@ -319,14 +312,6 @@ public class BPlayer : MonoBehaviour
         playerSwing.RemoveGrapple();
     }
     
-    public void StartDash()
-    {
-        Debug.Log("StartDash");
-        Vector2 displacementToGrapple = grapple.transform.position - transform.position;
-        dashTarget = transform.position + ((Vector3)displacementToGrapple.normalized * dashDistance);
-        dashUntil = Time.time + dashTime;
-        dashSpeedProgress = dashSpeed;
-    }
 
     public void StartZipToPoint(BZipTarget zipTarget){
         playerZipToPoint.StartZipToPoint(zipTarget);

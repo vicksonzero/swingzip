@@ -13,7 +13,7 @@ public class BPlayerZipToPoint : MonoBehaviour
     BPlayer player;
 
     [Header("Config")]
-    public SOMovementLimit zipToPointLimits;
+    public SOMovementLimit limits;
 
     public float zipStartSpeedCap = 1; // per second // zipStartSpeedLimit
     public float zipAcceleration = 12; // per second squared

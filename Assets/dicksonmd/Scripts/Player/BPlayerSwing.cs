@@ -15,7 +15,7 @@ public class BPlayerSwing : MonoBehaviour
     BPlayer player;
 
     [Header("Config")]
-    public SOMovementLimit swingLimits;
+    public SOMovementLimit limits;
     [Tooltip("Common click time is 220ms")]
     public float grappleShootTime = 220; // in ms, TODO: Change to frames
 
@@ -132,7 +132,7 @@ public class BPlayerSwing : MonoBehaviour
             }
         }
         StartGrapple(hasBackWall);
-        player.dashUntil = Time.time;
+        player.StopDash();
     }
 
     public void RemoveGrapple()
