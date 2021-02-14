@@ -36,18 +36,23 @@ public class BPlayer : MonoBehaviour
     public BGrapple grapplePrefab;
 
     [HideInInspector]
-    public BPlayerSwing playerSwing;
-    [HideInInspector]
     public BGrapple grapple;
 
-    [Header("Zip-to-point")]
     [HideInInspector]
-    public BPlayerZipToPoint playerZipToPoint;
+    public BPlayerSwing playerSwing;
+
+    [Header("Zip-to-point")]
+    public BZipTarget zipTargetPrefab;
     public BZipButton zipButtonPrefab;
+
     [HideInInspector]
     public BZipButton zipButton;
+
     [HideInInspector]
     public BZipTarget zipTarget;
+
+    [HideInInspector]
+    public BPlayerZipToPoint playerZipToPoint;
 
 
     #region Wall Fields
@@ -69,7 +74,7 @@ public class BPlayer : MonoBehaviour
 
     [Header("Dash")]
 
-    
+
     [HideInInspector]
     public BPlayerDash playerDash;
 
@@ -107,7 +112,7 @@ public class BPlayer : MonoBehaviour
         playerSwing = GetComponent<BPlayerSwing>();
         playerZipToPoint = GetComponent<BPlayerZipToPoint>();
         playerDash = GetComponent<BPlayerDash>();
-        
+
     }
 
     void Update()
@@ -252,6 +257,33 @@ public class BPlayer : MonoBehaviour
 
     #region Input / State Change / Init Methods
 
+    public void OnVirtualPointerDown(Vector2 inputPosition)
+    {
+
+        if (zipButton != null && zipButton.gameObject.activeSelf)
+        {
+            var zipTarget = Instantiate(zipTargetPrefab, zipButton.transform.position, Quaternion.identity);
+            StartZipToPoint(zipTarget);
+        }
+        else if (wallSliding || controller.collisions.below)
+        {
+            OnJumpInputDown();
+        }
+        else if (!IsZippingToPoint())
+        {
+            Vector3 pos = inputPosition;
+            pos.z = 10.0f;
+            Vector2 pos2 = Camera.main.ScreenToWorldPoint(pos);
+            PutGrapple(pos2);
+        }
+    }
+
+    public void OnVirtualPointerUp(Vector2 inputPosition)
+    {
+        OnJumpInputUp();
+        RemoveGrapple();
+    }
+
     public void OnDirectionalInput(Vector2 input)
     {
         directionalInput = input;
@@ -311,9 +343,10 @@ public class BPlayer : MonoBehaviour
     {
         playerSwing.RemoveGrapple();
     }
-    
 
-    public void StartZipToPoint(BZipTarget zipTarget){
+
+    public void StartZipToPoint(BZipTarget zipTarget)
+    {
         playerZipToPoint.StartZipToPoint(zipTarget);
     }
 
