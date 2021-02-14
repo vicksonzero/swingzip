@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SODashLimit
   m_EditorClassIdentifier: 
   surfaceTypes: 00000000010000000200000003000000
-  useLineOfSight: 1
+  useLineOfSight: 0
   charges: 1
   rechargeByDongStuff: 000000000300000005000000
   rechargeByCooldown: -1
