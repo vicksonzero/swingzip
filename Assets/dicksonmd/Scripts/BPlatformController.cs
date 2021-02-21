@@ -208,12 +208,18 @@ public class BPlatformController : BRaycastController
     {
         if (localWaypoints != null)
         {
-            Gizmos.color = Color.red;
             float size = .3f;
 
             for (int i = 0; i < localWaypoints.Length; i++)
             {
                 Vector3 globalWaypointPos = (Application.isPlaying) ? globalWaypoints[i] : localWaypoints[i] + transform.position;
+                if (i > 0)
+                {
+                    Vector3 globalWaypointPosPrev = (Application.isPlaying) ? globalWaypoints[i - 1] : localWaypoints[i - 1] + transform.position;
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawLine(globalWaypointPosPrev, globalWaypointPos);
+                }
+                Gizmos.color = Color.red;
                 Gizmos.DrawLine(globalWaypointPos - Vector3.up * size, globalWaypointPos + Vector3.up * size);
                 Gizmos.DrawLine(globalWaypointPos - Vector3.left * size, globalWaypointPos + Vector3.left * size);
             }
