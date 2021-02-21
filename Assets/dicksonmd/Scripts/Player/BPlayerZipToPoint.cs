@@ -38,11 +38,6 @@ public class BPlayerZipToPoint : MonoBehaviour
         Debug.Log("StartZipToPoint!");
         player.zipTarget = zipTarget;
 
-        if (player.zipButton != null)
-        {
-            player.zipButton.StopButton();
-        }
-
         // make t the subject of s=ut+0.5at^2, where u !=0
         // (-u + sqrt(2 a s + u^2))/a
         Vector2 displacementToZipTarget = zipTarget.transform.position - transform.position;

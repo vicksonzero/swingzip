@@ -9,7 +9,7 @@ public class BPlayer : MonoBehaviour
     public BPlayerController controller;
     public Vector2 directionalInput;
 
-    public enum EPlayerStates { FREE, SWINGING, DASH_START, DASHING, ZIPPING_TO_POINT, RUN, WALL_RUN };
+    public enum EPlayerStates { FREE, SHOOTING, SWINGING, DASH_START, DASHING, ZIPPING_TO_POINT, RUN, WALL_RUN };
 
     public EPlayerStates currentState = EPlayerStates.FREE;
 
@@ -135,18 +135,43 @@ public class BPlayer : MonoBehaviour
         }
         else if (playerSwing.IsSwinging())
         {
-            currentState = EPlayerStates.SWINGING;
-            playerSwing.UpdateSwing();
+            if (playerSwing.pointerWasDownAgain)
+            {
+                zipTarget = Instantiate(zipTargetPrefab, grapple.transform.position, Quaternion.identity);
+                StartZipToPoint(zipTarget);
+                RemoveGrapple();
+                currentState = EPlayerStates.ZIPPING_TO_POINT;
+            }
+            else if (playerSwing.pointerWasUp)
+            {
+                StartDash();
+                RemoveGrapple();
+                currentState = EPlayerStates.DASHING;
+            }
+            else
+            {
+                currentState = EPlayerStates.SWINGING;
+                playerSwing.UpdateSwing();
+            }
+        }
+        else if (playerSwing.IsShooting())
+        {
+            currentState = EPlayerStates.SHOOTING;
+            UpdateMovement(true);
+
         }
         else
         {
             currentState = EPlayerStates.FREE;
-            UpdateMovement();
+            UpdateMovement(false);
         }
 
-        var localScale =  spriteRoot.localScale;
-        localScale.x = Mathf.Sign(controller.collisions.faceDir);
-        spriteRoot.localScale = localScale;
+        if (currentState != EPlayerStates.SHOOTING)
+        {
+            var localScale = spriteRoot.localScale;
+            localScale.x = Mathf.Sign(controller.collisions.faceDir);
+            spriteRoot.localScale = localScale;
+        }
 
         playerAnimator.SetBool("IsGround", controller.collisions.below);
         playerAnimator.SetBool("IsAir", !(
@@ -160,6 +185,10 @@ public class BPlayer : MonoBehaviour
         playerAnimator.SetBool("IsMovingX", velocity.x < -0.5f || velocity.x > 0.5f);
         playerAnimator.SetFloat("SpeedY", velocity.y);
         playerAnimator.SetBool("IsMovingY", velocity.y < -0.01f || velocity.x > 0.01f);
+        playerAnimator.SetBool("IsShooting", playerSwing.IsShooting());
+        playerAnimator.SetBool("IsSwinging", currentState == EPlayerStates.SWINGING);
+        playerAnimator.SetBool("IsDashing", currentState == EPlayerStates.DASHING);
+        playerAnimator.SetBool("IsZipping", currentState == EPlayerStates.ZIPPING_TO_POINT);
     }
 
     #region State Accessors Methods
@@ -178,13 +207,13 @@ public class BPlayer : MonoBehaviour
 
     #region State Handlers Methods
 
-    void UpdateMovement()
+    void UpdateMovement(bool isShooting)
     {
         DetermineTargetVelocity();
-        DoGravity();
+        if (!isShooting) DoGravity();
         DoWallSliding();
 
-        DisplaceSelf();
+        DisplaceSelf(isShooting);
 
         OverrideVelocity();
     }
@@ -270,9 +299,11 @@ public class BPlayer : MonoBehaviour
         }
     }
 
-    public void DisplaceSelf()
+    public void DisplaceSelf(bool isShooting)
     {
-        controller.Move(velocity * Time.deltaTime, directionalInput);
+        Vector2 displacementVelocity = velocity;
+        displacementVelocity = (!isShooting ? displacementVelocity : Vector2.ClampMagnitude(displacementVelocity, 2.5f));
+        controller.Move(displacementVelocity * Time.deltaTime, directionalInput);
     }
 
 
@@ -282,11 +313,9 @@ public class BPlayer : MonoBehaviour
 
     public void OnVirtualPointerDown(Vector2 inputPosition)
     {
-
-        if (zipButton != null && zipButton.gameObject.activeSelf)
+        if (playerSwing.pointerWasUp)
         {
-            var zipTarget = Instantiate(zipTargetPrefab, zipButton.transform.position, Quaternion.identity);
-            StartZipToPoint(zipTarget);
+            playerSwing.pointerWasDownAgain = true;
         }
         else if (wallSliding || controller.collisions.below)
         {
@@ -304,7 +333,20 @@ public class BPlayer : MonoBehaviour
     public void OnVirtualPointerUp(Vector2 inputPosition)
     {
         OnJumpInputUp();
-        RemoveGrapple();
+
+        if (grapple == null || !grapple.gameObject.activeSelf)
+        {
+            return;
+        }
+
+        if (currentState != EPlayerStates.SWINGING)
+        {
+            playerSwing.pointerWasUp = true;
+        }
+        else
+        {
+            RemoveGrapple();
+        }
     }
 
     public void OnDirectionalInput(Vector2 input)
@@ -364,7 +406,8 @@ public class BPlayer : MonoBehaviour
 
     public void RemoveGrapple()
     {
-        playerSwing.RemoveGrapple();
+        playerSwing.EndGrapple();
+        grapple.gameObject.SetActive(false);
     }
 
 

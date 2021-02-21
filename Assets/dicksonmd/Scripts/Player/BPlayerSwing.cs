@@ -10,6 +10,8 @@ public class BPlayerSwing : MonoBehaviour
     public bool isSolidGrapple = false;
     public float grappleLength = 0;
     public float grappleCompleteTime = 0;
+    public bool pointerWasUp = false;
+    public bool pointerWasDownAgain = false;
 
     [Header("Linkages")]
     BPlayer player;
@@ -44,12 +46,19 @@ public class BPlayerSwing : MonoBehaviour
     {
         if (player.grapple != null && isActive)
         {
+            Debug.Log("Update 1");
             RenderGrappleLine();
             if (!isSolidGrapple && IsComplete())
             {
+            Debug.Log("Update 2");
                 RemoveGrapple();
             }
         }
+    }
+
+    public bool IsShooting()
+    {
+        return player.grapple != null && isActive && !IsComplete();
     }
 
     public bool IsSwinging()
@@ -67,7 +76,7 @@ public class BPlayerSwing : MonoBehaviour
 
         DoGrappleConstraint();
 
-        player.DisplaceSelf();
+        player.DisplaceSelf(false);
         wasComplete = true;
     }
 
@@ -117,6 +126,8 @@ public class BPlayerSwing : MonoBehaviour
             player.grapple = Instantiate(player.grapplePrefab);
         }
 
+        pointerWasUp = false;
+        pointerWasDownAgain = false;
         player.grapple.gameObject.SetActive(true);
         player.grapple.transform.position = pos;
         var hitColliders = Physics2D.OverlapCircleAll(pos, 0.5f);
@@ -142,13 +153,6 @@ public class BPlayerSwing : MonoBehaviour
             return;
         }
 
-        if (!IsComplete())
-        {
-            player.StartDash();
-            player.zipButton.gameObject.SetActive(true);
-            player.zipButton.InitButton(player.grapple.transform.position);
-        }
-
         EndGrapple();
         player.grapple.gameObject.SetActive(false);
     }
@@ -168,6 +172,8 @@ public class BPlayerSwing : MonoBehaviour
         isActive = false;
         wasComplete = false;
         grappleCompleteTime = 0;
+        pointerWasUp = false;
+        pointerWasDownAgain = false;
     }
 
     public float DistanceTo(Transform t)

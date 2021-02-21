@@ -175,7 +175,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.11409378
+        value: 0.06
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -268,15 +268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f540cf17ab99af4eb7cc5b2b5cfb468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grappleTime: 220
-  wasComplete: 0
-  isActive: 0
-  isSolidGrapple: 0
-  grappleLength: 0
   lineRenderer: {fileID: 2336026484641584281}
   buttonSprite: {fileID: 8018259397119429118}
   buttonSprite2: {fileID: 433505481808145665}
-  grappleCompleteTime: 0
 --- !u!1 &8018259397119429106
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,12 @@ public class BMobileJoystick : MonoBehaviour
         //parentRT = transform.parent.GetComponent<RectTransform>();
         startingPosition = rt.localPosition;
         knobStartingPosition = joystickKnob.localPosition;
+#if (UNITY_WEBGL)
+        gameObject.SetActive(false);
+#endif
+#if (UNITY_EDITOR)
+        gameObject.SetActive(false);
+#endif
     }
 
     // Update is called once per frame
