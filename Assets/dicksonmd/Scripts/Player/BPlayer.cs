@@ -92,9 +92,15 @@ public class BPlayer : MonoBehaviour
 
     #endregion
 
+    #region Animations
+    public Transform spriteRoot;
+    Animator playerAnimator;
+    #endregion
+
     void Start()
     {
         controller = GetComponent<BPlayerController>();
+        playerAnimator = GetComponent<Animator>();
 
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -137,6 +143,24 @@ public class BPlayer : MonoBehaviour
             currentState = EPlayerStates.FREE;
             UpdateMovement();
         }
+
+        var localScale =  spriteRoot.localScale;
+        localScale.x = Mathf.Sign(controller.collisions.faceDir);
+        spriteRoot.localScale = localScale;
+
+        playerAnimator.SetBool("IsGround", controller.collisions.below);
+        playerAnimator.SetBool("IsAir", !(
+            controller.collisions.above ||
+            controller.collisions.below ||
+            controller.collisions.left ||
+            controller.collisions.right
+        ));
+        playerAnimator.SetBool("IsWall", (controller.collisions.left || controller.collisions.right) && !controller.collisions.below);
+        playerAnimator.SetFloat("SpeedX", velocity.x);
+        playerAnimator.SetBool("IsMovingX", velocity.x < -0.5f || velocity.x > 0.5f);
+        playerAnimator.SetFloat("SpeedY", velocity.y);
+        playerAnimator.SetBool("IsMovingY", velocity.y < -0.01f || velocity.x > 0.01f);
+
     }
 
     #region State Accessors Methods

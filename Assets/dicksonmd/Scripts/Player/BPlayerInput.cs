@@ -9,9 +9,12 @@ public class BPlayerInput : MonoBehaviour
     public BMobileJoystick mobileJoystick;
     public int touchingPointerId = -1;
 
+    public InputObject latestInput = new InputObject();
+
     void Start()
     {
         player = GetComponent<BPlayer>();
+        Debug.Log(latestInput.mouse.wasDown);
     }
 
     void Update()
@@ -50,4 +53,31 @@ public class BPlayerInput : MonoBehaviour
             touchingPointerId = -1;
         }
     }
+
+    public struct InputObject
+    {
+        public InputObjectAxis mouse;
+        public InputObjectAxis stickL;
+        public bool isReplayEnd;
+    }
+
+    public struct InputObjectAxis
+    {
+        // mouse
+        public int xInt;
+        public float getX()
+        {
+            return xInt / 1000f;
+        }
+
+        public int yInt;
+        public float getY()
+        {
+            return yInt / 1000f;
+        }
+
+        public bool wasDown;
+        public bool wasUp;
+    }
+
 }
