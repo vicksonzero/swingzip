@@ -160,7 +160,6 @@ public class BPlayer : MonoBehaviour
         playerAnimator.SetBool("IsMovingX", velocity.x < -0.5f || velocity.x > 0.5f);
         playerAnimator.SetFloat("SpeedY", velocity.y);
         playerAnimator.SetBool("IsMovingY", velocity.y < -0.01f || velocity.x > 0.01f);
-
     }
 
     #region State Accessors Methods
