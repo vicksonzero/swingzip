@@ -31,6 +31,8 @@ public class BPlayer : MonoBehaviour
     public Vector3 velocity;
     float velocityXSmoothing;
 
+    public float shootingFallSpeedCap = 2.5f;
+
     #endregion
     [Header("Swing")]
     public BGrapple grapplePrefab;
@@ -302,7 +304,7 @@ public class BPlayer : MonoBehaviour
     public void DisplaceSelf(bool isShooting)
     {
         Vector2 displacementVelocity = velocity;
-        displacementVelocity = (!isShooting ? displacementVelocity : Vector2.ClampMagnitude(displacementVelocity, 2.5f));
+        displacementVelocity = (!isShooting ? displacementVelocity : Vector2.ClampMagnitude(displacementVelocity, shootingFallSpeedCap));
         controller.Move(displacementVelocity * Time.deltaTime, directionalInput);
     }
 
