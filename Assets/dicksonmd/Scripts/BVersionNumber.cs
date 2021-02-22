@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,11 @@ public class BVersionNumber : MonoBehaviour
         {
             template = label.text;
         }
-        label.text = template.Replace("%v", Application.version);
+        label.text = (template
+            .Replace("%version%", Application.version)
+            .Replace("%platform%", Application.platform.ToString())
+            .Replace("%platformFlags%", Application.isMobilePlatform ? " (Mobile)" : "")
+            .Replace("%datetime%", DateTime.Now.ToString("yyyyMMdd_hhmmss"))
+        );
     }
 }
