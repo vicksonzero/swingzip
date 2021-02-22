@@ -2347,7 +2347,7 @@ MonoBehaviour:
   zipSpeed: 20
   zipEndSpeedCap: -1
   zipDeceleration: 0
-  zipTimeBuffer: 0.1
+  zipTimeBuffer: 0.05
   canInterrupt: 0
   interruptByPointerUp: 0
 --- !u!114 &584929689
