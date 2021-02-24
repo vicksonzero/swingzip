@@ -41,8 +41,9 @@ public class BPlayerZipToPoint : MonoBehaviour
         // make t the subject of s=ut+0.5at^2, where u !=0
         // (-u + sqrt(2 a s + u^2))/a
         Vector2 displacementToZipTarget = zipTarget.transform.position - transform.position;
+        int sign = Vector3.Angle(displacementToZipTarget, (Vector3)(Vector2)player.velocity) > 90 ? -1 : 1;
         player.velocity = Vector3.Project(player.velocity, displacementToZipTarget);
-        zipSpeedProgress = Mathf.Clamp(player.velocity.magnitude, 0, zipStartSpeedCap);
+        zipSpeedProgress = sign * Mathf.Clamp(player.velocity.magnitude, 0, zipStartSpeedCap);
         player.velocity = player.velocity.normalized * zipSpeedProgress;
 
         var a = zipAcceleration;

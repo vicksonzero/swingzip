@@ -2562,7 +2562,7 @@ MonoBehaviour:
   pointerWasDownAgain: 0
   limits: {fileID: 11400000, guid: 96fd7346f047efe48b810cfd19bb7141, type: 2}
   grappleShootTime: 220
-  tangentSpeedKept: 0.7
+  tangentSpeedKept: 0.5
   swingSpeedBonusPerTick: 0
   canInterrupt: 1
   interruptByPointerUp: 1
