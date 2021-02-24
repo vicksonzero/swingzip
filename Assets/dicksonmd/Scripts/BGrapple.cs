@@ -6,6 +6,7 @@ public class BGrapple : MonoBehaviour
     public LineRenderer lineRenderer;
     public Transform buttonSprite;
     public Transform buttonSprite2;
+    public Transform buttonSpriteDisabled;
     void Start()
     {
     }
@@ -16,11 +17,13 @@ public class BGrapple : MonoBehaviour
         {
             buttonSprite.transform.localScale = Vector3.one * 0.2f;
             buttonSprite2.transform.localScale = Vector3.one * 0.4f;
+            buttonSpriteDisabled.transform.localScale = Vector3.zero;
         }
         else
         {
-            buttonSprite.transform.localScale = Vector3.one * 0.1f;
-            buttonSprite2.transform.localScale = Vector3.one * 0.1f;
+            buttonSprite.transform.localScale = Vector3.one * 0;
+            buttonSprite2.transform.localScale = Vector3.one * 0;
+            buttonSpriteDisabled.transform.localScale = Vector3.one;
         }
 
     }
