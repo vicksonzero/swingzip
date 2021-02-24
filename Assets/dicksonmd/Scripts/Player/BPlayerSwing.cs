@@ -12,7 +12,6 @@ public class BPlayerSwing : MonoBehaviour
     public float grappleCompleteTime = 0;
     public bool pointerWasUp = false;
     public bool pointerWasDownAgain = false;
-    private Vector3 debugLastPos = Vector3.zero;
 
     [Header("Linkages")]
     BPlayer player;
@@ -103,16 +102,12 @@ public class BPlayerSwing : MonoBehaviour
         Vector2 displacementFromGrapple = nextPosition - grapplePos;
         var dist = displacementFromGrapple.magnitude;
 
-        Debug.DrawLine(debugLastPos, transform.position, Color.green);
-        Debug.DrawLine(transform.position + new Vector3(0, 0), transform.position + player.velocity + new Vector3(0, 0), Color.red);
-        Debug.DrawLine(transform.position + new Vector3(0.1f, 0.1f), transform.position + player.velocity * Time.deltaTime + new Vector3(0.1f, 0.1f), Color.red);
 
         if (dist > grappleLength)
         {
             Vector2 targetDisplacementFromGrapple = displacementFromGrapple.normalized * grappleLength;
             Vector3 targetPosition = grapplePos + targetDisplacementFromGrapple;
             Vector2 targetDisplacement = targetPosition - transform.position;
-            Debug.DrawLine(transform.position + new Vector3(0.2f, 0.2f), transform.position + (Vector3)targetDisplacement + new Vector3(0.2f, 0.2f), Color.green);
 
             player.controller.Move(targetDisplacement, Vector3.zero);
             player.velocity = targetDisplacement / Time.deltaTime;
@@ -123,11 +118,9 @@ public class BPlayerSwing : MonoBehaviour
             {
                 Vector3 diff = Vector3.Project((Vector2)player.velocity, displacementFromGrapple);
                 player.velocity -= diff;
-                player.velocity= player.velocity.normalized * (player.velocity.magnitude + diff.magnitude * tangentSpeedKept);
+                player.velocity = player.velocity.normalized * (player.velocity.magnitude + diff.magnitude * tangentSpeedKept);
             }
         }
-
-        debugLastPos = transform.position;
     }
     private void InitGrapple()
     {
