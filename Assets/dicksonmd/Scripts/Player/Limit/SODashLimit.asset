@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a60e9f8987f024695bfd81de5f5a0d, type: 3}
   m_Name: SODashLimit
   m_EditorClassIdentifier: 
-  surfaceTypes: 00000000010000000200000003000000
+  surfaceTypes: 010000000200000003000000
   useLineOfSight: 0
   charges: 1
   rechargeByDongStuff: 000000000300000005000000
