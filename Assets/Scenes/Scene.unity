@@ -721,7 +721,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159180074}
   m_LocalRotation: {x: 1e-45, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.9, y: 1.66, z: -100}
+  m_LocalPosition: {x: 85.7, y: 41.9, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1258923204}
@@ -1526,7 +1526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &350570500
 Transform:
   m_ObjectHideFlags: 0
@@ -2765,7 +2765,7 @@ MonoBehaviour:
   maxJumpHeight: 4
   minJumpHeight: 4
   timeToJumpApex: 0.6
-  maxFallingSpeed: 30
+  maxFallingSpeed: 20
   velocity: {x: 0, y: 0, z: 0}
   shootingFallSpeedCap: 10
   grapplePrefab: {fileID: -1283763016822938459, guid: 25033951705a461498b99aaee51dc6af,
@@ -2853,7 +2853,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584929680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.82, y: 0.955, z: -5}
+  m_LocalPosition: {x: 85.7, y: 41.9, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 350570500}
@@ -2935,6 +2935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f4423e8f2afd54fa5741f6f9de3c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashTarget: {x: 0, y: 0, z: 0}
   dashUntil: 0
   dashSpeedProgress: 0
   dashSpeed: 0
@@ -3838,7 +3839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703243669}
   m_LocalRotation: {x: 1e-45, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.82, y: 0.955, z: -100.5}
+  m_LocalPosition: {x: 85.7, y: 41.9, z: -100.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4472,7 +4473,7 @@ MonoBehaviour:
   m_Follow: {fileID: 584929686}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 10
+    OrthographicSize: 12
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -4493,7 +4494,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896140668}
   m_LocalRotation: {x: 1e-45, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.82, y: 0.955, z: -15}
+  m_LocalPosition: {x: 85.7, y: 41.9, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1255582453}
@@ -8584,7 +8585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412780150}
   m_LocalRotation: {x: 1e-45, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.82, y: 0.955, z: -100.5}
+  m_LocalPosition: {x: 85.7, y: 41.9, z: -100.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1842566370}

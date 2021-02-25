@@ -2,22 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_zipToPointSMB : StateMachineBehaviour
+public class Player_wallSlideSMB : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         var player = animator.GetComponent<BPlayer>();
-        var grapple = player.grapple;
-
-        Vector3 moveDirection = player.velocity;
-        float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-        Debug.Log(angle);
-        if (angle > 90 || angle < -90) angle -= 180;
-        player.spriteRoot.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        var localScale = player.spriteRoot.localScale;
-        localScale.x = Mathf.Sign(moveDirection.x);
-        player.spriteRoot.localScale = localScale;
+        player.spriteRoot.localRotation = Quaternion.identity;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -6,7 +6,8 @@ using UnityEngine;
 public class BPlayerDash : MonoBehaviour
 {
     [Header("State")]
-    Vector3 dashTarget;
+    [HideInInspector]
+    public Vector3 dashTarget;
     public float dashUntil = 0;
     public float dashSpeedProgress = 0; // per second
     public float dashSpeed = 0; // per second

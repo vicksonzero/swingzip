@@ -39,11 +39,9 @@ public class Player_dashSMB : StateMachineBehaviour
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        var player = animator.GetComponent<BPlayer>();
-        player.spriteRoot.localRotation = Quaternion.identity;
-    }
+    // override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    // {
+    // }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
