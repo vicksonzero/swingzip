@@ -7,10 +7,11 @@ public class Player_dashSMB : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        var playerDash = animator.GetComponent<BPlayerDash>();
         var player = animator.GetComponent<BPlayer>();
         var grapple = player.grapple;
 
-        Vector3 moveDirection = player.velocity;
+        Vector3 moveDirection = playerDash.dashTarget - player.transform.position;
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
         Debug.Log(angle);
         if (angle > 90 || angle < -90) angle -= 180;
@@ -23,10 +24,11 @@ public class Player_dashSMB : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        var playerDash = animator.GetComponent<BPlayerDash>();
         var player = animator.GetComponent<BPlayer>();
         var grapple = player.grapple;
 
-        Vector3 moveDirection = player.velocity;
+        Vector3 moveDirection = playerDash.dashTarget - player.transform.position;
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
         Debug.Log(angle);
         if (angle > 90 || angle < -90) angle -= 180;
