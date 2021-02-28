@@ -46,11 +46,9 @@ public class BPlayerSwing : MonoBehaviour
     {
         if (player.grapple != null && isActive)
         {
-            Debug.Log("Update 1");
             RenderGrappleLine();
             if (!isSolidGrapple && IsComplete())
             {
-                Debug.Log("Update 2");
                 RemoveGrapple();
             }
         }
@@ -145,7 +143,6 @@ public class BPlayerSwing : MonoBehaviour
         player.grapple.transform.position = pos;
         var hitColliders = Physics2D.OverlapCircleAll(pos, 0.5f);
 
-        Debug.Log(hitColliders.Length);
         var hasBackWall = false;
         foreach (var collider in hitColliders)
         {
