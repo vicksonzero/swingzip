@@ -33,6 +33,10 @@ public class BPlayer : MonoBehaviour
 
     public float shootingFallSpeedCap = 2.5f;
 
+    public int grappleShotCount = 3;
+    public int grappleShotCountMax = 3;
+    public BLivesMeter grappleShotCounter;
+
     #endregion
     [Header("Swing")]
     public BGrapple grapplePrefab;
@@ -117,6 +121,10 @@ public class BPlayer : MonoBehaviour
             zipButton = Instantiate(zipButtonPrefab);
             zipButton.gameObject.SetActive(false);
         }
+        if (grappleShotCounter == null)
+        {
+            throw new Exception("grappleShotCounter not found");
+        }
         playerSwing = GetComponent<BPlayerSwing>();
         playerZipToPoint = GetComponent<BPlayerZipToPoint>();
         playerDash = GetComponent<BPlayerDash>();
@@ -137,8 +145,9 @@ public class BPlayer : MonoBehaviour
         }
         else if (playerSwing.IsSwinging())
         {
-            if (playerSwing.pointerWasDownAgain)
+            if (playerSwing.pointerWasDownAgain && grappleShotCount >= 2)
             {
+                RemoveGrappleShots(2);
                 zipTarget = Instantiate(zipTargetPrefab, grapple.transform.position, Quaternion.identity);
                 StartZipToPoint(zipTarget);
                 RemoveGrapple();
@@ -146,6 +155,7 @@ public class BPlayer : MonoBehaviour
             }
             else if (playerSwing.pointerWasUp)
             {
+                RemoveGrappleShots(1);
                 StartDash();
                 RemoveGrapple();
                 currentState = EPlayerStates.DASHING;
@@ -153,6 +163,10 @@ public class BPlayer : MonoBehaviour
             else
             {
                 currentState = EPlayerStates.SWINGING;
+                if (!playerSwing.wasComplete)
+                {
+                    RemoveGrappleShots(1);
+                }
                 playerSwing.UpdateSwing();
             }
         }
@@ -315,6 +329,7 @@ public class BPlayer : MonoBehaviour
 
     public void OnVirtualPointerDown(Vector2 inputPosition)
     {
+
         if (playerSwing.pointerWasUp)
         {
             playerSwing.pointerWasDownAgain = true;
@@ -323,7 +338,7 @@ public class BPlayer : MonoBehaviour
         {
             OnJumpInputDown();
         }
-        else if (!IsZippingToPoint())
+        else if (!IsZippingToPoint() && grappleShotCount > 0)
         {
             Vector3 pos = inputPosition;
             pos.z = 10.0f;
@@ -416,6 +431,21 @@ public class BPlayer : MonoBehaviour
     public void StartZipToPoint(BZipTarget zipTarget)
     {
         playerZipToPoint.StartZipToPoint(zipTarget);
+    }
+    public void TryAddGrappleShots(int shots)
+    {
+        grappleShotCount += shots;
+        if (grappleShotCount > grappleShotCountMax)
+        {
+            grappleShotCount = grappleShotCountMax;
+        }
+        grappleShotCounter.SetLives(grappleShotCount);
+    }
+
+    public void RemoveGrappleShots(int shots)
+    {
+        grappleShotCount -= shots;
+        grappleShotCounter.SetLives(grappleShotCount);
     }
 
     #endregion
