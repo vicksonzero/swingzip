@@ -33,9 +33,8 @@ public class BPlayer : MonoBehaviour
 
     public float shootingFallSpeedCap = 2.5f;
 
-    public int grappleShotCount = 3;
-    public int grappleShotCountMax = 3;
-    public BLivesMeter grappleShotCounter;
+    [HideInInspector]
+    public BPlayerBattery playerBattery;
 
     #endregion
     [Header("Swing")]
@@ -121,13 +120,10 @@ public class BPlayer : MonoBehaviour
             zipButton = Instantiate(zipButtonPrefab);
             zipButton.gameObject.SetActive(false);
         }
-        if (grappleShotCounter == null)
-        {
-            throw new Exception("grappleShotCounter not found");
-        }
         playerSwing = GetComponent<BPlayerSwing>();
         playerZipToPoint = GetComponent<BPlayerZipToPoint>();
         playerDash = GetComponent<BPlayerDash>();
+        playerBattery = GetComponent<BPlayerBattery>();
 
     }
 
@@ -145,9 +141,9 @@ public class BPlayer : MonoBehaviour
         }
         else if (playerSwing.IsSwinging())
         {
-            if (playerSwing.pointerWasDownAgain && grappleShotCount >= 2)
+            if (playerSwing.pointerWasDownAgain && playerBattery.HasBattery(2))
             {
-                RemoveGrappleShots(2);
+                playerBattery.RemoveGrappleShots(2);
                 zipTarget = Instantiate(zipTargetPrefab, grapple.transform.position, Quaternion.identity);
                 StartZipToPoint(zipTarget);
                 RemoveGrapple();
@@ -155,7 +151,7 @@ public class BPlayer : MonoBehaviour
             }
             else if (playerSwing.pointerWasUp)
             {
-                RemoveGrappleShots(1);
+                playerBattery.RemoveGrappleShots(1);
                 StartDash();
                 RemoveGrapple();
                 currentState = EPlayerStates.DASHING;
@@ -165,7 +161,7 @@ public class BPlayer : MonoBehaviour
                 currentState = EPlayerStates.SWINGING;
                 if (!playerSwing.wasComplete)
                 {
-                    RemoveGrappleShots(1);
+                    playerBattery.RemoveGrappleShots(1);
                 }
                 playerSwing.UpdateSwing();
             }
@@ -205,6 +201,15 @@ public class BPlayer : MonoBehaviour
         playerAnimator.SetBool("IsSwinging", currentState == EPlayerStates.SWINGING);
         playerAnimator.SetBool("IsDashing", currentState == EPlayerStates.DASHING);
         playerAnimator.SetBool("IsZipping", currentState == EPlayerStates.ZIPPING_TO_POINT);
+
+        if (controller.collisionsOld.below && !controller.collisions.below)
+        {
+            playerBattery.OnLeaveGround();
+        }
+        if (!controller.collisionsOld.below && controller.collisions.below)
+        {
+            playerBattery.OnTouchGround();
+        }
     }
 
     #region State Accessors Methods
@@ -338,7 +343,7 @@ public class BPlayer : MonoBehaviour
         {
             OnJumpInputDown();
         }
-        else if (!IsZippingToPoint() && grappleShotCount > 0)
+        else if (!IsZippingToPoint() && playerBattery.HasBattery(1))
         {
             Vector3 pos = inputPosition;
             pos.z = 10.0f;
@@ -431,21 +436,6 @@ public class BPlayer : MonoBehaviour
     public void StartZipToPoint(BZipTarget zipTarget)
     {
         playerZipToPoint.StartZipToPoint(zipTarget);
-    }
-    public void TryAddGrappleShots(int shots)
-    {
-        grappleShotCount += shots;
-        if (grappleShotCount > grappleShotCountMax)
-        {
-            grappleShotCount = grappleShotCountMax;
-        }
-        grappleShotCounter.SetLives(grappleShotCount);
-    }
-
-    public void RemoveGrappleShots(int shots)
-    {
-        grappleShotCount -= shots;
-        grappleShotCounter.SetLives(grappleShotCount);
     }
 
     #endregion

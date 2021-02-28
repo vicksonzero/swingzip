@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.2588235, g: 1, b: 0.38284212, a: 1}
+      maxColor: {r: 0.2588235, g: 0.9925119, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5043,7 +5043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnVisible: 1
   canRespawn: 1
-  respawnTime: 10
+  respawnTime: 5
   cellGraphics: {fileID: 5499578204533701967}
   enabledPS: {fileID: 5499578205818784556}
   disabledPS: {fileID: 961529101}
@@ -5552,7 +5552,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.2588235, g: 1, b: 0.38284212, a: 1}
+      maxColor: {r: 0.2588235, g: 0.9925119, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10306,7 +10306,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.2588235, g: 1, b: 0.38284212, a: 1}
+      maxColor: {r: 0.2588235, g: 0.9925119, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

@@ -12,7 +12,6 @@ public class Player_zipToPointSMB : StateMachineBehaviour
 
         Vector3 moveDirection = player.velocity;
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-        Debug.Log(angle);
         if (angle > 90 || angle < -90) angle -= 180;
         player.spriteRoot.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         var localScale = player.spriteRoot.localScale;

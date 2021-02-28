@@ -5,6 +5,7 @@ public class BPlayerController : BRaycastController
 
     public float maxSlopeAngle = 80;
 
+    public CollisionInfo collisionsOld;
     public CollisionInfo collisions;
     [HideInInspector]
     public Vector2 playerInput;
@@ -23,7 +24,7 @@ public class BPlayerController : BRaycastController
     public void Move(Vector2 moveAmount, Vector2 input, bool standingOnPlatform = false)
     {
         UpdateRaycastOrigins();
-
+        collisionsOld = collisions;
         collisions.Reset();
         collisions.moveAmountOld = moveAmount;
         playerInput = input;

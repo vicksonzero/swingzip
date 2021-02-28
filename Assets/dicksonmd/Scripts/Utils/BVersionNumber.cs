@@ -22,6 +22,7 @@ public class BVersionNumber : MonoBehaviour
         label.text = (template
             .Replace("%version%", Application.version)
             .Replace("%platform%", Application.platform.ToString())
+            .Replace("%companyName%", Application.companyName)
             .Replace("%platformFlags%", Application.isMobilePlatform ? " (Mobile)" : "")
             .Replace("%datetime%", DateTime.Now.ToString("yyyyMMdd_hhmmss"))
         );

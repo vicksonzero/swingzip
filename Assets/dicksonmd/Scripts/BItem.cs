@@ -9,7 +9,6 @@ public class BItem : MonoBehaviour
     public float respawnTime = 10;
     public void disableItem(bool respawn = true)
     {
-        Debug.Log("disable " + respawn);
         if (canRespawn && respawn)
         {
             FindObjectOfType<BItemsManager>().waitAndRespawn(this, respawnTime);

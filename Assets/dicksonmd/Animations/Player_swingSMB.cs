@@ -12,7 +12,6 @@ public class Player_swingSMB : StateMachineBehaviour
 
         Vector3 grappleDirection = grapple.transform.position - player.transform.position;
         float angle = Mathf.Atan2(grappleDirection.y, grappleDirection.x) * Mathf.Rad2Deg - 90;
-        Debug.Log(angle);
         player.spriteRoot.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         float signedAngle = Vector3.SignedAngle(grappleDirection, player.velocity, Vector3.back);
         var localScale = player.spriteRoot.localScale;
