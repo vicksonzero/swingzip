@@ -1942,7 +1942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293708309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 71.76, y: 20.38, z: 0}
+  m_LocalPosition: {x: 71.98, y: 21.32, z: 0}
   m_LocalScale: {x: 3.1520357, y: 0.37499967, z: 0}
   m_Children: []
   m_Father: {fileID: 1287935850}
@@ -3677,8 +3677,9 @@ GameObject:
   m_Component:
   - component: {fileID: 523659340}
   - component: {fileID: 523659339}
+  - component: {fileID: 523659341}
   m_Layer: 0
-  m_Name: Items Manager
+  m_Name: Game Master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3710,6 +3711,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &523659341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523659338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 093feb3b55460124d983ebfc4b9b90d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetFrameRate: 60
 --- !u!1 &542767535
 GameObject:
   m_ObjectHideFlags: 0
@@ -16956,7 +16970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993231587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 68.68, y: 24.21, z: 0}
+  m_LocalPosition: {x: 67.96, y: 23.77, z: 0}
   m_LocalScale: {x: 3.1520357, y: 0.37499967, z: 0}
   m_Children: []
   m_Father: {fileID: 1287935850}
@@ -17562,12 +17576,12 @@ PrefabInstance:
     - target: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.848656
+      value: 63.19
       objectReference: {fileID: 0}
     - target: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.728764
+      value: 22.34
       objectReference: {fileID: 0}
     - target: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
         type: 3}
