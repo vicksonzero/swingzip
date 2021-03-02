@@ -28,6 +28,11 @@ public class BPlayerZipToPoint : MonoBehaviour
     public bool canInterrupt = false;
     public bool interruptByPointerUp = false;
 
+    public float terminatingTime = 1f;
+
+    public float terminatingAtTime = 0f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,6 +104,22 @@ public class BPlayerZipToPoint : MonoBehaviour
             // normal zip to point
             player.controller.Move(player.velocity * Time.deltaTime, player.directionalInput);
             player.zipTarget.UpdateLineRenderer(transform.position);
+
+            var haveCollision = (
+                player.controller.collisions.above ||
+                player.controller.collisions.below ||
+                player.controller.collisions.left ||
+                player.controller.collisions.right
+            );
+            if (!haveCollision)
+            {
+                terminatingAtTime = Time.time + terminatingTime;
+            }
+            if (terminatingAtTime < Time.time)
+            {
+                Destroy(player.zipTarget.gameObject);
+                player.zipTarget = null;
+            }
         }
     }
 
