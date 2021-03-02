@@ -138,6 +138,10 @@ public class BPlayer : MonoBehaviour
         {
             currentState = EPlayerStates.DASHING;
             playerDash.UpdateDash();
+            if (controller.collisions.HaveCollision())
+            {
+                StopDash();
+            }
         }
         else if (playerSwing.IsSwinging())
         {
@@ -287,6 +291,10 @@ public class BPlayer : MonoBehaviour
     public void StopDash()
     {
         playerDash.StopDash();
+        if (Time.time - playerDash.dashStartTime < playerDash.refundTime)
+        {
+            playerBattery.TryAddGrappleShots(1);
+        }
     }
 
     private void DetermineTargetVelocity()

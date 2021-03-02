@@ -105,13 +105,7 @@ public class BPlayerZipToPoint : MonoBehaviour
             player.controller.Move(player.velocity * Time.deltaTime, player.directionalInput);
             player.zipTarget.UpdateLineRenderer(transform.position);
 
-            var haveCollision = (
-                player.controller.collisions.above ||
-                player.controller.collisions.below ||
-                player.controller.collisions.left ||
-                player.controller.collisions.right
-            );
-            if (!haveCollision)
+            if (!player.controller.collisions.HaveCollision())
             {
                 terminatingAtTime = Time.time + terminatingTime;
             }

@@ -298,6 +298,16 @@ public class BPlayerController : BRaycastController
             slopeAngleOld = slopeAngle;
             slopeAngle = 0;
         }
+
+        public bool HaveCollision()
+        {
+            return (
+                above ||
+                below ||
+                left ||
+                right
+            );
+        }
     }
 
 }

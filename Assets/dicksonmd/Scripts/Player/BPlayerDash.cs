@@ -8,6 +8,7 @@ public class BPlayerDash : MonoBehaviour
     [Header("State")]
     [HideInInspector]
     public Vector3 dashTarget;
+    public float dashStartTime = 0;
     public float dashUntil = 0;
     public float dashSpeedProgress = 0; // per second
     public float dashSpeed = 0; // per second
@@ -21,6 +22,8 @@ public class BPlayerDash : MonoBehaviour
     public float dashDistance = 4;
     public float dashTime = 0.4f; // seconds
     public float dashEndSpeed = 6; // per second
+
+    public float refundTime = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +39,7 @@ public class BPlayerDash : MonoBehaviour
         Debug.Log("StartDash");
         Vector2 displacementToGrapple = player.grapple.transform.position - transform.position;
         dashTarget = transform.position + ((Vector3)displacementToGrapple.normalized * dashDistance);
+        dashStartTime = Time.time;
         dashUntil = Time.time + dashTime;
         dashSpeedProgress = dashSpeed;
     }
