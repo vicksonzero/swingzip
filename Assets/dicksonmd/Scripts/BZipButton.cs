@@ -55,4 +55,9 @@ public class BZipButton : MonoBehaviour
         yield return new WaitForSeconds(amount);
         gameObject.SetActive(false);
     }
+    void OnDestroy()
+    {
+        DOTween.Kill(buttonSprite);
+        DOTween.Kill(buttonSprite2);
+    }
 }

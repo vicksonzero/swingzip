@@ -5552,7 +5552,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: End
+  m_Text: Continue
 --- !u!222 &619321415
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11131,6 +11131,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissionEnd
       objectReference: {fileID: 0}
+    - target: {fileID: 6282973185462031755, guid: 78bdd07edd1128947b45d1b8581884a8,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78bdd07edd1128947b45d1b8581884a8, type: 3}
 --- !u!4 &1297989547 stripped
@@ -14725,7 +14730,7 @@ Transform:
   m_GameObject: {fileID: 1610094715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.27, y: 7.79, z: 0}
-  m_LocalScale: {x: 3.1520357, y: 0.37499967, z: 0}
+  m_LocalScale: {x: 4.39709, y: 0.37499967, z: 0}
   m_Children: []
   m_Father: {fileID: 1287935850}
   m_RootOrder: 33

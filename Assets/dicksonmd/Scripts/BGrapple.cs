@@ -44,5 +44,10 @@ public class BGrapple : MonoBehaviour
         lineRenderer.SetPosition(0, lineVector);
         lineRenderer.SetPosition(1, lineVector * (1 - grapplePercent));
     }
+    void OnDestroy()
+    {
+        DOTween.Kill(buttonSprite);
+        DOTween.Kill(buttonSprite2);
+    }
 
 }

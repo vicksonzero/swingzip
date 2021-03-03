@@ -21,4 +21,8 @@ public class BZipTarget : MonoBehaviour
         lineRenderer.SetPosition(0, Vector3.zero);
         lineRenderer.SetPosition(1, swingPos - transform.position);
     }
+    void OnDestroy()
+    {
+        DOTween.Kill(buttonSprite2);
+    }
 }

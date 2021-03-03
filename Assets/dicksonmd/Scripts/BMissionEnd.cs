@@ -11,11 +11,17 @@ public class BMissionEnd : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        triggerEnter(collider);
+        if (triggerEnter != null)
+        {
+            triggerEnter(collider);
+        }
     }
     // Start is called before the first frame update
     public void OnTriggerExit2D(Collider2D collider)
     {
-        triggerExit(collider);
+        if (triggerExit != null)
+        {
+            triggerExit(collider);
+        }
     }
 }

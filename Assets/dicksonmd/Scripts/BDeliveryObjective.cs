@@ -91,15 +91,15 @@ public class BDeliveryObjective : MonoBehaviour
                 state = States.IDLE;
             }
         });
-        missionEnd.GetComponent<BMissionEnd>().triggerExit += (Collider2D Collider) =>
-        {
-            if (state == States.RESULT)
-            {
-                missionEnd.gameObject.SetActive(false);
-                resultPanel.gameObject.SetActive(false);
-                state = States.IDLE;
-            }
-        };
+        // missionEnd.GetComponent<BMissionEnd>().triggerExit += (Collider2D Collider) =>
+        // {
+        //     if (state == States.RESULT)
+        //     {
+        //         missionEnd.gameObject.SetActive(false);
+        //         resultPanel.gameObject.SetActive(false);
+        //         state = States.IDLE;
+        //     }
+        // };
         missionEnd.gameObject.SetActive(false);
         missionPanel.gameObject.SetActive(false);
         resultPanel.gameObject.SetActive(false);
@@ -114,7 +114,7 @@ public class BDeliveryObjective : MonoBehaviour
             var seconds = Time.time - startTime;
             TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time - startTime);
             var a = String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
-            Debug.Log(a);
+            // Debug.Log(a);
             timerLabel.text = a;
         }
     }

@@ -14,7 +14,7 @@ public class BPlayerInput : MonoBehaviour
     void Start()
     {
         player = GetComponent<BPlayer>();
-        Debug.Log(latestInput.mouse.wasDown);
+        Debug.Log("mouse.wasDown: "+latestInput.mouse.wasDown);
     }
 
     void Update()
