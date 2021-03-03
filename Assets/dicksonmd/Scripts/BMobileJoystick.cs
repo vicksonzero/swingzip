@@ -16,6 +16,8 @@ public class BMobileJoystick : MonoBehaviour
 
     public Vector2 joystickInput = Vector2.zero;
 
+    public float sensitivity = 1.1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,7 @@ public class BMobileJoystick : MonoBehaviour
 
     public void OnJoystickPointerDown(BaseEventData data)
     {
+        if (isDown) return;
         PointerEventData pointerData = data as PointerEventData;
         Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRT, pointerData.position, null, out localPoint);
@@ -61,7 +64,7 @@ public class BMobileJoystick : MonoBehaviour
         Vector2 knobPosition = Vector2.ClampMagnitude(localPoint - knobStartingPosition, joystickRadius);
         joystickKnob.localPosition = knobPosition + knobStartingPosition;
 
-        joystickInput = Vector2.ClampMagnitude((localPoint - knobStartingPosition) / joystickRadius, 1);
+        joystickInput = Vector2.ClampMagnitude((localPoint - knobStartingPosition) / joystickRadius, 1) * sensitivity;
     }
 
     public void OnJoystickPointerUp(BaseEventData data)

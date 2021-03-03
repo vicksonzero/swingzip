@@ -12,6 +12,7 @@ public class BPlayerCollectItem : MonoBehaviour
         {
             GetComponent<BPlayerBattery>().TryAddGrappleShots(1);
             item.playGotAnim();
+            FindObjectOfType<BDeliveryObjective>().AddScore(100);
             item.disableItem();
         }
     }

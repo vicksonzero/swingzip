@@ -27,6 +27,10 @@ public class BDeliveryObjective : MonoBehaviour
     public float startTime;
     public float gameTime = 0;
 
+    public float score = 0;
+    public int landing = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,14 +46,16 @@ public class BDeliveryObjective : MonoBehaviour
         {
             PlayerPrefs.DeleteKey("Record.playCount");
             PlayerPrefs.DeleteKey("Record.gameTime");
+            PlayerPrefs.DeleteKey("Record.scorePerMinute");
             var record = PlayerPrefs.GetFloat("Record.gameTime", 3600);
             TimeSpan timeSpan = TimeSpan.FromSeconds(record);
             recordsLabel.text = ("" +
                 "0\n" +
-                String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds)
+                String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds) + "\n" +
+                "0\n" +
+                "0"
             );
         });
-
 
         missionEnd.GetComponent<BMissionEnd>().triggerEnter += (Collider2D Collider) =>
         {
@@ -58,22 +64,35 @@ public class BDeliveryObjective : MonoBehaviour
                 gameTime = Time.time - startTime;
 
                 var record = PlayerPrefs.GetFloat("Record.gameTime", Mathf.Infinity);
-                if (record > gameTime)
-                {
-                    record = gameTime;
-                    PlayerPrefs.SetFloat("Record.gameTime", record);
-                }
+                record = Mathf.Min(record, gameTime);
+                PlayerPrefs.SetFloat("Record.gameTime", record);
+
 
                 var playCount = PlayerPrefs.GetInt("Record.playCount", 0);
                 playCount++;
                 PlayerPrefs.SetInt("Record.playCount", playCount);
 
+                int recordScorePerMinute = PlayerPrefs.GetInt("Record.scorePerMinute", 0);
+                int scorePerMinute = (int)(score * 1000 / (gameTime / 60));
+                recordScorePerMinute = Mathf.Max(recordScorePerMinute, scorePerMinute);
+                PlayerPrefs.SetInt("Record.scorePerMinute", recordScorePerMinute);
+
+                int recordLanding = PlayerPrefs.GetInt("Record.landing", 0);
+                recordLanding = Mathf.Min(recordLanding, landing);
+                PlayerPrefs.SetInt("Record.landing", recordLanding);
+
                 TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time - startTime);
-                resultsLabel.text = String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
+                resultsLabel.text = ("" +
+                    String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds) + "\n" +
+                    (scorePerMinute / 1000.0f) + "\n" +
+                    landing
+                );
                 timeSpan = TimeSpan.FromSeconds(record);
                 resultsRecordsLabel.text = ("" +
                     playCount + "\n" +
-                    String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds)
+                    String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds) + "\n" +
+                    (recordScorePerMinute / 1000.0f) + "\n" +
+                    recordLanding
                 );
 
                 timerLabel.gameObject.SetActive(false);
@@ -113,7 +132,10 @@ public class BDeliveryObjective : MonoBehaviour
         {
             var seconds = Time.time - startTime;
             TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time - startTime);
-            var a = String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
+            var a = (
+                String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds) + "\n" +
+                score
+            );
             // Debug.Log(a);
             timerLabel.text = a;
         }
@@ -128,9 +150,13 @@ public class BDeliveryObjective : MonoBehaviour
                 var record = PlayerPrefs.GetFloat("Record.gameTime", 3600);
                 TimeSpan timeSpan = TimeSpan.FromSeconds(record);
                 var playCount = PlayerPrefs.GetInt("Record.playCount", 0);
+                int recordScorePerMinute = PlayerPrefs.GetInt("Record.scorePerMinute", 0);
+                int recordLanding = PlayerPrefs.GetInt("Record.landing", 0);
                 recordsLabel.text = ("" +
                     playCount + "\n" +
-                    String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds)
+                    String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds) + "\n" +
+                    (recordScorePerMinute / 1000f) + "\n" +
+                    recordLanding
                 );
 
                 missionPanel.gameObject.SetActive(true);
@@ -148,9 +174,21 @@ public class BDeliveryObjective : MonoBehaviour
             {
                 state = States.IN_PROGRESS;
                 startTime = Time.time;
+                score = 0;
+                landing = 0;
                 missionEnd.gameObject.SetActive(true);
                 timerLabel.gameObject.SetActive(true);
             }
         }
+    }
+
+    public void AddScore(float amt)
+    {
+        score += amt;
+    }
+
+    public void AddLanding(int amt)
+    {
+        landing += amt;
     }
 }

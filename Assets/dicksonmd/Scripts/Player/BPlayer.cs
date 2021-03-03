@@ -213,6 +213,7 @@ public class BPlayer : MonoBehaviour
         if (!controller.collisionsOld.below && controller.collisions.below)
         {
             playerBattery.OnTouchGround();
+            FindObjectOfType<BDeliveryObjective>().AddLanding(1);
         }
     }
 
