@@ -47,13 +47,14 @@ public class BDeliveryObjective : MonoBehaviour
             PlayerPrefs.DeleteKey("Record.playCount");
             PlayerPrefs.DeleteKey("Record.gameTime");
             PlayerPrefs.DeleteKey("Record.scorePerMinute");
+            PlayerPrefs.DeleteKey("Record.landing");
             var record = PlayerPrefs.GetFloat("Record.gameTime", 3600);
             TimeSpan timeSpan = TimeSpan.FromSeconds(record);
             recordsLabel.text = ("" +
                 "0\n" +
                 String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds) + "\n" +
                 "0\n" +
-                "0"
+                "10000"
             );
         });
 
@@ -77,7 +78,7 @@ public class BDeliveryObjective : MonoBehaviour
                 recordScorePerMinute = Mathf.Max(recordScorePerMinute, scorePerMinute);
                 PlayerPrefs.SetInt("Record.scorePerMinute", recordScorePerMinute);
 
-                int recordLanding = PlayerPrefs.GetInt("Record.landing", 0);
+                int recordLanding = PlayerPrefs.GetInt("Record.landing", 10000);
                 recordLanding = Mathf.Min(recordLanding, landing);
                 PlayerPrefs.SetInt("Record.landing", recordLanding);
 
