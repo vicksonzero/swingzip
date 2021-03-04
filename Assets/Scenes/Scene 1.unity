@@ -4968,10 +4968,10 @@ MonoBehaviour:
   rechargeInParallel: 0
   isRechargeOnGround: 1
   isRechargeOnGroundAtOnce: 0
-  rechargeOnGroundTime: 0.6
+  rechargeOnGroundTime: 0.4
   isRechargeAnytime: 1
   isRechargeAnytimeAtOnce: 0
-  rechargeAnytimeTime: 5
+  rechargeAnytimeTime: 4
   grappleShotCounter: {fileID: 1331484600}
 --- !u!1 &586244360
 GameObject:
