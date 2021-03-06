@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class BBackButtonLeave : MonoBehaviour
 {
-
+    public bool alsoBackspace = true;
     public enum BackTo { ExitGame, nextScene };
     public BackTo onPressBackButton;
     public string sceneName;
@@ -18,7 +18,7 @@ public class BBackButtonLeave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || (alsoBackspace && Input.GetKeyDown(KeyCode.Backspace)))
         {
             if (onPressBackButton == BackTo.ExitGame)
             {

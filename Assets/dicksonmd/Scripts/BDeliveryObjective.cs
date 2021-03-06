@@ -18,11 +18,10 @@ public class BDeliveryObjective : MonoBehaviour
     public Text recordsLabel;
 
     public RectTransform resultPanel;
-    public Button endButton;
+    public Button retryButton;
     public Text resultsLabel;
     public Text resultsRecordsLabel;
     public Text timerLabel;
-    public Button clearButton;
 
     public float startTime;
     public float gameTime = 0;
@@ -41,21 +40,6 @@ public class BDeliveryObjective : MonoBehaviour
                 state = States.START;
                 missionPanel.gameObject.SetActive(false);
             }
-        });
-        clearButton.onClick.AddListener(() =>
-        {
-            PlayerPrefs.DeleteKey("Record.playCount");
-            PlayerPrefs.DeleteKey("Record.gameTime");
-            PlayerPrefs.DeleteKey("Record.scorePerMinute");
-            PlayerPrefs.DeleteKey("Record.landing");
-            var record = PlayerPrefs.GetFloat("Record.gameTime", 3600);
-            TimeSpan timeSpan = TimeSpan.FromSeconds(record);
-            recordsLabel.text = ("" +
-                "0\n" +
-                String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds) + "\n" +
-                "0\n" +
-                "10000"
-            );
         });
 
         missionEnd.GetComponent<BMissionEnd>().triggerEnter += (Collider2D Collider) =>
@@ -98,18 +82,20 @@ public class BDeliveryObjective : MonoBehaviour
 
                 timerLabel.gameObject.SetActive(false);
                 resultPanel.gameObject.SetActive(true);
+                retryButton.gameObject.SetActive(false);
                 state = States.RESULT;
             }
         };
 
-        endButton.onClick.AddListener(() =>
+        retryButton.onClick.AddListener(() =>
         {
-            if (state == States.RESULT)
-            {
-                missionEnd.gameObject.SetActive(false);
-                resultPanel.gameObject.SetActive(false);
-                state = States.IDLE;
-            }
+            missionEnd.gameObject.SetActive(false);
+            timerLabel.gameObject.SetActive(false);
+            retryButton.gameObject.SetActive(false);
+
+            FindObjectOfType<BPlayer>().transform.position = missionStart.transform.position + Vector3.up * 1.6f;
+
+            state = States.IDLE;
         });
         // missionEnd.GetComponent<BMissionEnd>().triggerExit += (Collider2D Collider) =>
         // {
@@ -124,6 +110,7 @@ public class BDeliveryObjective : MonoBehaviour
         missionPanel.gameObject.SetActive(false);
         resultPanel.gameObject.SetActive(false);
         timerLabel.gameObject.SetActive(false);
+        retryButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -179,6 +166,7 @@ public class BDeliveryObjective : MonoBehaviour
                 landing = 0;
                 missionEnd.gameObject.SetActive(true);
                 timerLabel.gameObject.SetActive(true);
+                retryButton.gameObject.SetActive(true);
             }
         }
     }

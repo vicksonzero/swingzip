@@ -14,6 +14,9 @@ public class BButtonLeave : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if(button==null){
+            button = GetComponent<Button>();
+        }
         button.onClick.AddListener(() =>
         {
             if (onPressBackButton == BackTo.ExitGame)
