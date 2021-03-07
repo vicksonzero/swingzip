@@ -52,12 +52,14 @@ public class BPlayerBattery : MonoBehaviour
         {
             grappleShotCount = grappleShotCountMax;
         }
+        Debug.Log("TryAddGrappleShots (+" + shots + "=" + grappleShotCount + ")");
         grappleShotCounter.SetLives(grappleShotCount);
     }
 
     public void RemoveGrappleShots(int shots)
     {
         grappleShotCount -= shots;
+        Debug.Log("RemoveGrappleShots (-" + shots + "=" + grappleShotCount + ")");
         grappleShotCounter.SetLives(grappleShotCount);
         OnGrappleUsed();
     }

@@ -4681,7 +4681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &582747616
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4929,7 +4929,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zipSpeedProgress: 0
   zipUntil: 0
+  zipTargetCandidate: {fileID: 0}
   limits: {fileID: 11400000, guid: 4e5688f147a4f5241967c7658a138a41, type: 2}
+  maxDistance: 30
   zipStartSpeedCap: 100
   zipAcceleration: 12
   zipSpeed: 20
@@ -16940,7 +16942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1806001712
 RectTransform:
   m_ObjectHideFlags: 0

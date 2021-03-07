@@ -8,6 +8,7 @@ public class BPlayerZipToPoint : MonoBehaviour
     [Header("State")]
     public float zipSpeedProgress = 0; // per second
     public float zipUntil = 0;
+    public BZipTarget zipTargetCandidate;
 
     [Header("Linkages")]
     BPlayer player;
@@ -15,6 +16,7 @@ public class BPlayerZipToPoint : MonoBehaviour
     [Header("Config")]
     public SOMovementLimit limits;
 
+    public float maxDistance = 30;
     public float zipStartSpeedCap = 1; // per second // zipStartSpeedLimit
     public float zipAcceleration = 12; // per second squared
     public float zipSpeed = 20; // per second
@@ -117,4 +119,18 @@ public class BPlayerZipToPoint : MonoBehaviour
         }
     }
 
+    public void PutTarget(Vector2 pos)
+    {
+        if (zipTargetCandidate != null) return;
+        var hitList = Physics2D.RaycastAll(transform.position, pos - ((Vector2)transform.position), maxDistance);
+
+        foreach (var hit in hitList)
+        {
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+            {
+                zipTargetCandidate = Instantiate(player.zipTargetPrefab, hit.point, Quaternion.identity);
+                return;
+            }
+        }
+    }
 }

@@ -9,7 +9,11 @@ public class BPlayer : MonoBehaviour
     public BPlayerController controller;
     public Vector2 directionalInput;
 
-    public enum EPlayerStates { FREE, SHOOTING, SWINGING, DASH_START, DASHING, ZIPPING_TO_POINT, RUN, WALL_RUN };
+    public enum EPlayerStates
+    {
+        FREE, RUN, WALL_RUN,
+        SHOOTING, SWINGING, DASH_START, DASHING, ZIPPING_TO_POINT
+    };
 
     public EPlayerStates currentState = EPlayerStates.FREE;
 
@@ -145,27 +149,38 @@ public class BPlayer : MonoBehaviour
         }
         else if (playerSwing.IsSwinging())
         {
-            if (playerSwing.pointerWasDownAgain && playerBattery.HasBattery(2))
+            if (playerSwing.pointerWasDownAgain && playerZipToPoint.zipTargetCandidate != null && playerBattery.HasBattery(2))
             {
                 playerBattery.RemoveGrappleShots(2);
-                zipTarget = Instantiate(zipTargetPrefab, grapple.transform.position, Quaternion.identity);
+                zipTarget = playerZipToPoint.zipTargetCandidate;
+                playerZipToPoint.zipTargetCandidate = null;
                 StartZipToPoint(zipTarget);
                 RemoveGrapple();
                 currentState = EPlayerStates.ZIPPING_TO_POINT;
             }
-            else if (playerSwing.pointerWasUp)
+            else if (playerSwing.pointerWasUp && playerBattery.HasBattery(1))
             {
                 playerBattery.RemoveGrappleShots(1);
                 StartDash();
                 RemoveGrapple();
                 currentState = EPlayerStates.DASHING;
+                if (playerZipToPoint.zipTargetCandidate != null)
+                {
+                    Destroy(playerZipToPoint.zipTargetCandidate.gameObject);
+                    playerZipToPoint.zipTargetCandidate = null;
+                }
             }
             else
             {
                 currentState = EPlayerStates.SWINGING;
-                if (!playerSwing.wasComplete)
+                if (!playerSwing.wasComplete && playerBattery.HasBattery(1))
                 {
                     playerBattery.RemoveGrappleShots(1);
+                    if (playerZipToPoint.zipTargetCandidate != null)
+                    {
+                        Destroy(playerZipToPoint.zipTargetCandidate.gameObject);
+                        playerZipToPoint.zipTargetCandidate = null;
+                    }
                 }
                 playerSwing.UpdateSwing();
             }
@@ -433,6 +448,7 @@ public class BPlayer : MonoBehaviour
     public void PutGrapple(Vector2 pos)
     {
         playerSwing.PutGrapple(pos);
+        playerZipToPoint.PutTarget(pos);
     }
 
     public void RemoveGrapple()

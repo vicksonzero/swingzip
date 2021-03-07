@@ -13,7 +13,7 @@ public class BLivesMeter : MonoBehaviour
         {
             icons[i].SetActive(true);
         }
-        for (int i = lives; i < icons.Length; i++)
+        for (int i = lives; i >= 0 && i < icons.Length; i++)
         {
             icons[i].SetActive(false);
         }
