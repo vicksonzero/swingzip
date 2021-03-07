@@ -32,5 +32,12 @@ public class BFadeInStaggered : MonoBehaviour
             yield return new WaitForSeconds(interval);
         }
     }
+    void OnDestroy()
+    {
+        foreach (var item in items)
+        {
+            DOTween.Kill(item);
+        }
+    }
 
 }
