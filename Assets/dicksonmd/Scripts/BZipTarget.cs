@@ -8,6 +8,14 @@ public class BZipTarget : MonoBehaviour
     public Transform buttonSprite2;
     public LineRenderer lineRenderer;
     public BPlayer player;
+    public float spriteSize;
+
+    public float vertExtent;
+    public float horiExtent;
+    public float minX;
+    public float maxX;
+    public float minY;
+    public float maxY;
     void Start()
     {
         if (player == null)
@@ -24,6 +32,25 @@ public class BZipTarget : MonoBehaviour
     }
     void Update()
     {
+        vertExtent = Camera.main.orthographicSize;
+        horiExtent = vertExtent * Screen.width / Screen.height;
+
+        Vector2 cameraPos = Camera.main.transform.position;
+        // Calculations assume map is position at the origin
+        minX = cameraPos.x - horiExtent + spriteSize;
+        maxX = cameraPos.x + horiExtent - spriteSize;
+        minY = cameraPos.y - vertExtent + spriteSize;
+        maxY = cameraPos.y + vertExtent - spriteSize;
+
+        Vector2 pos = transform.position;
+
+        float posXForSlope = pos.x == 0 ? 0.000001f : pos.x;
+        float slope = pos.y / posXForSlope; // slope with the center of the screen
+
+
+
+        anchor.transform.position = pos;
+        Debug.DrawLine(new Vector2(minX, minY), new Vector2(maxX, maxY));
         // if (player != null)
         // {
         //     var disp = transform.position - player.transform.position;
