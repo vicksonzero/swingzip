@@ -74,10 +74,20 @@ public class BPlayerController : BRaycastController
             if (hit)
             {
 
-                if (hit.distance == 0)
+                if (hit.distance <= 0)
                 {
                     continue;
                 }
+
+                // // new one-way platforms. aren't coming any soon
+                // Debug.DrawLine(hit.transform.position, hit.transform.position + hit.transform.up);
+                // Debug.DrawLine(hit.point, hit.point + hit.normal);
+
+                // if (hit.collider.tag == "Through" && Vector3.Angle(hit.normal, hit.transform.up) >= 85)
+                // {
+                //     continue;
+                // }
+
 
                 if (hit.collider.tag == "Through")
                 {

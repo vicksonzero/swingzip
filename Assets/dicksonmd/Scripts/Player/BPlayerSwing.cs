@@ -70,6 +70,7 @@ public class BPlayerSwing : MonoBehaviour
 
         DoGrappleConstraint();
 
+        player.directionalInput.y = -1; // HACK: force through platforms when swinging
         player.DisplaceSelf(false);
         wasComplete = true;
     }
