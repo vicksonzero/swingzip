@@ -176,6 +176,13 @@ MonoBehaviour:
   buttonSprite2: {fileID: 4889356580493354684}
   lineRenderer: {fileID: 5743736149318452815}
   player: {fileID: 0}
+  spriteSize: 0.25
+  vertExtent: 0
+  horiExtent: 0
+  minX: 0
+  maxX: 0
+  minY: 0
+  maxY: 0
 --- !u!1 &4889551385244649020
 GameObject:
   m_ObjectHideFlags: 0

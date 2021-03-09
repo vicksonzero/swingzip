@@ -4931,7 +4931,8 @@ MonoBehaviour:
   zipUntil: 0
   zipTargetCandidate: {fileID: 0}
   limits: {fileID: 11400000, guid: 4e5688f147a4f5241967c7658a138a41, type: 2}
-  maxDistance: 30
+  minDistance: 5
+  maxDistance: 20
   zipStartSpeedCap: 100
   zipAcceleration: 12
   zipSpeed: 20

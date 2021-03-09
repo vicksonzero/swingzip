@@ -47,10 +47,6 @@ public class BPlayerSwing : MonoBehaviour
         if (player.grapple != null && isActive)
         {
             RenderGrappleLine();
-            if (!isSolidGrapple && IsComplete())
-            {
-                RemoveGrapple();
-            }
         }
     }
 

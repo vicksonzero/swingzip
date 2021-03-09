@@ -197,6 +197,17 @@ public class BPlayer : MonoBehaviour
             UpdateMovement(false);
         }
 
+
+        if (!playerSwing.isSolidGrapple && playerSwing.IsComplete())
+        {
+            RemoveGrapple();
+            if (playerZipToPoint.zipTargetCandidate != null)
+            {
+                Destroy(playerZipToPoint.zipTargetCandidate.gameObject);
+                playerZipToPoint.zipTargetCandidate = null;
+            }
+        }
+
         if (currentState != EPlayerStates.SHOOTING)
         {
             var localScale = spriteRoot.localScale;
