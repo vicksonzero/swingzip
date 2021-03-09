@@ -42,25 +42,61 @@ public class BZipTarget : MonoBehaviour
         minY = cameraPos.y - vertExtent + spriteSize;
         maxY = cameraPos.y + vertExtent - spriteSize;
 
+        Vector2 playerPos = player.transform.position;
         Vector2 pos = transform.position;
+        Vector2 displacement = pos - playerPos;
+        float distance = displacement.magnitude;
 
         float posXForSlope = pos.x == 0 ? 0.000001f : pos.x;
         float slope = pos.y / posXForSlope; // slope with the center of the screen
 
 
-
-        anchor.transform.position = pos;
         Debug.DrawLine(new Vector2(minX, minY), new Vector2(maxX, maxY));
-        // if (player != null)
-        // {
-        //     var disp = transform.position - player.transform.position;
-        //     if(disp.x > )
-        //     // anchor.transform.position = Vector3.zero;
-        // }
-        // else
-        // {
-        //     anchor.transform.localPosition = Vector3.zero;
-        // }
+        Debug.DrawLine(new Vector2(maxX, minY), new Vector2(minX, maxY));
+
+        var v0 = new Vector2(maxX, maxY) - playerPos;
+        var v1 = new Vector2(minX, maxY) - playerPos;
+        var v2 = new Vector2(minX, minY) - playerPos;
+        var v3 = new Vector2(maxX, minY) - playerPos;
+
+        var a1 = (Vector2.SignedAngle(v0, v1) + 360) % 360;
+        var a2 = (Vector2.SignedAngle(v0, v2) + 360) % 360;
+        var a3 = (Vector2.SignedAngle(v0, v3) + 360) % 360;
+
+        var signedAngle = (Vector2.SignedAngle(v0, displacement) + 360) % 360;
+
+        Vector2 proposedDisplacement = displacement;
+
+        if (signedAngle < a1)
+        {
+            proposedDisplacement.y = Mathf.Min(pos.y, maxY) - playerPos.y;
+            proposedDisplacement.x *= proposedDisplacement.y / displacement.y; // scale x by change of y
+        }
+        else if (signedAngle < a2)
+        {
+            proposedDisplacement.x = Mathf.Max(pos.x, minX) - playerPos.x;
+            proposedDisplacement.y *= proposedDisplacement.x / displacement.x; // scale y by change of x
+        }
+        else if (signedAngle < a3)
+        {
+            proposedDisplacement.y = Mathf.Max(pos.y, minY) - playerPos.y;
+            proposedDisplacement.x *= proposedDisplacement.y / displacement.y; // scale x by change of y
+        }
+        else
+        {
+            proposedDisplacement.x = Mathf.Min(pos.x, maxX) - playerPos.x;
+            proposedDisplacement.y *= proposedDisplacement.x / displacement.x; // scale y by change of x
+        }
+
+        if (Mathf.Abs(proposedDisplacement.y) - Mathf.Abs(displacement.y) < 0.01f)
+        {
+            anchor.transform.position = playerPos + proposedDisplacement;
+        }
+        else
+        {
+            // anchor.transform.position = pos;
+            anchor.transform.position = playerPos + proposedDisplacement;
+        }
 
     }
     public void UpdateLineRenderer(Vector3 swingPos)

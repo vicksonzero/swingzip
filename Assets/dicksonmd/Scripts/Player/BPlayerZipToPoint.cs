@@ -16,6 +16,7 @@ public class BPlayerZipToPoint : MonoBehaviour
     [Header("Config")]
     public SOMovementLimit limits;
 
+    public float minDistance = 5;
     public float maxDistance = 30;
     public float zipStartSpeedCap = 1; // per second // zipStartSpeedLimit
     public float zipAcceleration = 12; // per second squared
@@ -126,7 +127,7 @@ public class BPlayerZipToPoint : MonoBehaviour
 
         foreach (var hit in hitList)
         {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle") && hit.distance > minDistance)
             {
                 zipTargetCandidate = Instantiate(player.zipTargetPrefab, hit.point, Quaternion.identity);
                 return;
