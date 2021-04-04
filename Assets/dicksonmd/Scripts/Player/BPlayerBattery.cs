@@ -14,7 +14,8 @@ public class BPlayerBattery : MonoBehaviour
 
     [Header("Config (OnGround)")]
     public bool isRechargeOnGround = true;
-    public bool isRechargeOnGroundAtOnce = false;
+    public bool isRechargeOnGroundOneImmediately = false;
+    public bool isRechargeOnGroundAllAtOnce = false;
     public float rechargeOnGroundTime = 1f;
     Coroutine rechargeOnGroundTimer;
 
@@ -76,6 +77,7 @@ public class BPlayerBattery : MonoBehaviour
     public void OnTouchGround()
     {
         Debug.Log("OnTouchGround");
+        if (isRechargeOnGroundOneImmediately) TryAddGrappleShots(1);
         CheckAndWaitAndRechargeOnGround();
     }
     public void OnGrappleUsed()
@@ -91,7 +93,7 @@ public class BPlayerBattery : MonoBehaviour
             rechargeOnGroundTimer = StartCoroutine(
                 WaitAndRefillBattery(
                     rechargeOnGroundTime,
-                    (isRechargeOnGroundAtOnce ? grappleShotCountMax : 1),
+                    (isRechargeOnGroundAllAtOnce ? grappleShotCountMax : 1),
                     false
                 )
             );

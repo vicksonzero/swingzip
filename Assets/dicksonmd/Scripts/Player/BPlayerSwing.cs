@@ -13,6 +13,9 @@ public class BPlayerSwing : MonoBehaviour
     public bool pointerWasUp = false;
     public bool pointerWasDownAgain = false;
 
+    public float swingPull = 0.1f;
+    public float swingBoost = 0.4f;
+
     [Header("Linkages")]
     BPlayer player;
 
@@ -66,9 +69,11 @@ public class BPlayerSwing : MonoBehaviour
         {
             InitGrapple();
         }
-        player.DoGravity();
+        DoDirectionalBoost(player.directionalInput);
+        player.DoSwingGravity();
 
         DoGrappleConstraint();
+        DoSwingPull();
 
         player.directionalInput.y = -1; // HACK: force through platforms when swinging
         player.DisplaceSelf(false);
@@ -84,6 +89,24 @@ public class BPlayerSwing : MonoBehaviour
     {
         player.grapple.UpdateLineRenderer(transform.position, GetGrapplePercent());
     }
+
+    private void DoSwingPull()
+    {
+        Vector2 grapplePos = player.grapple.transform.position;
+        Vector2 displacementFromGrapple = (Vector2)transform.position - grapplePos;
+        player.velocity += (Vector3)(-displacementFromGrapple.normalized * swingPull * Time.deltaTime);
+    }
+
+    private void DoDirectionalBoost(Vector2 directionalInput)
+    {
+        Vector2 grapplePos = player.grapple.transform.position;
+        Vector2 displacementFromGrapple = (Vector2)transform.position - grapplePos;
+        Vector2 veloToGrapple = player.velocity - Vector3.Project((Vector2)player.velocity, displacementFromGrapple);
+        float signedAngle = Vector3.SignedAngle(displacementFromGrapple, (Vector2)player.velocity, Vector3.forward);
+        // var dir = Quaternion.AngleAxis(90, Vector3.up) * displacementFromGrapple;
+        var sign = directionalInput.x < 0 ? -1 : (directionalInput.x > 0 ? 1 : 0);
+        player.velocity += (Vector3)veloToGrapple.normalized * Mathf.Sign(signedAngle) * sign * swingBoost * Time.deltaTime;
+    }
     private void DoGrappleConstraint()
     {
         if (player.grapple == null)
@@ -91,30 +114,15 @@ public class BPlayerSwing : MonoBehaviour
             return;
         }
 
-        Vector2 nextPosition = transform.position + player.velocity * Time.deltaTime;
-
         Vector2 grapplePos = player.grapple.transform.position;
-        Vector2 displacementFromGrapple = nextPosition - grapplePos;
+        Vector2 displacementFromGrapple = (Vector2)transform.position - grapplePos;
         var dist = displacementFromGrapple.magnitude;
 
 
         if (dist > grappleLength)
         {
-            Vector2 targetDisplacementFromGrapple = displacementFromGrapple.normalized * grappleLength;
-            Vector3 targetPosition = grapplePos + targetDisplacementFromGrapple;
-            Vector2 targetDisplacement = targetPosition - transform.position;
-
-            player.controller.Move(targetDisplacement, Vector3.zero);
-            player.velocity = targetDisplacement / Time.deltaTime;
-
-            var angleVeloToGrapple = Vector2.Angle((Vector2)player.velocity, displacementFromGrapple);
-            bool isTooMuch = angleVeloToGrapple < 90;
-            if (isTooMuch)
-            {
-                Vector3 diff = Vector3.Project((Vector2)player.velocity, displacementFromGrapple);
-                player.velocity -= diff;
-                player.velocity = player.velocity.normalized * (player.velocity.magnitude + diff.magnitude * tangentSpeedKept);
-            }
+            Vector2 veloToGrapple = Vector3.Project((Vector2)player.velocity, displacementFromGrapple);
+            player.velocity = (Vector2)player.velocity - veloToGrapple;
         }
     }
     private void InitGrapple()

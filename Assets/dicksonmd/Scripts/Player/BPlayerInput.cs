@@ -14,7 +14,7 @@ public class BPlayerInput : MonoBehaviour
     void Start()
     {
         player = GetComponent<BPlayer>();
-        Debug.Log("mouse.wasDown: "+latestInput.mouse.wasDown);
+        Debug.Log("mouse.wasDown: " + latestInput.mouse.wasDown);
     }
 
     void Update()
@@ -25,6 +25,8 @@ public class BPlayerInput : MonoBehaviour
         Vector2 directionalInput = (mobileJoystick.isDown ? mobileJoystick.joystickInput
             : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
         );
+
+        if (Mathf.Abs(directionalInput.x) <= 0.2f) directionalInput.x = 0;
         player.OnDirectionalInput(directionalInput);
 
         // if (Input.GetKeyDown(KeyCode.W))

@@ -31,7 +31,7 @@ public class BPlayerZipToPoint : MonoBehaviour
     public bool canInterrupt = false;
     public bool interruptByPointerUp = false;
 
-    public float terminatingTime = 1f;
+    public float terminatingTime = 0.2f;
 
     public float terminatingAtTime = 0f;
 

@@ -23,9 +23,9 @@ public class BPlayer : MonoBehaviour
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
-    float accelerationTimeAirborne = .2f;
-    float accelerationTimeGrounded = .1f;
-    float moveSpeed = 6;
+    public float accelerationTimeAirborne = 1f;
+    public float accelerationTimeGrounded = .1f;
+    public float moveSpeed = 6;
 
     public float maxFallingSpeed = 6;
 
@@ -36,6 +36,8 @@ public class BPlayer : MonoBehaviour
     float velocityXSmoothing;
 
     public float shootingFallSpeedCap = 2.5f;
+
+    public bool isFloating = false;
 
     [HideInInspector]
     public BPlayerBattery playerBattery;
@@ -215,6 +217,38 @@ public class BPlayer : MonoBehaviour
             spriteRoot.localScale = localScale;
         }
 
+        if (isFloating)
+        {
+            var collionsAny = (
+                controller.collisions.above ||
+                controller.collisions.below ||
+                controller.collisions.left ||
+                controller.collisions.right
+            );
+            if (collionsAny)
+            {
+                isFloating = false;
+            }
+            else
+            {
+                var inputSign = directionalInput.x < 0 ? -1 : (directionalInput.x > 0 ? 1 : 0);
+                var veloSign = velocity.x < 0 ? -1 : (velocity.x > 0 ? 1 : 0);
+
+                var haveXInput = inputSign != 0;
+                var sameXInput = inputSign == veloSign;
+                Debug.Log("sameXInput: " + directionalInput.x + " " + inputSign + " vs " + veloSign);
+                Debug.Log("notEnoughSpeed: " + haveXInput + "AND (" + sameXInput + " OR " + (Mathf.Abs(velocity.x) <= moveSpeed) + ")");
+
+                var notEnoughSpeed = (haveXInput && (!sameXInput || Mathf.Abs(velocity.x) <= moveSpeed));
+                if (notEnoughSpeed)
+                {
+                    Debug.Log("notEnoughSpeed: " + (directionalInput.x * moveSpeed) + " vs " + velocity.x);
+                    isFloating = false;
+                }
+
+            }
+        }
+
         playerAnimator.SetBool("IsGround", controller.collisions.below);
         playerAnimator.SetBool("IsAir", !(
             controller.collisions.above ||
@@ -327,12 +361,22 @@ public class BPlayer : MonoBehaviour
     private void DetermineTargetVelocity()
     {
         float targetVelocityX = directionalInput.x * moveSpeed;
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (isFloating ? accelerationTimeAirborne : accelerationTimeGrounded));
     }
 
     public void DoGravity()
     {
         velocity.y += gravity * Time.deltaTime;
+
+        if (velocity.y < -maxFallingSpeed)
+        {
+            velocity.y = -maxFallingSpeed;
+        }
+    }
+
+    public void DoSwingGravity()
+    {
+        velocity.y += gravity * 1.5f * Time.deltaTime;
 
         if (velocity.y < -maxFallingSpeed)
         {
@@ -403,6 +447,7 @@ public class BPlayer : MonoBehaviour
         else
         {
             RemoveGrapple();
+            isFloating = true;
         }
     }
 

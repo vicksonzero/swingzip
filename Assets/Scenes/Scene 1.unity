@@ -4792,9 +4792,13 @@ MonoBehaviour:
   maxJumpHeight: 4
   minJumpHeight: 4
   timeToJumpApex: 0.6
+  accelerationTimeAirborne: 1.5
+  accelerationTimeGrounded: 0.1
+  moveSpeed: 6
   maxFallingSpeed: 20
   velocity: {x: 0, y: 0, z: 0}
   shootingFallSpeedCap: 10
+  isFloating: 0
   playerBattery: {fileID: 0}
   grapplePrefab: {fileID: -1283763016822938459, guid: 25033951705a461498b99aaee51dc6af,
     type: 3}
@@ -4807,9 +4811,9 @@ MonoBehaviour:
   zipButton: {fileID: 0}
   zipTarget: {fileID: 0}
   playerZipToPoint: {fileID: 584929688}
-  wallJumpClimb: {x: 8, y: 17}
-  wallJumpOff: {x: 13, y: 17}
-  wallLeap: {x: 13, y: 17}
+  wallJumpClimb: {x: 13, y: 17}
+  wallJumpOff: {x: 16, y: 17}
+  wallLeap: {x: 16, y: 17}
   wallSlideSpeedMax: 3
   wallStickTime: 0.1
   playerDash: {fileID: 0}
@@ -4931,7 +4935,7 @@ MonoBehaviour:
   zipUntil: 0
   zipTargetCandidate: {fileID: 0}
   limits: {fileID: 11400000, guid: 4e5688f147a4f5241967c7658a138a41, type: 2}
-  minDistance: 5
+  minDistance: 4
   maxDistance: 20
   zipStartSpeedCap: 100
   zipAcceleration: 12
@@ -4941,7 +4945,7 @@ MonoBehaviour:
   zipTimeBuffer: 0.1
   canInterrupt: 0
   interruptByPointerUp: 0
-  terminatingTime: 0.7
+  terminatingTime: 0.2
   terminatingAtTime: 0
 --- !u!114 &584929689
 MonoBehaviour:
@@ -4962,6 +4966,7 @@ MonoBehaviour:
   grappleCompleteTime: 0
   pointerWasUp: 0
   pointerWasDownAgain: 0
+  swingBoost: 5
   limits: {fileID: 11400000, guid: 96fd7346f047efe48b810cfd19bb7141, type: 2}
   grappleShootTime: 220
   tangentSpeedKept: 0.2
@@ -5047,9 +5052,10 @@ MonoBehaviour:
   grappleShotCountMax: 3
   rechargeInParallel: 0
   isRechargeOnGround: 1
-  isRechargeOnGroundAtOnce: 0
+  isRechargeOnGroundOneImmediately: 1
+  isRechargeOnGroundAllAtOnce: 0
   rechargeOnGroundTime: 0.4
-  isRechargeAnytime: 1
+  isRechargeAnytime: 0
   isRechargeAnytimeAtOnce: 0
   rechargeAnytimeTime: 4
   grappleShotCounter: {fileID: 1331484600}
