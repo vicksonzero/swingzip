@@ -16,8 +16,11 @@ public class BZipTarget : MonoBehaviour
     public float maxX;
     public float minY;
     public float maxY;
+
+    new Collider2D collider;
     void Start()
     {
+        collider = GetComponent<Collider2D>();
         if (player == null)
         {
             player = FindObjectOfType<BPlayer>();
@@ -97,6 +100,7 @@ public class BZipTarget : MonoBehaviour
             // anchor.transform.position = pos;
             anchor.transform.position = playerPos + proposedDisplacement;
         }
+        collider.offset = playerPos + proposedDisplacement - (Vector2)transform.position;
 
     }
     public void UpdateLineRenderer(Vector3 swingPos)

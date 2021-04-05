@@ -4897,7 +4897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584929680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.96, y: 30.49, z: -5}
+  m_LocalPosition: {x: -9.96, y: 30.12, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 350570500}
@@ -4935,6 +4935,7 @@ MonoBehaviour:
   zipUntil: 0
   zipTargetCandidate: {fileID: 0}
   limits: {fileID: 11400000, guid: 4e5688f147a4f5241967c7658a138a41, type: 2}
+  targetShowingTime: 2
   minDistance: 4
   maxDistance: 20
   zipStartSpeedCap: 100
@@ -4966,6 +4967,7 @@ MonoBehaviour:
   grappleCompleteTime: 0
   pointerWasUp: 0
   pointerWasDownAgain: 0
+  swingPull: 0.1
   swingBoost: 5
   limits: {fileID: 11400000, guid: 96fd7346f047efe48b810cfd19bb7141, type: 2}
   grappleShootTime: 220
@@ -6051,7 +6053,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703243669}
   m_LocalRotation: {x: 1e-45, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.96, y: 30.49, z: -100.5}
+  m_LocalPosition: {x: -9.96, y: 30.12, z: -100.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12893,7 +12895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412780150}
   m_LocalRotation: {x: 1e-45, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.96, y: 30.49, z: -100.5}
+  m_LocalPosition: {x: -9.96, y: 30.12, z: -100.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1842566370}

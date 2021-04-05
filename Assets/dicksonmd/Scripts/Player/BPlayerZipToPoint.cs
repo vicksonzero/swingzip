@@ -16,6 +16,9 @@ public class BPlayerZipToPoint : MonoBehaviour
     [Header("Config")]
     public SOMovementLimit limits;
 
+    public float targetShowingTime = 1f;
+    public Coroutine targetDestroyTimer = null;
+
     public float minDistance = 5;
     public float maxDistance = 30;
     public float zipStartSpeedCap = 1; // per second // zipStartSpeedLimit
@@ -122,7 +125,12 @@ public class BPlayerZipToPoint : MonoBehaviour
 
     public void PutTarget(Vector2 pos)
     {
-        if (zipTargetCandidate != null) return;
+        if (zipTargetCandidate != null)
+        {
+            if (targetDestroyTimer != null) StopCoroutine(targetDestroyTimer);
+            Destroy(zipTargetCandidate.gameObject);
+            zipTargetCandidate = null;
+        }
         var hitList = Physics2D.RaycastAll(transform.position, pos - ((Vector2)transform.position), maxDistance);
 
         foreach (var hit in hitList)
@@ -130,8 +138,19 @@ public class BPlayerZipToPoint : MonoBehaviour
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle") && hit.distance > minDistance)
             {
                 zipTargetCandidate = Instantiate(player.zipTargetPrefab, hit.point, Quaternion.identity);
+                targetDestroyTimer = StartCoroutine(DestroyZipTargetAfter(targetShowingTime));
                 return;
             }
+        }
+    }
+
+    public IEnumerator DestroyZipTargetAfter(float time)
+    {
+        yield return new WaitForSeconds(time);
+        if (zipTargetCandidate != null)
+        {
+            Destroy(zipTargetCandidate.gameObject);
+            zipTargetCandidate = null;
         }
     }
 }

@@ -231,7 +231,8 @@ GameObject:
   m_Component:
   - component: {fileID: 638328676143754889}
   - component: {fileID: 988548787861339873}
-  m_Layer: 0
+  - component: {fileID: 7534150040163529608}
+  m_Layer: 5
   m_Name: Zip Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,6 +270,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSprite: {fileID: 8018259397119429118}
   buttonSprite2: {fileID: 3049986490922862000}
+  zipToPointInputWindow: 0.25
+--- !u!58 &7534150040163529608
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061945172574177260}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
 --- !u!1 &8018259397119429106
 GameObject:
   m_ObjectHideFlags: 0

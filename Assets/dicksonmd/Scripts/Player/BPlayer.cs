@@ -151,33 +151,21 @@ public class BPlayer : MonoBehaviour
         }
         else if (playerSwing.IsSwinging())
         {
-            if (playerSwing.pointerWasDownAgain && playerZipToPoint.zipTargetCandidate != null && playerBattery.HasBattery(2))
+            if (playerSwing.pointerWasUp)
             {
-                playerBattery.RemoveGrappleShots(2);
-                zipTarget = playerZipToPoint.zipTargetCandidate;
-                playerZipToPoint.zipTargetCandidate = null;
-                StartZipToPoint(zipTarget);
-                RemoveGrapple();
-                currentState = EPlayerStates.ZIPPING_TO_POINT;
-            }
-            else if (playerSwing.pointerWasUp && playerBattery.HasBattery(1))
-            {
-                playerBattery.RemoveGrappleShots(1);
-                StartDash();
-                RemoveGrapple();
-                currentState = EPlayerStates.DASHING;
-                if (playerZipToPoint.zipTargetCandidate != null)
+                if (playerBattery.HasBattery(1))
                 {
-                    Destroy(playerZipToPoint.zipTargetCandidate.gameObject);
-                    playerZipToPoint.zipTargetCandidate = null;
+                    playerBattery.RemoveGrappleBattery(1);
+                    StartDash();
+                    currentState = EPlayerStates.DASHING;
                 }
+                RemoveGrapple();
             }
             else
             {
                 currentState = EPlayerStates.SWINGING;
-                if (!playerSwing.wasComplete && playerBattery.HasBattery(1))
+                if (!playerSwing.wasComplete)
                 {
-                    playerBattery.RemoveGrappleShots(1);
                     if (playerZipToPoint.zipTargetCandidate != null)
                     {
                         Destroy(playerZipToPoint.zipTargetCandidate.gameObject);
@@ -354,7 +342,7 @@ public class BPlayer : MonoBehaviour
         playerDash.StopDash();
         if (Time.time - playerDash.dashStartTime < playerDash.refundTime)
         {
-            playerBattery.TryAddGrappleShots(1);
+            playerBattery.TryAddGrappleBattery(1);
         }
     }
 
@@ -376,7 +364,7 @@ public class BPlayer : MonoBehaviour
 
     public void DoSwingGravity()
     {
-        velocity.y += gravity * 1.5f * Time.deltaTime;
+        velocity.y += gravity * 2f * Time.deltaTime;
 
         if (velocity.y < -maxFallingSpeed)
         {
@@ -422,12 +410,40 @@ public class BPlayer : MonoBehaviour
         {
             OnJumpInputDown();
         }
-        else if (!IsZippingToPoint() && playerBattery.HasBattery(1))
+        else if (!IsZippingToPoint())
         {
             Vector3 pos = inputPosition;
             pos.z = 10.0f;
             Vector2 pos2 = Camera.main.ScreenToWorldPoint(pos);
-            PutGrapple(pos2);
+
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(pos2, 0.5f);
+            bool isClickingZipTarget = false;
+            foreach (var collider in hitColliders)
+            {
+                if (collider.GetComponent<BZipTarget>() != null)
+                {
+                    isClickingZipTarget = true;
+                    break;
+                }
+            }
+
+            if (isClickingZipTarget)
+            {
+                Debug.Log("isClickingZipTarget");
+                if (playerZipToPoint.zipTargetCandidate != null && playerBattery.HasBattery(1))
+                {
+                    playerBattery.RemoveGrappleBattery(1);
+                    zipTarget = playerZipToPoint.zipTargetCandidate;
+                    playerZipToPoint.zipTargetCandidate = null;
+                    StartZipToPoint(zipTarget);
+                    RemoveGrapple();
+                    currentState = EPlayerStates.ZIPPING_TO_POINT;
+                }
+            }
+            else
+            {
+                PutGrapple(pos2, hitColliders);
+            }
         }
     }
 
@@ -501,9 +517,9 @@ public class BPlayer : MonoBehaviour
         }
     }
 
-    public void PutGrapple(Vector2 pos)
+    public void PutGrapple(Vector2 pos, Collider2D[] hitColliders)
     {
-        playerSwing.PutGrapple(pos);
+        playerSwing.PutGrapple(pos, hitColliders);
         playerZipToPoint.PutTarget(pos);
     }
 

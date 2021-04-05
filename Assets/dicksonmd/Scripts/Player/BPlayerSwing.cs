@@ -94,7 +94,11 @@ public class BPlayerSwing : MonoBehaviour
     {
         Vector2 grapplePos = player.grapple.transform.position;
         Vector2 displacementFromGrapple = (Vector2)transform.position - grapplePos;
-        player.velocity += (Vector3)(-displacementFromGrapple.normalized * swingPull * Time.deltaTime);
+        var dist = displacementFromGrapple.magnitude;
+        if (dist > grappleLength)
+        {
+            player.velocity += (Vector3)(-displacementFromGrapple.normalized * swingPull * Time.deltaTime);
+        }
     }
 
     private void DoDirectionalBoost(Vector2 directionalInput)
@@ -135,7 +139,7 @@ public class BPlayerSwing : MonoBehaviour
         RenderGrappleLine();
     }
 
-    public void PutGrapple(Vector2 pos)
+    public void PutGrapple(Vector2 pos, Collider2D[] hitColliders)
     {
         if (player.grapple == null)
         {
@@ -146,7 +150,6 @@ public class BPlayerSwing : MonoBehaviour
         pointerWasDownAgain = false;
         player.grapple.gameObject.SetActive(true);
         player.grapple.transform.position = pos;
-        var hitColliders = Physics2D.OverlapCircleAll(pos, 0.5f);
 
         var hasBackWall = false;
         foreach (var collider in hitColliders)

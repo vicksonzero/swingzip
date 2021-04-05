@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7381729756135885326}
   - component: {fileID: 8573798603708722050}
   - component: {fileID: 1923750474493053183}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Quad 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2639405908568166922}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6177457726236399859}
   - component: {fileID: 7678424952297367353}
-  m_Layer: 0
+  - component: {fileID: 4249358359095012274}
+  m_Layer: 5
   m_Name: Zip Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,6 +184,22 @@ MonoBehaviour:
   maxX: 0
   minY: 0
   maxY: 0
+--- !u!58 &4249358359095012274
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745029298958477825}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.5
 --- !u!1 &4889551385244649020
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +212,7 @@ GameObject:
   - component: {fileID: 3477434849180500864}
   - component: {fileID: 5681111946816330340}
   - component: {fileID: 2158138828648617001}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Quad 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7344197232611429875}
   - component: {fileID: 5743736149318452815}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}

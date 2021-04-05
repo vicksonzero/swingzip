@@ -10,7 +10,7 @@ public class BPlayerCollectItem : MonoBehaviour
         BFuelCell item = other.GetComponent<BFuelCell>();
         if (item != null)
         {
-            GetComponent<BPlayerBattery>().TryAddGrappleShots(1);
+            GetComponent<BPlayerBattery>().TryAddGrappleBattery(1);
             item.playGotAnim();
             FindObjectOfType<BDeliveryObjective>().AddScore(100);
             item.disableItem();

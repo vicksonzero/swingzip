@@ -46,7 +46,7 @@ public class BPlayerBattery : MonoBehaviour
     {
         return grappleShotCount >= grappleShotCountMax;
     }
-    public void TryAddGrappleShots(int shots)
+    public void TryAddGrappleBattery(int shots)
     {
         grappleShotCount += shots;
         if (grappleShotCount > grappleShotCountMax)
@@ -57,7 +57,7 @@ public class BPlayerBattery : MonoBehaviour
         grappleShotCounter.SetLives(grappleShotCount);
     }
 
-    public void RemoveGrappleShots(int shots)
+    public void RemoveGrappleBattery(int shots)
     {
         grappleShotCount -= shots;
         Debug.Log("RemoveGrappleShots (-" + shots + "=" + grappleShotCount + ")");
@@ -77,7 +77,7 @@ public class BPlayerBattery : MonoBehaviour
     public void OnTouchGround()
     {
         Debug.Log("OnTouchGround");
-        if (isRechargeOnGroundOneImmediately) TryAddGrappleShots(1);
+        if (isRechargeOnGroundOneImmediately) TryAddGrappleBattery(1);
         CheckAndWaitAndRechargeOnGround();
     }
     public void OnGrappleUsed()
@@ -117,7 +117,7 @@ public class BPlayerBattery : MonoBehaviour
     {
         Debug.Log("WaitAndRefillBattery " + time + " " + isAnytimeTimer);
         yield return new WaitForSeconds(time);
-        TryAddGrappleShots(amount);
+        TryAddGrappleBattery(amount);
 
         if (isAnytimeTimer)
         {
