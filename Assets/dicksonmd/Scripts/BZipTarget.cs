@@ -29,8 +29,8 @@ public class BZipTarget : MonoBehaviour
         buttonSprite.transform.localScale = Vector3.one * 0.3f;
 
         buttonSprite2.transform.rotation = Quaternion.identity;
-        buttonSprite2.transform.localScale = Vector3.one * 1.2f;
-        buttonSprite2.transform.DORotate(new Vector3(0, 0, -45), 0.2f);
+        buttonSprite2.transform.localScale = Vector3.one * 2.2f;
+        buttonSprite2.transform.DORotate(new Vector3(0, 0, -135), 0.2f);
         buttonSprite2.transform.DOScale(Vector3.one * 0.5f, 0.2f);
     }
     void Update()

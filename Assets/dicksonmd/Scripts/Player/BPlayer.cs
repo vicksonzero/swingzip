@@ -224,13 +224,13 @@ public class BPlayer : MonoBehaviour
 
                 var haveXInput = inputSign != 0;
                 var sameXInput = inputSign == veloSign;
-                Debug.Log("sameXInput: " + directionalInput.x + " " + inputSign + " vs " + veloSign);
-                Debug.Log("notEnoughSpeed: " + haveXInput + "AND (" + sameXInput + " OR " + (Mathf.Abs(velocity.x) <= moveSpeed) + ")");
+                // Debug.Log("sameXInput: " + directionalInput.x + " " + inputSign + " vs " + veloSign);
+                // Debug.Log("notEnoughSpeed: " + haveXInput + "AND (" + sameXInput + " OR " + (Mathf.Abs(velocity.x) <= moveSpeed) + ")");
 
                 var notEnoughSpeed = (haveXInput && (!sameXInput || Mathf.Abs(velocity.x) <= moveSpeed));
                 if (notEnoughSpeed)
                 {
-                    Debug.Log("notEnoughSpeed: " + (directionalInput.x * moveSpeed) + " vs " + velocity.x);
+                    Debug.Log("Manual air control kick in: vx=" + velocity.x + " (need " + (directionalInput.x * moveSpeed) + ")");
                     isFloating = false;
                 }
 

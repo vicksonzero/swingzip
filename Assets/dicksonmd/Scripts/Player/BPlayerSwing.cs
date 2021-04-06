@@ -13,27 +13,23 @@ public class BPlayerSwing : MonoBehaviour
     public bool pointerWasUp = false;
     public bool pointerWasDownAgain = false;
 
-    public float swingPull = 0.1f;
-    public float swingBoost = 0.4f;
-
     [Header("Linkages")]
     BPlayer player;
 
     [Header("Config")]
     public SOMovementLimit limits;
+
+    public float swingPull = 0.1f;
+    public float swingBoost = 0.4f;
     [Tooltip("Common click time is 220ms")]
     public float grappleShootTime = 220; // in ms, TODO: Change to frames
 
+    public float tangentSpeedKeepThreshold = 2f;
     // when player is falling within grapple constraint, speed that is normal to travelling direction will be discarded.
     // Choose how much percent of speed is kept by rotating speed vector component into travelling direction
     [Tooltip("x percent speed will be added to swing speed per tick")]
     [Range(0, 1)]
     public float tangentSpeedKept = 0.7f;
-
-    // (>0 means swing end-point is always higher, <0 means energy is lost while swinging)
-    [Tooltip("x percent speed will be added to swing speed per tick")]
-    [Range(-1, 1)]
-    public float swingSpeedBonusPerTick = 0f;
 
     public bool canInterrupt = true;
     public bool interruptByPointerUp = true;
@@ -97,7 +93,7 @@ public class BPlayerSwing : MonoBehaviour
         var dist = displacementFromGrapple.magnitude;
         if (dist > grappleLength)
         {
-            player.velocity += (Vector3)(-displacementFromGrapple.normalized * swingPull * Time.deltaTime);
+            player.velocity += (Vector3)(-displacementFromGrapple * swingPull * Time.deltaTime);
         }
     }
 
@@ -127,6 +123,12 @@ public class BPlayerSwing : MonoBehaviour
         {
             Vector2 veloToGrapple = Vector3.Project((Vector2)player.velocity, displacementFromGrapple);
             player.velocity = (Vector2)player.velocity - veloToGrapple;
+
+            if (veloToGrapple.magnitude > tangentSpeedKeepThreshold)
+            {
+                Debug.Log("tangentSpeed=" + veloToGrapple.magnitude);
+                player.velocity += player.velocity.normalized * veloToGrapple.magnitude * tangentSpeedKept;
+            }
         }
     }
     private void InitGrapple()
