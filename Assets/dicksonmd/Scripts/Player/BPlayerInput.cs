@@ -26,7 +26,7 @@ public class BPlayerInput : MonoBehaviour
             : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
         );
 
-        if (Mathf.Abs(directionalInput.x) <= 0.2f) directionalInput.x = 0;
+        if (Mathf.Abs(directionalInput.x) <= 0.3f) directionalInput.x = 0;
         directionalInput.x = Mathf.Clamp(directionalInput.x, -1, 1);
         directionalInput.y = Mathf.Clamp(directionalInput.y, -1, 1);
         player.OnDirectionalInput(directionalInput);
