@@ -312,7 +312,7 @@ public class BPlayer : MonoBehaviour
         wallRunning = false;
         wallSliding = false;
 
-        var inputIsIntoWall = (Math.Sign(directionalInput.x) == wallDirX && Mathf.Abs(directionalInput.x) > 0.4f);
+        var inputIsIntoWall = (Math.Sign(directionalInput.x) == wallDirX && Mathf.Abs(directionalInput.x) > 0.7f);
         var isOnWall = (controller.collisions.left || controller.collisions.right) && !controller.collisions.below;
         var isTryingToGoUp = inputIsIntoWall || directionalInput.y > 0;
         if (isOnWall)
@@ -502,7 +502,7 @@ public class BPlayer : MonoBehaviour
         var isOnWall = (controller.collisions.left || controller.collisions.right) && !controller.collisions.below;
         if (isOnWall)
         {
-            var inputIsIntoWall = (Math.Sign(directionalInput.x) == wallDirX && Mathf.Abs(directionalInput.x) > 0.4f);
+            var inputIsIntoWall = (Math.Sign(directionalInput.x) == wallDirX && Mathf.Abs(directionalInput.x) > 0.7f);
             if (inputIsIntoWall)
             {
                 Debug.Log("OnJumpInputDown wallJumpClimb");
