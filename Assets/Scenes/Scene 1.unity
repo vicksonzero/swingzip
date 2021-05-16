@@ -5040,7 +5040,7 @@ MonoBehaviour:
   playerZipToPoint: {fileID: 584929688}
   wallJumpClimb: {x: 18, y: 17}
   wallJumpOff: {x: 18, y: 17}
-  wallLeap: {x: 18, y: 17}
+  wallLeap: {x: 25, y: 17}
   wallRunSpeed: 6
   wallSlideSpeedMax: 3
   wallStickTime: 0.1

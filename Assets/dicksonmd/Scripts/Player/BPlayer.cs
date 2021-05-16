@@ -325,7 +325,7 @@ public class BPlayer : MonoBehaviour
                 Debug.Log("DoWallSliding wallSliding");
             }
 
-            if (velocity.y < -wallSlideSpeedMax)
+            if (directionalInput.y >= 0 && velocity.y < -wallSlideSpeedMax)
             {
                 velocity.y = -wallSlideSpeedMax;
             }
@@ -494,7 +494,7 @@ public class BPlayer : MonoBehaviour
 
     public void OnJumpInputDown()
     {
-        Debug.Log("OnJumpInputDown " + wallRunning + " " + wallSliding + " " + controller.collisions.ToString() + " " + wallDirX);
+        // Debug.Log("OnJumpInputDown " + wallRunning + " " + wallSliding + " " + controller.collisions.ToString() + " " + wallDirX);
         var isOnWall = (controller.collisions.left || controller.collisions.right) && !controller.collisions.below;
         if (isOnWall)
         {
