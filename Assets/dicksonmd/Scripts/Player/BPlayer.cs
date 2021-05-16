@@ -174,6 +174,10 @@ public class BPlayer : MonoBehaviour
                         playerZipToPoint.zipTargetCandidate = null;
                     }
                 }
+                if (controller.collisions.HaveCollision())
+                {
+                    RemoveGrapple();
+                }
                 playerSwing.UpdateSwing();
             }
         }
