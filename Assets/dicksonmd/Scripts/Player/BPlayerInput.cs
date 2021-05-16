@@ -27,6 +27,8 @@ public class BPlayerInput : MonoBehaviour
         );
 
         if (Mathf.Abs(directionalInput.x) <= 0.2f) directionalInput.x = 0;
+        directionalInput.x = Mathf.Clamp(directionalInput.x, -1, 1);
+        directionalInput.y = Mathf.Clamp(directionalInput.y, -1, 1);
         player.OnDirectionalInput(directionalInput);
 
         // if (Input.GetKeyDown(KeyCode.W))

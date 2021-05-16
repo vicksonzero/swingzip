@@ -149,6 +149,7 @@ public class BPlayerController : BRaycastController
             {
                 if (hit.collider.tag == "Through")
                 {
+                    // Debug.Log("Through directionY " + directionY + " " + playerInput.y);
                     // old one-way platforms. can only handle horizontal
                     if (directionY == 1 || hit.distance == 0)
                     {
@@ -159,7 +160,7 @@ public class BPlayerController : BRaycastController
                         collisions.fallingThroughPlatform = false;
                         continue;
                     }
-                    if (playerInput.y == -1)
+                    if (playerInput.y <= -1f)
                     {
                         collisions.fallingThroughPlatform = true;
                         //Invoke("ResetFallingThroughPlatform",.5f);

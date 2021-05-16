@@ -312,7 +312,7 @@ public class BPlayer : MonoBehaviour
         wallRunning = false;
         wallSliding = false;
 
-        var inputIsIntoWall = (directionalInput.x == wallDirX && directionalInput.x != 0);
+        var inputIsIntoWall = (Math.Sign(directionalInput.x) == wallDirX && Mathf.Abs(directionalInput.x) > 0.1f);
         var isOnWall = (controller.collisions.left || controller.collisions.right) && !controller.collisions.below;
         var isTryingToGoUp = inputIsIntoWall || directionalInput.y > 0;
         if (isOnWall)
@@ -502,13 +502,14 @@ public class BPlayer : MonoBehaviour
         var isOnWall = (controller.collisions.left || controller.collisions.right) && !controller.collisions.below;
         if (isOnWall)
         {
-            if (wallDirX == directionalInput.x)
+            var inputIsIntoWall = (Math.Sign(directionalInput.x) == wallDirX && Mathf.Abs(directionalInput.x) > 0.1f);
+            if (inputIsIntoWall)
             {
                 Debug.Log("OnJumpInputDown wallJumpClimb");
                 velocity.x = -wallDirX * wallJumpClimb.x;
                 velocity.y = wallJumpClimb.y * Mathf.Sqrt(gravity / -50f);
             }
-            else if (directionalInput.x == 0)
+            else if (Mathf.Abs(directionalInput.x) <= 0.1f)
             {
                 Debug.Log("OnJumpInputDown wallJumpOff");
                 velocity.x = -wallDirX * wallJumpOff.x;
@@ -526,7 +527,8 @@ public class BPlayer : MonoBehaviour
         {
             if (controller.collisions.slidingDownMaxSlope)
             {
-                if (directionalInput.x != -Mathf.Sign(controller.collisions.slopeNormal.x))
+                var sign = directionalInput.x < 0 ? -1 : (directionalInput.x > 0 ? 1 : 0);
+                if (sign != -Mathf.Sign(controller.collisions.slopeNormal.x))
                 { // not jumping against max slope
                     velocity.y = maxJumpVelocity * controller.collisions.slopeNormal.y;
                     velocity.x = maxJumpVelocity * controller.collisions.slopeNormal.x;

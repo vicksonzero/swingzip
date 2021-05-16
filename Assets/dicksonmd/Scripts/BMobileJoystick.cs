@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class BMobileJoystick : MonoBehaviour
 {
+    public bool isHideInDesktop = true;
     RectTransform rt;
     public RectTransform parentRT;
     Camera mainCamera;
@@ -27,7 +28,7 @@ public class BMobileJoystick : MonoBehaviour
         startingPosition = rt.localPosition;
         knobStartingPosition = joystickKnob.localPosition;
 
-        if (!Application.isMobilePlatform)
+        if (isHideInDesktop && !Application.isMobilePlatform)
         {
             gameObject.SetActive(false);
         }

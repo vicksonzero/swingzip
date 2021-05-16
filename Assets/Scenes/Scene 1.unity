@@ -6408,7 +6408,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 230, y: 130}
-  m_SizeDelta: {x: 230, y: 230}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &740272116
 MonoBehaviour:
@@ -6481,7 +6481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.011764706}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.13333334}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6517,6 +6517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d75295a3b0a4b4ea6d24039b3876bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHideInDesktop: 1
   parentRT: {fileID: 1799032413}
   isDown: 0
   joystickKnob: {fileID: 15290153}
