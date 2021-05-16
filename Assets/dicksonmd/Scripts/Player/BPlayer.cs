@@ -321,12 +321,12 @@ public class BPlayer : MonoBehaviour
             {
                 velocity.y = Mathf.Max(velocity.y, wallRunSpeed);
                 wallRunning = true;
-                Debug.Log("DoWallSliding wallRunning");
+                // Debug.Log("DoWallSliding wallRunning");
             }
             if (velocity.y < 0)
             {
                 wallSliding = true;
-                Debug.Log("DoWallSliding wallSliding");
+                // Debug.Log("DoWallSliding wallSliding");
             }
 
             if (directionalInput.y >= 0 && velocity.y < -wallSlideSpeedMax)
@@ -464,7 +464,7 @@ public class BPlayer : MonoBehaviour
                     currentState = EPlayerStates.ZIPPING_TO_POINT;
                 }
             }
-            else
+            else if (!playerSwing.IsShooting() && !playerSwing.IsSwinging())
             {
                 PutGrapple(pos2, hitColliders);
             }

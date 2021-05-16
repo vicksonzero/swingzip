@@ -44,14 +44,17 @@ public class BPlayerInput : MonoBehaviour
     public void OnVirtualPointerDown(BaseEventData data)
     {
         PointerEventData pointerData = data as PointerEventData;
-        player.OnVirtualPointerDown(pointerData.position);
-        touchingPointerId = pointerData.pointerId;
+        if (touchingPointerId == -1 && pointerData.button == PointerEventData.InputButton.Left)
+        {
+            player.OnVirtualPointerDown(pointerData.position);
+            touchingPointerId = pointerData.pointerId;
+        }
     }
 
     public void OnVirtualPointerUp(BaseEventData data)
     {
         PointerEventData pointerData = data as PointerEventData;
-        if (pointerData.pointerId == touchingPointerId)
+        if (pointerData.pointerId == touchingPointerId && pointerData.button == PointerEventData.InputButton.Left)
         {
             player.OnVirtualPointerUp(pointerData.position);
             touchingPointerId = -1;
