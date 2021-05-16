@@ -5038,9 +5038,10 @@ MonoBehaviour:
   zipButton: {fileID: 0}
   zipTarget: {fileID: 0}
   playerZipToPoint: {fileID: 584929688}
-  wallJumpClimb: {x: 13, y: 17}
-  wallJumpOff: {x: 16, y: 17}
-  wallLeap: {x: 16, y: 17}
+  wallJumpClimb: {x: 18, y: 17}
+  wallJumpOff: {x: 18, y: 17}
+  wallLeap: {x: 18, y: 17}
+  wallRunSpeed: 6
   wallSlideSpeedMax: 3
   wallStickTime: 0.1
   playerDash: {fileID: 0}

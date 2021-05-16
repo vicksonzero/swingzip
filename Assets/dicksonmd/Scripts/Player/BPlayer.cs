@@ -73,10 +73,12 @@ public class BPlayer : MonoBehaviour
     public Vector2 wallJumpOff;
     public Vector2 wallLeap;
 
+    public float wallRunSpeed = 4;
     public float wallSlideSpeedMax = 3;
     public float wallStickTime = .25f;
     float timeToWallUnstick;
     bool wallSliding;
+    bool wallRunning;
     int wallDirX;
 
     #endregion
@@ -300,11 +302,28 @@ public class BPlayer : MonoBehaviour
 
     private void DoWallSliding()
     {
+        // Debug.Log("DoWallSliding " + controller.collisions.ToString());
         wallDirX = (controller.collisions.left) ? -1 : 1;
+
+        wallRunning = false;
         wallSliding = false;
-        if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && velocity.y < 0)
+
+        var inputIsIntoWall = (directionalInput.x == wallDirX && directionalInput.x != 0);
+        var isOnWall = (controller.collisions.left || controller.collisions.right) && !controller.collisions.below;
+        var isTryingToGoUp = inputIsIntoWall || directionalInput.y > 0;
+        if (isOnWall)
         {
-            wallSliding = true;
+            if (isTryingToGoUp)
+            {
+                velocity.y = Mathf.Max(velocity.y, wallRunSpeed);
+                wallRunning = true;
+                Debug.Log("DoWallSliding wallRunning");
+            }
+            if (velocity.y < 0)
+            {
+                wallSliding = true;
+                Debug.Log("DoWallSliding wallSliding");
+            }
 
             if (velocity.y < -wallSlideSpeedMax)
             {
@@ -316,7 +335,7 @@ public class BPlayer : MonoBehaviour
                 velocityXSmoothing = 0;
                 velocity.x = 0;
 
-                if (directionalInput.x != wallDirX && directionalInput.x != 0)
+                if (!inputIsIntoWall)
                 {
                     timeToWallUnstick -= Time.deltaTime;
                 }
@@ -401,12 +420,13 @@ public class BPlayer : MonoBehaviour
 
     public void OnVirtualPointerDown(Vector2 inputPosition)
     {
-
+        Debug.Log("OnVirtualPointerDown " + wallRunning + " " + wallSliding + " " + controller.collisions.below);
+        var isOnWall = (controller.collisions.left || controller.collisions.right) && !controller.collisions.below;
         if (playerSwing.pointerWasUp)
         {
             playerSwing.pointerWasDownAgain = true;
         }
-        else if (wallSliding || controller.collisions.below)
+        else if (isOnWall || controller.collisions.below)
         {
             OnJumpInputDown();
         }
@@ -474,23 +494,29 @@ public class BPlayer : MonoBehaviour
 
     public void OnJumpInputDown()
     {
-        if (wallSliding)
+        Debug.Log("OnJumpInputDown " + wallRunning + " " + wallSliding + " " + controller.collisions.ToString() + " " + wallDirX);
+        var isOnWall = (controller.collisions.left || controller.collisions.right) && !controller.collisions.below;
+        if (isOnWall)
         {
             if (wallDirX == directionalInput.x)
             {
+                Debug.Log("OnJumpInputDown wallJumpClimb");
                 velocity.x = -wallDirX * wallJumpClimb.x;
                 velocity.y = wallJumpClimb.y * Mathf.Sqrt(gravity / -50f);
             }
             else if (directionalInput.x == 0)
             {
+                Debug.Log("OnJumpInputDown wallJumpOff");
                 velocity.x = -wallDirX * wallJumpOff.x;
                 velocity.y = wallJumpOff.y * Mathf.Sqrt(gravity / -50f);
             }
             else
             {
+                Debug.Log("OnJumpInputDown wallLeap");
                 velocity.x = -wallDirX * wallLeap.x;
                 velocity.y = wallLeap.y * Mathf.Sqrt(gravity / -50f);
             }
+            controller.collisions.left = controller.collisions.right = false;
         }
         if (controller.collisions.below)
         {

@@ -318,6 +318,17 @@ public class BPlayerController : BRaycastController
                 right
             );
         }
+
+        public new string ToString()
+        {
+            return (
+                "CollisionInfo [" +
+                above + " " +
+                below + " " +
+                left + " " +
+                right + "]"
+            );
+        }
     }
 
 }
