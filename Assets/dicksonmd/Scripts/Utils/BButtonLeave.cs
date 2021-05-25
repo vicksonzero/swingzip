@@ -7,7 +7,7 @@ public class BButtonLeave : MonoBehaviour
 {
     public Button button;
     public enum BackTo { ExitGame, nextScene };
-    public BackTo onPressBackButton;
+    public BackTo onPressButton;
     public string sceneName;
 
 
@@ -19,7 +19,7 @@ public class BButtonLeave : MonoBehaviour
         }
         button.onClick.AddListener(() =>
         {
-            if (onPressBackButton == BackTo.ExitGame)
+            if (onPressButton == BackTo.ExitGame)
             {
                 Application.Quit();
             }

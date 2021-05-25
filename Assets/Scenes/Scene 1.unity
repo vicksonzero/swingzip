@@ -4996,6 +4996,7 @@ GameObject:
   - component: {fileID: 584929684}
   - component: {fileID: 584929691}
   - component: {fileID: 584929692}
+  - component: {fileID: 584929694}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -5292,6 +5293,21 @@ MonoBehaviour:
   isRechargeAnytimeAtOnce: 0
   rechargeAnytimeTime: 4
   grappleShotCounter: {fileID: 1331484600}
+--- !u!114 &584929694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584929680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe4097a2e8e11841bec2377deabc767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alsoBackspace: 1
+  onPressBackButton: 1
+  sceneName: Title
 --- !u!1 &586244360
 GameObject:
   m_ObjectHideFlags: 0
@@ -17603,7 +17619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
-  onPressBackButton: 1
+  onPressButton: 0
   sceneName: End Screen
 --- !u!1 &1799032412
 GameObject:
