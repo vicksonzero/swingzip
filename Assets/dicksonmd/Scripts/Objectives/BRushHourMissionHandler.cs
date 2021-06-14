@@ -35,16 +35,17 @@ public class BRushHourMissionHandler : MonoBehaviour
     {
         if (!missionUI) missionUI = FindObjectOfType<BMissionUI>();
 
-        missionUI.timerLabel.gameObject.SetActive(false);
+        endTime = Time.time + 5 * 60;
+        missionUI.timerLabel.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (state == States.IN_PROGRESS)
+        if (state == States.AVAILABLE || state == States.PREPARE || state == States.IN_PROGRESS)
         {
-            var seconds = Time.time - endTime;
-            TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time - endTime);
+            var seconds = endTime - Time.time;
+            TimeSpan timeSpan = TimeSpan.FromSeconds(endTime - Time.time);
             var timeStr = String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
             var a = (
                 objectiveStr + "\n" +
@@ -76,6 +77,7 @@ public class BRushHourMissionHandler : MonoBehaviour
         };
         currentOrder = null;
         HideOffer();
+        missionUI.distanceUI.gameObject.SetActive(false);
     }
 
     public void ShowOffer(BDeliveryOrder order)
@@ -103,6 +105,8 @@ public class BRushHourMissionHandler : MonoBehaviour
 
         missionUI.startButton.onClick.AddListener(OnOrderPickedUp);
 
+        missionUI.distanceUI.target = order.destCollider.transform;
+        missionUI.distanceUI.gameObject.SetActive(true);
         missionUI.missionPanel.gameObject.SetActive(true);
     }
 
@@ -130,6 +134,7 @@ public class BRushHourMissionHandler : MonoBehaviour
 
         state = States.PREPARE;
         AddTriggersToOrder(currentOrder);
+        ToggleOrdersAvailable(false);
         HideOffer();
     }
     public void OnOrderDepart(Collider2D other)
@@ -143,7 +148,31 @@ public class BRushHourMissionHandler : MonoBehaviour
     {
         if (state != States.IN_PROGRESS) return;
 
+        UpdateScore(currentOrder);
+        currentOrder.DisableOrder();
         currentOrder = null;
+        missionUI.distanceUI.gameObject.SetActive(false);
         state = States.AVAILABLE;
+        ToggleOrdersAvailable(true);
+    }
+
+    public void UpdateScore(BDeliveryOrder order)
+    {
+        if (state != States.IN_PROGRESS) return;
+
+        float reward = order.reward;
+
+        score += reward;
+
+        missionUI.scoreToastSet.AddToast("+" + reward);
+    }
+
+    void ToggleOrdersAvailable(bool val)
+    {
+        var orders = FindObjectsOfType<BDeliveryOrder>();
+        foreach (var order in orders)
+        {
+            order.ToggleIcon(val);
+        }
     }
 }

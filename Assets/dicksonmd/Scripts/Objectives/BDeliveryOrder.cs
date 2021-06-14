@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BDeliveryOrder : MonoBehaviour
 {
+    public bool isOrderEnabled = true;
     public string itemName = "Item";
     [TextArea]
     public string itemDescription = "Item Description";
@@ -19,6 +20,7 @@ public class BDeliveryOrder : MonoBehaviour
     public BColliderHandlers2D destCollider;
     public BInteractionButton interactionIcon;
 
+    public float rewardPerDistance = 0;
     public float reward = 0;
 
     public float penaltyPerMiss = 0;
@@ -30,24 +32,29 @@ public class BDeliveryOrder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offerCollider.triggerEnter += (Collider2D other) =>
-        {
-            Debug.Log("triggerEnter");
-            var missionHandler = other.GetComponent<BRushHourMissionHandler>();
-            if (missionHandler)
-            {
-                missionHandler.OnOfferTriggerEnter(this);
-            }
-        };
-        offerCollider.triggerExit += (Collider2D other) =>
-        {
-            var missionHandler = other.GetComponent<BRushHourMissionHandler>();
-            if (missionHandler)
-            {
-                missionHandler.OnOfferTriggerExit(this);
-            }
-        };
+        offerCollider.triggerEnter += OnOfferTriggerEnter;
+        offerCollider.triggerExit += OnOfferTriggerExit;
+        reward = Mathf.Floor(rewardPerDistance * (departCollider.transform.position - destCollider.transform.position).magnitude);
     }
+
+    public void OnOfferTriggerEnter(Collider2D other)
+    {
+        Debug.Log("triggerEnter");
+        var missionHandler = other.GetComponent<BRushHourMissionHandler>();
+        if (missionHandler)
+        {
+            missionHandler.OnOfferTriggerEnter(this);
+        }
+    }
+    public void OnOfferTriggerExit(Collider2D other)
+    {
+        var missionHandler = other.GetComponent<BRushHourMissionHandler>();
+        if (missionHandler)
+        {
+            missionHandler.OnOfferTriggerExit(this);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -56,6 +63,7 @@ public class BDeliveryOrder : MonoBehaviour
     }
     void OnDrawGizmos()
     {
+        if (!isOrderEnabled) return;
         if (departCollider == null) return;
         if (destCollider == null) return;
 
@@ -83,6 +91,15 @@ public class BDeliveryOrder : MonoBehaviour
 
     public void ToggleIcon(bool val)
     {
-        interactionIcon.ToggleIcon(val);
+        interactionIcon.ToggleIcon(val && isOrderEnabled);
+    }
+
+    public void DisableOrder()
+    {
+        this.isOrderEnabled = false;
+
+        ToggleIcon(false);
+        offerCollider.triggerEnter -= OnOfferTriggerEnter;
+        offerCollider.triggerExit -= OnOfferTriggerExit;
     }
 }

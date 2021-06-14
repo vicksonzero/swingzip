@@ -33,6 +33,14 @@ public class BInteractionButton : MonoBehaviour
 
     public void ToggleIcon(bool val)
     {
+        if (!val && tween.IsPlaying())
+        {
+            tween.Rewind();
+        }
+        else
+        {
+            tween.Restart();
+        }
         icon.gameObject.SetActive(val);
     }
 }

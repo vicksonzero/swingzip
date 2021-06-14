@@ -19,6 +19,9 @@ public class BMissionUI : MonoBehaviour
     public Text timerLabel;
 
     public Camera destCamera;
+    public BDistanceUI distanceUI;
+
+    public BScoreToastSet scoreToastSet;
 
     // Start is called before the first frame update
     void Start()
