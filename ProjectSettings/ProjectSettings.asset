@@ -127,7 +127,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: In-dev 18
+  bundleVersion: In-dev 20
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -147,15 +147,15 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.dickson.md.SwingZip
-    Standalone: unity.DefaultCompany.Platformer E01
+    Standalone: com.dickson.md.SwingZip
     iPhone: com.Company.ProductName
     tvOS: com.Company.ProductName
   buildNumber:
-    Standalone: 0
+    Standalone: 20
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
-  AndroidBundleVersionCode: 2
+  AndroidBundleVersionCode: 20
   AndroidMinSdkVersion: 25
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BRushHourMissionHandler : MonoBehaviour
 {
+    public string objectiveStr = "Rush Hour Delivery";
     // IDLE -> AVAILABLE
     // AVAILABLE -> PREPARE
     // PREPARE -> IN_PROGRESS
@@ -46,8 +47,9 @@ public class BRushHourMissionHandler : MonoBehaviour
             TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time - endTime);
             var timeStr = String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
             var a = (
+                objectiveStr + "\n" +
                 timeStr + "\n" +
-                score
+                "$" + score
             );
             // Debug.Log(a);
             missionUI.timerLabel.text = a;
