@@ -84,6 +84,10 @@ public class BRushHourMissionHandler : MonoBehaviour
         missionUI.missionTitleLabel.text = order.itemName;
         missionUI.missionDescriptionLabel.text = order.itemDescription;
         missionUI.missionIconImage.sprite = order.itemIcon;
+        var pos = missionUI.destCamera.transform.position;
+        pos.x = order.destCollider.transform.position.x;
+        pos.y = order.destCollider.transform.position.y;
+        missionUI.destCamera.transform.position = pos;
 
         var record = PlayerPrefs.GetFloat("Record.gameTime", 3600);
         TimeSpan timeSpan = TimeSpan.FromSeconds(record);
