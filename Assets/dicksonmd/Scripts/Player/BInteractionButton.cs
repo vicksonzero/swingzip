@@ -43,4 +43,21 @@ public class BInteractionButton : MonoBehaviour
         }
         icon.gameObject.SetActive(val);
     }
+
+    public void ToggleIconDim(bool val)
+    {
+        if (!val && tween.IsPlaying())
+        {
+            tween.Rewind();
+            isJumping = val;
+        }
+        else
+        {
+            tween.Restart();
+            isJumping = val;
+        }
+        var color = icon.color;
+        color.r = color.g = color.b = (val ? 1 : 0.5f);
+        icon.color = color;
+    }
 }

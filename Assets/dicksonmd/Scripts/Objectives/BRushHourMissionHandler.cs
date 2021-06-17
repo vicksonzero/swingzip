@@ -117,13 +117,13 @@ public class BRushHourMissionHandler : MonoBehaviour
 
     public void AddTriggersToOrder(BDeliveryOrder order)
     {
-        order.departCollider.triggerExit += OnOrderDepart;
-        order.destCollider.triggerEnter += OnOrderArrive;
+        order.orderDepart += OnOrderDepart;
+        order.orderArrive += OnOrderArrive;
     }
     public void RemoveTriggersFromOrder(BDeliveryOrder order)
     {
-        order.departCollider.triggerExit -= OnOrderDepart;
-        order.destCollider.triggerEnter -= OnOrderArrive;
+        order.orderDepart -= OnOrderDepart;
+        order.orderArrive -= OnOrderArrive;
     }
 
 
@@ -135,18 +135,27 @@ public class BRushHourMissionHandler : MonoBehaviour
         state = States.PREPARE;
         AddTriggersToOrder(currentOrder);
         ToggleOrdersAvailable(false);
+        currentOrder.ToggleIconDim(true);
+
         HideOffer();
     }
-    public void OnOrderDepart(Collider2D other)
+    public void OnOrderDepart(BDeliveryOrder order)
     {
         if (state != States.PREPARE) return;
+        if (order != currentOrder) return;
 
         state = States.IN_PROGRESS;
+
+        if (order.destCollider.GetComponent<BDoor>())
+        {
+            order.interactionIcon.transform.position = order.destCollider.GetComponent<BDoor>().iconRoot.position;
+        }
     }
 
-    public void OnOrderArrive(Collider2D other)
+    public void OnOrderArrive(BDeliveryOrder order)
     {
         if (state != States.IN_PROGRESS) return;
+        if (order != currentOrder) return;
 
         UpdateScore(currentOrder);
         currentOrder.DisableOrder();
@@ -159,6 +168,7 @@ public class BRushHourMissionHandler : MonoBehaviour
     public void UpdateScore(BDeliveryOrder order)
     {
         if (state != States.IN_PROGRESS) return;
+        if (order != currentOrder) return;
 
         float reward = order.reward;
 
@@ -172,7 +182,7 @@ public class BRushHourMissionHandler : MonoBehaviour
         var orders = FindObjectsOfType<BDeliveryOrder>();
         foreach (var order in orders)
         {
-            order.ToggleIcon(val);
+            order.ToggleIconDim(val);
         }
     }
 }
