@@ -170,16 +170,13 @@ public class BPlayer : MonoBehaviour
                 currentState = EPlayerStates.SWINGING;
                 if (!playerSwing.wasComplete)
                 {
-                    if (playerZipToPoint.zipTargetCandidate != null)
-                    {
-                        Destroy(playerZipToPoint.zipTargetCandidate.gameObject);
-                        playerZipToPoint.zipTargetCandidate = null;
-                    }
+                    DestroyZipTargetNow();
                 }
                 if (controller.collisions.HaveCollision())
                 {
                     RemoveGrapple();
                 }
+                isHoldingJump = false;
                 playerSwing.UpdateSwing();
             }
         }
@@ -248,27 +245,28 @@ public class BPlayer : MonoBehaviour
 
         if (isHoldingJump && velocity.y < 0 && !playerSwing.IsShooting())
         {
-            Debug.Log("isHoldingJump");
-            Vector3 pos = touchingPointerPosition;
-            pos.z = 10.0f;
-            Vector2 pos2 = Camera.main.ScreenToWorldPoint(pos);
-
-            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(pos2, 0.5f);
-            if (!playerSwing.IsShooting() && !playerSwing.IsSwinging())
+            if (controller.collisions.HaveCollision()) // if touch solid places while holding jump, cancel smooth swinging transitions
             {
-                PutGrapple(pos2, hitColliders);
+                isHoldingJump = false;
             }
+            else
+            {
+                Debug.Log("isHoldingJump");
+                Vector3 pos = touchingPointerPosition;
+                pos.z = 10.0f;
+                Vector2 pos2 = Camera.main.ScreenToWorldPoint(pos);
 
-            isHoldingJump = false;
+                Collider2D[] hitColliders = Physics2D.OverlapCircleAll(pos2, 0.5f);
+                if (!playerSwing.IsShooting() && !playerSwing.IsSwinging())
+                {
+                    PutGrapple(pos2, hitColliders);
+                }
+
+            }
         }
 
         playerAnimator.SetBool("IsGround", controller.collisions.below);
-        playerAnimator.SetBool("IsAir", !(
-            controller.collisions.above ||
-            controller.collisions.below ||
-            controller.collisions.left ||
-            controller.collisions.right
-        ));
+        playerAnimator.SetBool("IsAir", !controller.collisions.HaveCollision());
         playerAnimator.SetBool("IsWall", (controller.collisions.left || controller.collisions.right) && !controller.collisions.below);
         playerAnimator.SetFloat("SpeedX", velocity.x);
         playerAnimator.SetBool("IsMovingX", velocity.x < -0.5f || velocity.x > 0.5f);
@@ -287,6 +285,7 @@ public class BPlayer : MonoBehaviour
         {
             playerBattery.OnTouchGround();
             FindObjectOfType<BDeliveryObjective>()?.AddLanding(1);
+            DestroyZipTargetNow();
         }
     }
 
@@ -576,6 +575,13 @@ public class BPlayer : MonoBehaviour
         {
             velocity.y = minJumpVelocity;
         }
+        if (isHoldingJump && playerSwing.IsShooting())
+        {
+            RemoveGrapple();
+            DestroyZipTargetNow();
+        }
+
+
         isHoldingJump = false;
     }
 
@@ -595,6 +601,11 @@ public class BPlayer : MonoBehaviour
     public void StartZipToPoint(BZipTarget zipTarget)
     {
         playerZipToPoint.StartZipToPoint(zipTarget);
+    }
+
+    public void DestroyZipTargetNow()
+    {
+        playerZipToPoint.DestroyZipTargetNow();
     }
 
     #endregion

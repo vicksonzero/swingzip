@@ -144,7 +144,16 @@ public class BPlayerZipToPoint : MonoBehaviour
         }
     }
 
-    public IEnumerator DestroyZipTargetAfter(float time)
+    public void DestroyZipTargetNow()
+    {
+        if (zipTargetCandidate != null)
+        {
+            if (targetDestroyTimer != null) StopCoroutine(targetDestroyTimer);
+            Destroy(zipTargetCandidate.gameObject);
+            zipTargetCandidate = null;
+        }
+    }
+    IEnumerator DestroyZipTargetAfter(float time)
     {
         yield return new WaitForSeconds(time);
         if (zipTargetCandidate != null)
