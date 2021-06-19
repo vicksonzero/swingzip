@@ -29,7 +29,6 @@ public class BOrderRadar : MonoBehaviour
         int i = 0;
         if (isRadarEnabled)
         {
-
             foreach (var order in orderSet)
             {
                 var dot = GetDot(i);
