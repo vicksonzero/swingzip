@@ -143,6 +143,12 @@ public class BRushHourMissionHandler : MonoBehaviour
         ToggleOrdersAvailable(false);
         currentOrder.ToggleIconDim(true);
 
+        if (currentOrder.destCollider.GetComponent<BDoor>())
+        {
+            currentOrder.interactionIcon.transform.position =
+                currentOrder.destCollider.GetComponent<BDoor>().iconRoot.position;
+        }
+
         orderRadar.isRadarEnabled = false;
         HideOffer();
     }
@@ -152,11 +158,6 @@ public class BRushHourMissionHandler : MonoBehaviour
         if (order != currentOrder) return;
 
         state = States.IN_PROGRESS;
-
-        if (order.destCollider.GetComponent<BDoor>())
-        {
-            order.interactionIcon.transform.position = order.destCollider.GetComponent<BDoor>().iconRoot.position;
-        }
     }
 
     public void OnOrderArrive(BDeliveryOrder order)

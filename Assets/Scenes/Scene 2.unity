@@ -14728,8 +14728,8 @@ MonoBehaviour:
   rechargeInParallel: 0
   isRechargeOnGround: 1
   isRechargeOnGroundOneImmediately: 1
-  isRechargeOnGroundAllAtOnce: 0
-  rechargeOnGroundTime: 0.4
+  isRechargeOnGroundAllAtOnce: 1
+  rechargeOnGroundTime: 0
   isRechargeAnytime: 0
   isRechargeAnytimeAtOnce: 1
   rechargeAnytimeTime: 0.1

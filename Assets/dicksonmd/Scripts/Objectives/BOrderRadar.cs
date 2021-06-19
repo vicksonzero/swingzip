@@ -65,6 +65,7 @@ public class BOrderRadar : MonoBehaviour
     {
         var order = collider.GetComponentInParent<BDeliveryOrder>();
         if (order == null) return;
+        if (!order.isOrderEnabled) return;
         if (order.offerCollider.GetComponent<Collider2D>() != collider) return;
 
         orderSet.Add(order);
