@@ -5,6 +5,7 @@ using UnityEngine;
 public class BDeliveryOrder : MonoBehaviour
 {
     public bool isOrderEnabled = true;
+    public bool isDrawGizmo = true;
     public string itemName = "Item";
     [TextArea]
     public string itemDescription = "Item Description";
@@ -51,7 +52,7 @@ public class BDeliveryOrder : MonoBehaviour
     public void OnOfferTriggerEnter(Collider2D other)
     {
         Debug.Log("triggerEnter");
-        var missionHandler = other.GetComponent<BRushHourMissionHandler>();
+        var missionHandler = other.gameObject.GetComponent<BRushHourMissionHandler>();
         if (missionHandler)
         {
             missionHandler.OnOfferTriggerEnter(this);
@@ -59,7 +60,7 @@ public class BDeliveryOrder : MonoBehaviour
     }
     public void OnOfferTriggerExit(Collider2D other)
     {
-        var missionHandler = other.GetComponent<BRushHourMissionHandler>();
+        var missionHandler = other.gameObject.GetComponent<BRushHourMissionHandler>();
         if (missionHandler)
         {
             missionHandler.OnOfferTriggerExit(this);
@@ -103,6 +104,7 @@ public class BDeliveryOrder : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        if (!isDrawGizmo) return;
         if (!isOrderEnabled) return;
         if (departCollider == null) return;
         if (destCollider == null) return;

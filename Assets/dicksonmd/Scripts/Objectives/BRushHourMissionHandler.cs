@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BRushHourMissionHandler : MonoBehaviour
 {
-    public string objectiveStr = "Rush Hour Delivery";
+    public string objectiveStr = "Rush Hour Delivery %COUNT_TARGETS%";
     // IDLE -> AVAILABLE
     // AVAILABLE -> PREPARE
     // PREPARE -> IN_PROGRESS
@@ -26,6 +26,9 @@ public class BRushHourMissionHandler : MonoBehaviour
 
     public BMissionUI missionUI;
 
+    public BOrderList orderList;
+    public BOrderRadar orderRadar;
+
     public float score = 0;
 
     public float endTime = 0;
@@ -34,6 +37,8 @@ public class BRushHourMissionHandler : MonoBehaviour
     void Start()
     {
         if (!missionUI) missionUI = FindObjectOfType<BMissionUI>();
+        if (!orderList) orderList = FindObjectOfType<BOrderList>();
+        if (!orderRadar) orderRadar = FindObjectOfType<BOrderRadar>();
 
         endTime = Time.time + 5 * 60;
         missionUI.timerLabel.gameObject.SetActive(true);
@@ -47,8 +52,9 @@ public class BRushHourMissionHandler : MonoBehaviour
             var seconds = endTime - Time.time;
             TimeSpan timeSpan = TimeSpan.FromSeconds(endTime - Time.time);
             var timeStr = String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
+            var objectiveStrFiltered = objectiveStr.Replace("%COUNT_TARGETS%", String.Format("({0:D}/{1:D})", orderList.orderCount - orderList.orderFinishedCount, orderList.orderCount));
             var a = (
-                objectiveStr + "\n" +
+                objectiveStrFiltered + "\n" +
                 timeStr + "\n" +
                 "$" + score
             );
@@ -137,6 +143,7 @@ public class BRushHourMissionHandler : MonoBehaviour
         ToggleOrdersAvailable(false);
         currentOrder.ToggleIconDim(true);
 
+        orderRadar.isRadarEnabled = false;
         HideOffer();
     }
     public void OnOrderDepart(BDeliveryOrder order)
@@ -159,10 +166,12 @@ public class BRushHourMissionHandler : MonoBehaviour
 
         UpdateScore(currentOrder);
         currentOrder.DisableOrder();
+        orderList.UpdateOrderCount();
         currentOrder = null;
         missionUI.distanceUI.gameObject.SetActive(false);
         state = States.AVAILABLE;
         ToggleOrdersAvailable(true);
+        orderRadar.isRadarEnabled = true;
     }
 
     public void UpdateScore(BDeliveryOrder order)
