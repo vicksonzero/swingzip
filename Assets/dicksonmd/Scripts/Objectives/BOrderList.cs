@@ -16,6 +16,7 @@ public class BOrderList : MonoBehaviour
     void Start()
     {
         nextUpdate = Time.time;
+        UpdateOrderCount();
     }
 
     // Update is called once per frame
