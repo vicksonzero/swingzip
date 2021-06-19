@@ -201,6 +201,7 @@ public class BPlayer : MonoBehaviour
                 Destroy(playerZipToPoint.zipTargetCandidate.gameObject);
                 playerZipToPoint.zipTargetCandidate = null;
             }
+            isHoldingJump = false;
         }
 
         if (currentState != EPlayerStates.SHOOTING)
