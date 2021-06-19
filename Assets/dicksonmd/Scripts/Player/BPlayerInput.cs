@@ -9,6 +9,7 @@ public class BPlayerInput : MonoBehaviour
     public BMobileJoystick mobileJoystick;
     public int touchingPointerId = -1;
 
+
     public InputObject latestInput = new InputObject();
 
     void Start()
@@ -48,6 +49,15 @@ public class BPlayerInput : MonoBehaviour
         {
             player.OnVirtualPointerDown(pointerData.position);
             touchingPointerId = pointerData.pointerId;
+        }
+    }
+
+    public void OnVirtualPointerMove(BaseEventData data)
+    {
+        PointerEventData pointerData = data as PointerEventData;
+        if (pointerData.pointerId == touchingPointerId && pointerData.button == PointerEventData.InputButton.Left)
+        {
+            player.OnVirtualPointerMove(pointerData.position);
         }
     }
 

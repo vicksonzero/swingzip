@@ -6447,7 +6447,7 @@ GameObject:
   - component: {fileID: 247666733}
   - component: {fileID: 247666732}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Mission Title Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7375,7 +7375,7 @@ GameObject:
   - component: {fileID: 286481183}
   - component: {fileID: 286481182}
   m_Layer: 5
-  m_Name: Text (5)
+  m_Name: Results Record Labels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7460,7 +7460,7 @@ GameObject:
   - component: {fileID: 286721674}
   - component: {fileID: 286721673}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Mission Icon Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8784,7 +8784,7 @@ GameObject:
   - component: {fileID: 341456087}
   - component: {fileID: 341456086}
   m_Layer: 5
-  m_Name: Text (3)
+  m_Name: Mission Record Labels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14467,6 +14467,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   shootingFallSpeedCap: 10
   isFloating: 0
+  isHoldingJump: 0
+  touchingPointerPosition: {x: 0, y: 0}
   playerBattery: {fileID: 0}
   grapplePrefab: {fileID: -1283763016822938459, guid: 25033951705a461498b99aaee51dc6af,
     type: 3}
@@ -14643,7 +14645,7 @@ MonoBehaviour:
   swingBoost: 5
   grappleShootTime: 220
   tangentSpeedKeepThreshold: 5
-  tangentSpeedKept: 0.32
+  tangentSpeedKept: 0.4
   canInterrupt: 1
   interruptByPointerUp: 1
 --- !u!114 &584929690
@@ -19364,7 +19366,7 @@ GameObject:
   - component: {fileID: 767490660}
   - component: {fileID: 767490659}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: High Score Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23326,7 +23328,7 @@ GameObject:
   - component: {fileID: 923993050}
   - component: {fileID: 923993049}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Mission Icon Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23955,7 +23957,7 @@ GameObject:
   - component: {fileID: 944435255}
   - component: {fileID: 944435254}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Results Mission Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29748,7 +29750,7 @@ GameObject:
   - component: {fileID: 1172303952}
   - component: {fileID: 1172303951}
   m_Layer: 5
-  m_Name: Text (4)
+  m_Name: Mission Record Values
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30049,7 +30051,7 @@ GameObject:
   - component: {fileID: 1181689919}
   - component: {fileID: 1181689918}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: Mission Descriptions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37344,7 +37346,7 @@ GameObject:
   - component: {fileID: 1462264472}
   - component: {fileID: 1462264471}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Mission Start Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40014,7 +40016,7 @@ GameObject:
   - component: {fileID: 1596712499}
   - component: {fileID: 1596712498}
   m_Layer: 5
-  m_Name: Text (3)
+  m_Name: Results Labels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44976,7 +44978,7 @@ GameObject:
   - component: {fileID: 1774232001}
   - component: {fileID: 1774232000}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: Results Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45781,7 +45783,7 @@ GameObject:
   - component: {fileID: 1799032415}
   - component: {fileID: 1799032414}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Touch Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45854,6 +45856,22 @@ MonoBehaviour:
         - m_Target: {fileID: 740272119}
           m_TargetAssemblyTypeName: 
           m_MethodName: OnJoystickPointerUp
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 584929687}
+          m_TargetAssemblyTypeName: BPlayerInput, Assembly-CSharp
+          m_MethodName: OnVirtualPointerMove
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -47002,7 +47020,7 @@ GameObject:
   - component: {fileID: 1822545508}
   - component: {fileID: 1822545507}
   m_Layer: 5
-  m_Name: Text (6)
+  m_Name: Results Record Values
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52060,7 +52078,7 @@ GameObject:
   - component: {fileID: 2031014889}
   - component: {fileID: 2031014888}
   m_Layer: 5
-  m_Name: Text (4)
+  m_Name: Results Values
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53621,7 +53639,7 @@ GameObject:
   - component: {fileID: 2075120205}
   - component: {fileID: 2075120204}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Mission Preview Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54633,8 +54651,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alsoBackspace: 1
-  onPressBackButton: 0
-  sceneName: 
+  onPressBackButton: 1
+  sceneName: Title
 --- !u!114 &2119921401
 MonoBehaviour:
   m_ObjectHideFlags: 0

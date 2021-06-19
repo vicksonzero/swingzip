@@ -1214,6 +1214,7 @@ GameObject:
   - component: {fileID: 1713401042}
   - component: {fileID: 1713401046}
   - component: {fileID: 1713401047}
+  - component: {fileID: 1713401048}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1341,6 +1342,21 @@ MonoBehaviour:
   button: {fileID: 1946333459}
   onPressButton: 1
   sceneName: Scene 2
+--- !u!114 &1713401048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713401041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe4097a2e8e11841bec2377deabc767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alsoBackspace: 0
+  onPressBackButton: 0
+  sceneName: 
 --- !u!1 &1921211161
 GameObject:
   m_ObjectHideFlags: 0

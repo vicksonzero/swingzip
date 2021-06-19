@@ -38,6 +38,8 @@ public class BPlayer : MonoBehaviour
     public float shootingFallSpeedCap = 2.5f;
 
     public bool isFloating = false;
+    public bool isHoldingJump = false;
+    public Vector2 touchingPointerPosition = new Vector2(0, 0);
 
     [HideInInspector]
     public BPlayerBattery playerBattery;
@@ -236,11 +238,28 @@ public class BPlayer : MonoBehaviour
                 var notEnoughSpeed = (haveXInput && (!sameXInput || Mathf.Abs(velocity.x) <= moveSpeed));
                 if (notEnoughSpeed)
                 {
-                    Debug.Log("Manual air control kick in: vx=" + velocity.x + " (need " + (directionalInput.x * moveSpeed) + ")");
+                    Debug.Log("Manual air control kick in");
+                    // Debug.Log("Manual air control kick in: vx=" + velocity.x + " (need " + (directionalInput.x * moveSpeed) + ")");
                     isFloating = false;
                 }
 
             }
+        }
+
+        if (isHoldingJump && velocity.y < 0 && !playerSwing.IsShooting())
+        {
+            Debug.Log("isHoldingJump");
+            Vector3 pos = touchingPointerPosition;
+            pos.z = 10.0f;
+            Vector2 pos2 = Camera.main.ScreenToWorldPoint(pos);
+
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(pos2, 0.5f);
+            if (!playerSwing.IsShooting() && !playerSwing.IsSwinging())
+            {
+                PutGrapple(pos2, hitColliders);
+            }
+
+            isHoldingJump = false;
         }
 
         playerAnimator.SetBool("IsGround", controller.collisions.below);
@@ -433,6 +452,7 @@ public class BPlayer : MonoBehaviour
         }
         else if (isOnWall || controller.collisions.below)
         {
+            touchingPointerPosition = inputPosition;
             OnJumpInputDown();
         }
         else if (!IsZippingToPoint())
@@ -470,6 +490,11 @@ public class BPlayer : MonoBehaviour
                 PutGrapple(pos2, hitColliders);
             }
         }
+    }
+
+    public void OnVirtualPointerMove(Vector2 inputPosition)
+    {
+        touchingPointerPosition = inputPosition;
     }
 
     public void OnVirtualPointerUp(Vector2 inputPosition)
@@ -524,6 +549,7 @@ public class BPlayer : MonoBehaviour
                 velocity.y = wallLeap.y * Mathf.Sqrt(gravity / -50f);
             }
             controller.collisions.left = controller.collisions.right = false;
+            isHoldingJump = true;
         }
         if (controller.collisions.below)
         {
@@ -540,6 +566,7 @@ public class BPlayer : MonoBehaviour
             {
                 velocity.y = maxJumpVelocity;
             }
+            isHoldingJump = true;
         }
     }
 
@@ -549,6 +576,7 @@ public class BPlayer : MonoBehaviour
         {
             velocity.y = minJumpVelocity;
         }
+        isHoldingJump = false;
     }
 
     public void PutGrapple(Vector2 pos, Collider2D[] hitColliders)
