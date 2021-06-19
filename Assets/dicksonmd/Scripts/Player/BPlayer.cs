@@ -193,7 +193,7 @@ public class BPlayer : MonoBehaviour
         }
 
 
-        if (!playerSwing.isSolidGrapple && playerSwing.IsComplete())
+        if (!playerSwing.isSolidGrapple && this.grapple != null && playerSwing.isActive && playerSwing.IsComplete())
         {
             RemoveGrapple();
             if (playerZipToPoint.zipTargetCandidate != null)
@@ -309,7 +309,7 @@ public class BPlayer : MonoBehaviour
     void UpdateMovement(bool isShooting)
     {
         DetermineTargetVelocity();
-        if (!isShooting) DoGravity();
+        DoGravity();
         DoWallSliding();
 
         DisplaceSelf(isShooting);
