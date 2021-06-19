@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BRushHourMissionHandler : MonoBehaviour
 {
-    public string objectiveStr = "Rush Hour Delivery %COUNT_TARGETS%";
+    public string objectiveStr = "Rush Hour Delivery %countTargets%";
     // IDLE -> AVAILABLE
     // AVAILABLE -> PREPARE
     // PREPARE -> IN_PROGRESS
@@ -52,7 +52,8 @@ public class BRushHourMissionHandler : MonoBehaviour
             var seconds = endTime - Time.time;
             TimeSpan timeSpan = TimeSpan.FromSeconds(endTime - Time.time);
             var timeStr = String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
-            var objectiveStrFiltered = objectiveStr.Replace("%COUNT_TARGETS%", String.Format("({0:D}/{1:D})", orderList.orderCount - orderList.orderFinishedCount, orderList.orderCount));
+            var countTargetsStr = String.Format("({0:D}/{1:D})", orderList.orderCount - orderList.orderFinishedCount, orderList.orderCount);
+            var objectiveStrFiltered = objectiveStr.Replace("%countTargets%", countTargetsStr);
             var a = (
                 objectiveStrFiltered + "\n" +
                 timeStr + "\n" +

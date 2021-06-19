@@ -14773,7 +14773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc36260ce9884cf4ea46835fac420a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectiveStr: Rush Hour Delivery %COUNT_TARGETS%
+  objectiveStr: Rush Hour Delivery %countTargets%
   state: 1
   currentOrder: {fileID: 0}
   missionUI: {fileID: 0}
