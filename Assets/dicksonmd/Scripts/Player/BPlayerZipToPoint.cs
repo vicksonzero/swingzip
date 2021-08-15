@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class BPlayerZipToPoint : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class BPlayerZipToPoint : MonoBehaviour
 
     [Header("Linkages")]
     BPlayer player;
+    public CinemachineTargetGroup targetGroup;
+    public CinemachineVirtualCamera groupCamera;
 
     [Header("Config")]
     public SOMovementLimit limits;
@@ -48,6 +51,8 @@ public class BPlayerZipToPoint : MonoBehaviour
     {
         Debug.Log("StartZipToPoint!");
         player.zipTarget = zipTarget;
+        targetGroup.AddMember(zipTarget.transform, 1, 5);
+        groupCamera.Priority = 20;
 
         // make t the subject of s=ut+0.5at^2, where u !=0
         // (-u + sqrt(2 a s + u^2))/a
@@ -92,6 +97,8 @@ public class BPlayerZipToPoint : MonoBehaviour
 
         if (Time.time > zipUntil)
         {
+            targetGroup.RemoveMember(player.zipTarget.transform);
+            groupCamera.Priority = 5;
             Destroy(player.zipTarget.gameObject);
             player.zipTarget = null;
 
@@ -102,6 +109,8 @@ public class BPlayerZipToPoint : MonoBehaviour
         {
             // snap to end point
             player.controller.Move(remainingDisplacement, player.directionalInput);
+            targetGroup.RemoveMember(player.zipTarget.transform);
+            groupCamera.Priority = 5;
             Destroy(player.zipTarget.gameObject);
             player.zipTarget = null;
         }
@@ -118,6 +127,8 @@ public class BPlayerZipToPoint : MonoBehaviour
             if (terminatingAtTime < Time.time)
             {
                 Destroy(player.zipTarget.gameObject);
+                targetGroup.RemoveMember(player.zipTarget.transform);
+                groupCamera.Priority = 5;
                 player.zipTarget = null;
             }
         }
