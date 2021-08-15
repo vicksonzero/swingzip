@@ -14782,16 +14782,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashTarget: {x: 0, y: 0, z: 0}
-  dashStartTime: 0
-  dashUntil: 0
   dashSpeedProgress: 0
-  dashSpeed: 0
-  dashDeceleration: 0
-  limits: {fileID: 11400000, guid: e3bb1785052dde443b6c6d00bdd1acf5, type: 2}
+  dashUntil: 0
+  limits: {fileID: 0}
   dashDistance: 4
-  dashTime: 0.4
-  dashEndSpeed: 6
+  dashTime: 0.5
+  dashStartSpeedCap: 4
+  dashAcceleration: 1000
+  dashSpeed: 13
+  dashEndSpeedCap: -1
+  dashDeceleration: 0
+  dashTimeBuffer: 0.1
   refundTime: 0.1
+  dashStartTime: 0
 --- !u!95 &584929691
 Animator:
   serializedVersion: 3
