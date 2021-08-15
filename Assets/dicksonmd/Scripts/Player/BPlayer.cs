@@ -483,6 +483,7 @@ public class BPlayer : MonoBehaviour
                     playerZipToPoint.zipTargetCandidate = null;
                     StartZipToPoint(zipTarget);
                     RemoveGrapple();
+                    StopDash();
                     currentState = EPlayerStates.ZIPPING_TO_POINT;
                 }
             }
