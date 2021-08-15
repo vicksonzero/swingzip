@@ -21,6 +21,8 @@ public class BPlayerZipToPoint : MonoBehaviour
 
     public float targetShowingTime = 1f;
     public Coroutine targetDestroyTimer = null;
+    public int groupCameraPriorityHigh = 20;
+    public int groupCameraPriorityLow = 5;
 
     public float minDistance = 5;
     public float maxDistance = 30;
@@ -52,7 +54,7 @@ public class BPlayerZipToPoint : MonoBehaviour
         Debug.Log("StartZipToPoint!");
         player.zipTarget = zipTarget;
         targetGroup.AddMember(zipTarget.transform, 1, 5);
-        groupCamera.Priority = 20;
+        groupCamera.Priority = groupCameraPriorityHigh;
 
         // make t the subject of s=ut+0.5at^2, where u !=0
         // (-u + sqrt(2 a s + u^2))/a
@@ -97,11 +99,7 @@ public class BPlayerZipToPoint : MonoBehaviour
 
         if (Time.time > zipUntil)
         {
-            targetGroup.RemoveMember(player.zipTarget.transform);
-            groupCamera.Priority = 5;
-            Destroy(player.zipTarget.gameObject);
-            player.zipTarget = null;
-
+            StopZipToPoint();
             return;
         }
 
@@ -109,10 +107,8 @@ public class BPlayerZipToPoint : MonoBehaviour
         {
             // snap to end point
             player.controller.Move(remainingDisplacement, player.directionalInput);
-            targetGroup.RemoveMember(player.zipTarget.transform);
-            groupCamera.Priority = 5;
-            Destroy(player.zipTarget.gameObject);
-            player.zipTarget = null;
+            StopZipToPoint();
+            return;
         }
         else
         {
@@ -126,10 +122,8 @@ public class BPlayerZipToPoint : MonoBehaviour
             }
             if (terminatingAtTime < Time.time)
             {
-                Destroy(player.zipTarget.gameObject);
-                targetGroup.RemoveMember(player.zipTarget.transform);
-                groupCamera.Priority = 5;
-                player.zipTarget = null;
+                StopZipToPoint();
+                return;
             }
         }
     }
@@ -153,6 +147,14 @@ public class BPlayerZipToPoint : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void StopZipToPoint()
+    {
+        groupCamera.Priority = groupCameraPriorityLow;
+        targetGroup.RemoveMember(player.zipTarget.transform);
+        Destroy(player.zipTarget.gameObject);
+        player.zipTarget = null;
     }
 
     public void DestroyZipTargetNow()

@@ -148,6 +148,7 @@ public class BPlayer : MonoBehaviour
         {
             currentState = EPlayerStates.DASHING;
             playerDash.UpdateDash();
+            isFloating = true;
             if (controller.collisions.HaveCollision())
             {
                 StopDash();

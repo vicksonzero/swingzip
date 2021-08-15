@@ -14728,6 +14728,8 @@ MonoBehaviour:
   groupCamera: {fileID: 473117518}
   limits: {fileID: 11400000, guid: 4e5688f147a4f5241967c7658a138a41, type: 2}
   targetShowingTime: 2
+  groupCameraPriorityHigh: 20
+  groupCameraPriorityLow: 5
   minDistance: 4
   maxDistance: 20
   zipStartSpeedCap: 3
