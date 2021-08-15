@@ -15,7 +15,7 @@ public class BScoreToast : MonoBehaviour
         mySequence.Join(transform.DOLocalMoveY(0, 0.5f).From(-100));
         mySequence.Join(transform.DOScale(1, 0.5f).From(5));
         mySequence.Append(label.DOFade(0, 1f).SetDelay(2));
-        mySequence.onComplete = () => { Destroy(gameObject); };
+        mySequence.onComplete = () => { Destroy(gameObject); /* TODO: use object pool */ };
     }
 
     // Update is called once per frame

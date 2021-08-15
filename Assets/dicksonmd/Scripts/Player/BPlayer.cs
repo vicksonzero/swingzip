@@ -43,7 +43,9 @@ public class BPlayer : MonoBehaviour
 
     [HideInInspector]
     public BPlayerBattery playerBattery;
-
+    public Transform footAnchor;
+    public ParticleSystem jumpPS;
+    public ParticleSystem landingPS;
     #endregion
     [Header("Swing")]
     public BGrapple grapplePrefab;
@@ -285,6 +287,7 @@ public class BPlayer : MonoBehaviour
         }
         if (!controller.collisionsOld.below && controller.collisions.below)
         {
+            Instantiate(landingPS, footAnchor.position, Quaternion.identity);
             playerBattery.OnTouchGround();
             FindObjectOfType<BDeliveryObjective>()?.AddLanding(1);
             DestroyZipTargetNow();
@@ -566,6 +569,7 @@ public class BPlayer : MonoBehaviour
             }
             else
             {
+                Instantiate(jumpPS, footAnchor.position, Quaternion.identity);
                 velocity.y = maxJumpVelocity;
             }
             isHoldingJump = true;
