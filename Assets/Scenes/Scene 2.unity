@@ -15276,6 +15276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectiveStr: Rush Hour Delivery %countTargets%
+  missionLengthSec: 20
   state: 0
   currentOrder: {fileID: 0}
   missionUI: {fileID: 0}
@@ -46263,7 +46264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
-  onPressButton: 0
+  onPressButton: 1
   sceneName: End Screen
 --- !u!1001 &1796439061
 PrefabInstance:

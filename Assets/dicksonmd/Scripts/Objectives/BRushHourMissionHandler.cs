@@ -6,6 +6,8 @@ using UnityEngine;
 public class BRushHourMissionHandler : MonoBehaviour
 {
     public string objectiveStr = "Rush Hour Delivery %countTargets%";
+    [Tooltip("In Seconds")]
+    public float missionLengthSec = 300;
     // IDLE -> AVAILABLE
     // AVAILABLE -> PREPARE
     // PREPARE -> IN_PROGRESS
@@ -40,12 +42,12 @@ public class BRushHourMissionHandler : MonoBehaviour
         if (!orderList) orderList = FindObjectOfType<BOrderList>();
         if (!orderRadar) orderRadar = FindObjectOfType<BOrderRadar>();
 
-        missionUI.timerLabel.gameObject.SetActive(false);
+        DisableUI(missionUI.timerLabel);
 
         missionUI.titlePanel.startButton.onClick.AddListener(OnStartButtonClicked);
         missionUI.countdownPanel.onCountdownFinished += OnCountdownFinished;
 
-        missionUI.titlePanel.gameObject.SetActive(true);
+        EnableUI(missionUI.titlePanel);
     }
 
     // Update is called once per frame
@@ -54,17 +56,24 @@ public class BRushHourMissionHandler : MonoBehaviour
         if (state == States.AVAILABLE || state == States.PREPARE || state == States.IN_PROGRESS)
         {
             var seconds = endTime - Time.time;
-            TimeSpan timeSpan = TimeSpan.FromSeconds(endTime - Time.time);
-            var timeStr = String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
-            var countTargetsStr = String.Format("({0:D}/{1:D})", orderList.orderCount - orderList.orderFinishedCount, orderList.orderCount);
-            var objectiveStrFiltered = objectiveStr.Replace("%countTargets%", countTargetsStr);
-            var a = (
-                objectiveStrFiltered + "\n" +
-                timeStr + "\n" +
-                "$" + score
-            );
-            // Debug.Log(a);
-            missionUI.timerLabel.text = a;
+            if (seconds > 0)
+            {
+                TimeSpan timeSpan = TimeSpan.FromSeconds(seconds);
+                var timeStr = String.Format("{0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
+                var countTargetsStr = String.Format("({0:D}/{1:D})", orderList.orderCount - orderList.orderFinishedCount, orderList.orderCount);
+                var objectiveStrFiltered = objectiveStr.Replace("%countTargets%", countTargetsStr);
+                var a = (
+                    objectiveStrFiltered + "\n" +
+                    timeStr + "\n" +
+                    "$" + score
+                );
+                // Debug.Log(a);
+                missionUI.timerLabel.text = a;
+            }
+            else
+            {
+                OnTimesUp();
+            }
         }
     }
 
@@ -88,7 +97,7 @@ public class BRushHourMissionHandler : MonoBehaviour
         };
         currentOrder = null;
         HideOffer();
-        missionUI.distanceUI.gameObject.SetActive(false);
+        DisableUI(missionUI.distanceUI);
     }
 
     public void ShowOffer(BDeliveryOrder order)
@@ -97,6 +106,7 @@ public class BRushHourMissionHandler : MonoBehaviour
         missionUI.missionTitleLabel.text = order.itemName;
         missionUI.missionDescriptionLabel.text = order.itemDescription;
         missionUI.missionIconImage.sprite = order.itemIcon;
+
         var pos = missionUI.destCamera.transform.position;
         pos.x = order.destCollider.transform.position.x;
         pos.y = order.destCollider.transform.position.y;
@@ -117,13 +127,13 @@ public class BRushHourMissionHandler : MonoBehaviour
         missionUI.startButton.onClick.AddListener(OnOrderPickedUp);
 
         missionUI.distanceUI.target = order.destCollider.transform;
-        missionUI.distanceUI.gameObject.SetActive(true);
-        missionUI.missionPanel.gameObject.SetActive(true);
+        EnableUI(missionUI.distanceUI);
+        EnableUI(missionUI.missionPanel);
     }
 
     public void HideOffer()
     {
-        missionUI.missionPanel.gameObject.SetActive(false);
+        DisableUI(missionUI.missionPanel);
     }
 
     public void AddTriggersToOrder(BDeliveryOrder order)
@@ -142,8 +152,8 @@ public class BRushHourMissionHandler : MonoBehaviour
     public void OnStartButtonClicked()
     {
         if (state != States.IDLE) return;
-        missionUI.titlePanel.gameObject.SetActive(false);
-        missionUI.countdownPanel.gameObject.SetActive(true);
+        DisableUI(missionUI.titlePanel);
+        EnableUI(missionUI.countdownPanel);
         missionUI.countdownPanel.StartCounter(3);
 
         state = States.COUNTDOWN;
@@ -154,10 +164,10 @@ public class BRushHourMissionHandler : MonoBehaviour
         Debug.Log("OnCountdownFinished");
         if (state != States.COUNTDOWN) return;
 
-        missionUI.countdownPanel.gameObject.SetActive(false);
+        DisableUI(missionUI.countdownPanel);
 
-        endTime = Time.time + 5 * 60;
-        missionUI.timerLabel.gameObject.SetActive(true);
+        endTime = Time.time + missionLengthSec;
+        EnableUI(missionUI.timerLabel);
         state = States.AVAILABLE;
     }
     public void OnOrderPickedUp()
@@ -195,10 +205,28 @@ public class BRushHourMissionHandler : MonoBehaviour
         currentOrder.DisableOrder();
         orderList.UpdateOrderCount();
         currentOrder = null;
-        missionUI.distanceUI.gameObject.SetActive(false);
+
+        DisableUI(missionUI.distanceUI);
+
         state = States.AVAILABLE;
         ToggleOrdersAvailable(true);
         orderRadar.isRadarEnabled = true;
+    }
+
+    public void OnTimesUp()
+    {
+        if (state == States.AVAILABLE || state == States.PREPARE || state == States.IN_PROGRESS)
+        {
+            currentOrder = null;
+            HideOffer();
+            DisableUI(missionUI.distanceUI);
+            // TODO: Perhaps even more clean up if the stage is reused for even more stuff, but otherwise just changing the state is already doing lots of work
+
+
+            EnableUI(missionUI.resultPanel);
+
+            state = States.RESULT;
+        }
     }
 
     public void UpdateScore(BDeliveryOrder order)
@@ -220,5 +248,14 @@ public class BRushHourMissionHandler : MonoBehaviour
         {
             order.ToggleIconDim(val);
         }
+    }
+
+    void EnableUI(Component behaviour)
+    {
+        behaviour.gameObject.SetActive(true);
+    }
+    void DisableUI(Component behaviour)
+    {
+        behaviour.gameObject.SetActive(false);
     }
 }
