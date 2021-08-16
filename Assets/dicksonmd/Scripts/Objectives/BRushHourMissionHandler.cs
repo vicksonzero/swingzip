@@ -14,13 +14,14 @@ public class BRushHourMissionHandler : MonoBehaviour
     public enum States
     {
         IDLE, // before rush hour actually starts, show some UI
+        COUNTDOWN, // before rush hour actually starts, show countdown
         AVAILABLE, // during rush hour, finding orders to pick up
         PREPARE, // picked up an order, not yet started running
         IN_PROGRESS, // running; on fulfilling an order, goes back to AVAILABLE
         RESULT, // time's up during any state. show ending screen with a confirm button
     };
     [Header("States")]
-    public States state = States.AVAILABLE; // default IDLE
+    public States state = States.IDLE; // default IDLE
 
     public BDeliveryOrder currentOrder = null;
 
@@ -32,7 +33,6 @@ public class BRushHourMissionHandler : MonoBehaviour
     public float score = 0;
 
     public float endTime = 0;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +40,12 @@ public class BRushHourMissionHandler : MonoBehaviour
         if (!orderList) orderList = FindObjectOfType<BOrderList>();
         if (!orderRadar) orderRadar = FindObjectOfType<BOrderRadar>();
 
-        endTime = Time.time + 5 * 60;
-        missionUI.timerLabel.gameObject.SetActive(true);
+        missionUI.timerLabel.gameObject.SetActive(false);
+
+        missionUI.titlePanel.startButton.onClick.AddListener(OnStartButtonClicked);
+        missionUI.countdownPanel.onCountdownFinished += OnCountdownFinished;
+
+        missionUI.titlePanel.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -135,6 +139,27 @@ public class BRushHourMissionHandler : MonoBehaviour
 
 
 
+    public void OnStartButtonClicked()
+    {
+        if (state != States.IDLE) return;
+        missionUI.titlePanel.gameObject.SetActive(false);
+        missionUI.countdownPanel.gameObject.SetActive(true);
+        missionUI.countdownPanel.StartCounter(3);
+
+        state = States.COUNTDOWN;
+    }
+
+    public void OnCountdownFinished()
+    {
+        Debug.Log("OnCountdownFinished");
+        if (state != States.COUNTDOWN) return;
+
+        missionUI.countdownPanel.gameObject.SetActive(false);
+
+        endTime = Time.time + 5 * 60;
+        missionUI.timerLabel.gameObject.SetActive(true);
+        state = States.AVAILABLE;
+    }
     public void OnOrderPickedUp()
     {
         if (state != States.AVAILABLE) return;

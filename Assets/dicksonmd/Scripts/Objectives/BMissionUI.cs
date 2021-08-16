@@ -22,6 +22,9 @@ public class BMissionUI : MonoBehaviour
     public BDistanceUI distanceUI;
 
     public BScoreToastSet scoreToastSet;
+    
+    public BTitlePanel titlePanel;
+    public BCountdownPanel countdownPanel;
 
     // Start is called before the first frame update
     void Start()
