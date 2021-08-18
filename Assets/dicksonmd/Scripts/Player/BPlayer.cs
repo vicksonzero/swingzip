@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
+using static BPlayerBattery;
 
 [RequireComponent(typeof(BPlayerController))]
 public class BPlayer : MonoBehaviour
@@ -80,6 +80,7 @@ public class BPlayer : MonoBehaviour
     public float wallRunSpeed = 4;
     public float wallSlideSpeedMax = 3;
     public float wallStickTime = .25f;
+    public ChargesUsedEvent onChargesUsed;
     float timeToWallUnstick;
     bool wallSliding;
     bool wallRunning;
@@ -136,7 +137,8 @@ public class BPlayer : MonoBehaviour
         playerZipToPoint = GetComponent<BPlayerZipToPoint>();
         playerDash = GetComponent<BPlayerDash>();
         playerBattery = GetComponent<BPlayerBattery>();
-
+        
+        playerBattery.onChargesUsed += (charges) => this.onChargesUsed(charges);
     }
 
     void Update()

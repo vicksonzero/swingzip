@@ -26,6 +26,8 @@ public class BMissionUI : MonoBehaviour
     public BTitlePanel titlePanel;
     public BCountdownPanel countdownPanel;
 
+    public BRushHourResultsPanel rushHourResultsPanel;
+
     // Start is called before the first frame update
     void Start()
     {

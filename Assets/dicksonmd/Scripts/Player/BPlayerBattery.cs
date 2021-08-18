@@ -27,6 +27,8 @@ public class BPlayerBattery : MonoBehaviour
 
     [Header("Linkage")]
     public BLivesMeter grappleShotCounter;
+    public ChargesUsedEvent onChargesUsed;
+    public delegate void ChargesUsedEvent(int charges);
 
     void Start()
     {
@@ -60,6 +62,7 @@ public class BPlayerBattery : MonoBehaviour
     public void RemoveGrappleBattery(int shots)
     {
         grappleShotCount -= shots;
+        onChargesUsed(shots);
         Debug.Log("RemoveGrappleShots (-" + shots + "=" + grappleShotCount + ")");
         grappleShotCounter.SetLives(grappleShotCount);
         OnGrappleUsed();
