@@ -9,6 +9,7 @@ public class BRushHourMissionHandler : MonoBehaviour
     public string objectiveStr = "Rush Hour Delivery %countTargets%";
     [Tooltip("In Seconds， Default 300s = 5min")]
     public float missionLengthSec = 300;
+    public int countdownAmount = 1;
     // IDLE -> AVAILABLE
     // AVAILABLE -> PREPARE
     // PREPARE -> IN_PROGRESS
@@ -174,7 +175,7 @@ public class BRushHourMissionHandler : MonoBehaviour
         if (state != States.IDLE) return;
         DisableUI(missionUI.titlePanel);
         EnableUI(missionUI.countdownPanel);
-        missionUI.countdownPanel.StartCounter(3);
+        missionUI.countdownPanel.StartCounter(countdownAmount);
 
         state = States.COUNTDOWN;
     }

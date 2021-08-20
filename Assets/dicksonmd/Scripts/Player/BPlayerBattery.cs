@@ -29,6 +29,9 @@ public class BPlayerBattery : MonoBehaviour
     public BLivesMeter grappleShotCounter;
     public ChargesUsedEvent onChargesUsed;
     public delegate void ChargesUsedEvent(int charges);
+    public ParticleSystem dischargePS;
+    public ParticleSystem dischargeBigPS;
+    public ParticleSystem rechargePS;
 
     void Start()
     {
@@ -50,11 +53,13 @@ public class BPlayerBattery : MonoBehaviour
     }
     public void TryAddGrappleBattery(int shots)
     {
+        bool batteryWasFull = BatteryIsFull();
         grappleShotCount += shots;
         if (grappleShotCount > grappleShotCountMax)
         {
             grappleShotCount = grappleShotCountMax;
         }
+        if (!batteryWasFull && rechargePS != null) rechargePS?.Play();
         Debug.Log("TryAddGrappleShots (+" + shots + "=" + grappleShotCount + ")");
         grappleShotCounter.SetLives(grappleShotCount);
     }
@@ -63,6 +68,14 @@ public class BPlayerBattery : MonoBehaviour
     {
         grappleShotCount -= shots;
         onChargesUsed(shots);
+        if (grappleShotCount > 0)
+        {
+            if (dischargePS != null) dischargePS.Play();
+        }
+        else
+        {
+            if (dischargeBigPS != null) dischargeBigPS.Play();
+        }
         Debug.Log("RemoveGrappleShots (-" + shots + "=" + grappleShotCount + ")");
         grappleShotCounter.SetLives(grappleShotCount);
         OnGrappleUsed();

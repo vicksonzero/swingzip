@@ -181,6 +181,12 @@ public class BPlayerSwing : MonoBehaviour
     {
         isSolidGrapple = isOnBackWall;
 
+        if (!isOnBackWall && player.playerBattery.HasBattery(1))
+        {
+            player.playerBattery.RemoveGrappleBattery(1);
+            isSolidGrapple = true;
+        }
+
         player.grapple.StartGrappleSprites(isSolidGrapple);
 
         grappleCompleteTime = Time.time + grappleShootTime / 1000f;
