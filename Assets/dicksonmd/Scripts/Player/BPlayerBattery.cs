@@ -14,15 +14,15 @@ public class BPlayerBattery : MonoBehaviour
 
     [Header("Config (OnGround)")]
     public bool isRechargeOnGround = true;
-    public bool isRechargeOnGroundOneImmediately = false;
-    public bool isRechargeOnGroundAllAtOnce = false;
-    public float rechargeOnGroundTime = 1f;
+    public bool isRechargeOnGroundOneImmediately = true;
+    public bool isRechargeOnGroundAllAtOnce = true;
+    public float rechargeOnGroundTime = 0f;
     Coroutine rechargeOnGroundTimer;
 
     [Header("Config (Anytime)")]
-    public bool isRechargeAnytime = true;
-    public bool isRechargeAnytimeAtOnce = false;
-    public float rechargeAnytimeTime = 5f;
+    public bool isRechargeAnytime = false;
+    public bool isRechargeAnytimeAtOnce = true;
+    public float rechargeAnytimeTime = 0.1f;
     Coroutine rechargeAnytimeTimer;
 
     [Header("Linkage")]

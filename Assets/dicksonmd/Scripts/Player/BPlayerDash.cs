@@ -17,12 +17,12 @@ public class BPlayerDash : MonoBehaviour
     [Header("Config")]
     public SOMovementLimit limits;
     public float dashDistance = 4;
-    public float dashTime = 0.4f; // seconds
+    public float dashTime = 0.5f; // seconds
 
 
-    public float dashStartSpeedCap = 3; // per second // dashStartSpeedLimit
-    public float dashAcceleration = 15; // per second squared
-    public float dashSpeed = 20; // per second
+    public float dashStartSpeedCap = 4; // per second // dashStartSpeedLimit
+    public float dashAcceleration = 1000; // per second squared
+    public float dashSpeed = 13; // per second
     [Tooltip("-1 means no speed limit")]
     public float dashEndSpeedCap = -1; // per second // dashEndSpeedLimit // TODO
     [Tooltip("per second squared")]

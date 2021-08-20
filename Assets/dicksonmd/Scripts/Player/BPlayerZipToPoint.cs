@@ -19,15 +19,15 @@ public class BPlayerZipToPoint : MonoBehaviour
     [Header("Config")]
     public SOMovementLimit limits;
 
-    public float targetShowingTime = 1f;
+    public float targetShowingTime = 2f;
     public Coroutine targetDestroyTimer = null;
     public int groupCameraPriorityHigh = 20;
     public int groupCameraPriorityLow = 5;
 
-    public float minDistance = 5;
-    public float maxDistance = 30;
-    public float zipStartSpeedCap = 1; // per second // zipStartSpeedLimit
-    public float zipAcceleration = 12; // per second squared
+    public float minDistance = 4;
+    public float maxDistance = 25;
+    public float zipStartSpeedCap = 3; // per second // zipStartSpeedLimit
+    public float zipAcceleration = 15; // per second squared
     public float zipSpeed = 20; // per second
     [Tooltip("-1 means no speed limit")]
     public float zipEndSpeedCap = -1; // per second // zipEndSpeedLimit // TODO

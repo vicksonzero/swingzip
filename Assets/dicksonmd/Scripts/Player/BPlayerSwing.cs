@@ -19,17 +19,17 @@ public class BPlayerSwing : MonoBehaviour
     [Header("Config")]
     public SOMovementLimit limits;
 
-    public float swingPull = 0.1f;
-    public float swingBoost = 0.4f;
+    public float swingPull = 6f;
+    public float swingBoost = 5f;
     [Tooltip("Common click time is 220ms")]
     public float grappleShootTime = 220; // in ms, TODO: Change to frames
 
-    public float tangentSpeedKeepThreshold = 2f;
+    public float tangentSpeedKeepThreshold = 5f;
     // when player is falling within grapple constraint, speed that is normal to travelling direction will be discarded.
     // Choose how much percent of speed is kept by rotating speed vector component into travelling direction
     [Tooltip("x percent speed will be added to swing speed per tick")]
     [Range(0, 1)]
-    public float tangentSpeedKept = 0.7f;
+    public float tangentSpeedKept = 0.4f;
 
     public bool canInterrupt = true;
     public bool interruptByPointerUp = true;

@@ -15254,6 +15254,8 @@ GameObject:
   - component: {fileID: 584929686}
   - component: {fileID: 584929685}
   - component: {fileID: 584929683}
+  - component: {fileID: 584929692}
+  - component: {fileID: 584929691}
   - component: {fileID: 584929682}
   - component: {fileID: 584929687}
   - component: {fileID: 584929681}
@@ -15262,8 +15264,6 @@ GameObject:
   - component: {fileID: 584929688}
   - component: {fileID: 584929693}
   - component: {fileID: 584929684}
-  - component: {fileID: 584929691}
-  - component: {fileID: 584929692}
   - component: {fileID: 584929694}
   - component: {fileID: 584929695}
   - component: {fileID: 584929696}
@@ -15296,6 +15296,7 @@ MonoBehaviour:
   accelerationTimeAirborne: 1.5
   accelerationTimeGrounded: 0.1
   moveSpeed: 6
+  sprintSpeed: 10
   maxFallingSpeed: 20
   velocity: {x: 0, y: 0, z: 0}
   shootingFallSpeedCap: 10
@@ -15455,7 +15456,7 @@ MonoBehaviour:
   groupCameraPriorityHigh: 20
   groupCameraPriorityLow: 5
   minDistance: 4
-  maxDistance: 20
+  maxDistance: 25
   zipStartSpeedCap: 3
   zipAcceleration: 15
   zipSpeed: 20

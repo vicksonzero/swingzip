@@ -21,13 +21,15 @@ public class BPlayer : MonoBehaviour
 
     [Header("Basic")]
     public float maxJumpHeight = 4;
-    public float minJumpHeight = 1;
-    public float timeToJumpApex = .4f;
-    public float accelerationTimeAirborne = 1f;
+    public float minJumpHeight = 4;
+    public float timeToJumpApex = .6f;
+    public float accelerationTimeAirborne = 1.5f;
     public float accelerationTimeGrounded = .1f;
     public float moveSpeed = 6;
+    public float sprintSpeed = 10;
 
-    public float maxFallingSpeed = 6;
+
+    public float maxFallingSpeed = 20;
 
     float gravity;
     float maxJumpVelocity;
@@ -35,7 +37,7 @@ public class BPlayer : MonoBehaviour
     public Vector3 velocity;
     float velocityXSmoothing;
 
-    public float shootingFallSpeedCap = 2.5f;
+    public float shootingFallSpeedCap = 10f;
 
     public bool isFloating = false;
     public bool isHoldingJump = false;
@@ -77,9 +79,9 @@ public class BPlayer : MonoBehaviour
     public Vector2 wallJumpOff;
     public Vector2 wallLeap;
 
-    public float wallRunSpeed = 4;
+    public float wallRunSpeed = 6;
     public float wallSlideSpeedMax = 3;
-    public float wallStickTime = .25f;
+    public float wallStickTime = .1f;
     public ChargesUsedEvent onChargesUsed;
     float timeToWallUnstick;
     bool wallSliding;
