@@ -15626,7 +15626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectiveStr: Rush Hour Delivery %countTargets%
   missionLengthSec: 180
-  countdownAmount: 1
+  countdownAmount: 3
   state: 0
   currentOrder: {fileID: 0}
   missionUI: {fileID: 0}
