@@ -27,6 +27,8 @@ public class BPlayer : MonoBehaviour
     public float accelerationTimeGrounded = .1f;
     public float moveSpeed = 6;
     public float sprintSpeed = 10;
+    public float sprintRunUp = 2f;
+    public float canSprint = 0;
 
 
     public float maxFallingSpeed = 20;
@@ -48,6 +50,7 @@ public class BPlayer : MonoBehaviour
     public Transform footAnchor;
     public ParticleSystem jumpPS;
     public ParticleSystem landingPS;
+    public ParticleSystem sprintPS;
     #endregion
     [Header("Swing")]
     public BGrapple grapplePrefab;
@@ -139,7 +142,7 @@ public class BPlayer : MonoBehaviour
         playerZipToPoint = GetComponent<BPlayerZipToPoint>();
         playerDash = GetComponent<BPlayerDash>();
         playerBattery = GetComponent<BPlayerBattery>();
-        
+
         playerBattery.onChargesUsed += (charges) => this.onChargesUsed(charges);
     }
 
@@ -238,13 +241,12 @@ public class BPlayer : MonoBehaviour
                 var haveXInput = inputSign != 0;
                 var sameXInput = inputSign == veloSign;
                 // Debug.Log("sameXInput: " + directionalInput.x + " " + inputSign + " vs " + veloSign);
-                // Debug.Log("notEnoughSpeed: " + haveXInput + "AND (" + sameXInput + " OR " + (Mathf.Abs(velocity.x) <= moveSpeed) + ")");
-
-                var notEnoughSpeed = (haveXInput && (!sameXInput || Mathf.Abs(velocity.x) <= moveSpeed));
+                // Debug.Log("notEnoughSpeed: " + haveXInput + "AND (" + sameXInput + " OR " + (Mathf.Abs(velocity.x) <= GetMoveSpeed()) + ")");
+                var notEnoughSpeed = (haveXInput && (!sameXInput || Mathf.Abs(velocity.x) <= GetMoveSpeed()));
                 if (notEnoughSpeed)
                 {
                     Debug.Log("Manual air control kick in");
-                    // Debug.Log("Manual air control kick in: vx=" + velocity.x + " (need " + (directionalInput.x * moveSpeed) + ")");
+                    // Debug.Log("Manual air control kick in: vx=" + velocity.x + " (need " + (directionalInput.x * GetMoveSpeed()) + ")");
                     isFloating = false;
                 }
 
@@ -295,6 +297,11 @@ public class BPlayer : MonoBehaviour
             playerBattery.OnTouchGround();
             FindObjectOfType<BDeliveryObjective>()?.AddLanding(1);
             DestroyZipTargetNow();
+        }
+
+        if (Mathf.Abs(velocity.x) >= sprintSpeed)
+        {
+            canSprint = sprintRunUp;
         }
     }
 
@@ -397,10 +404,38 @@ public class BPlayer : MonoBehaviour
         }
     }
 
+    public float GetMoveSpeed()
+    {
+        if (canSprint >= sprintRunUp)
+        {
+            return sprintSpeed;
+        }
+        return moveSpeed;
+    }
+
     private void DetermineTargetVelocity()
     {
-        float targetVelocityX = directionalInput.x * moveSpeed;
+        float targetVelocityX = directionalInput.x * GetMoveSpeed();
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (isFloating ? accelerationTimeAirborne : accelerationTimeGrounded));
+
+
+        if (Mathf.Abs(velocity.x) > moveSpeed * 0.7f)
+        {
+            if (controller.collisions.below) canSprint += Time.deltaTime;
+        }
+        else
+        {
+            canSprint = 0;
+        }
+
+        if (sprintPS.isPlaying && canSprint < sprintRunUp)
+        {
+            sprintPS.Stop();
+        }
+        else if (!sprintPS.isPlaying && canSprint >= sprintRunUp)
+        {
+            sprintPS.Play();
+        }
     }
 
     public void DoGravity()
