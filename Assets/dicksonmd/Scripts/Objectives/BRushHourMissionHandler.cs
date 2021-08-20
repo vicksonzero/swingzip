@@ -21,6 +21,7 @@ public class BRushHourMissionHandler : MonoBehaviour
         AVAILABLE, // during rush hour, finding orders to pick up
         PREPARE, // picked up an order, not yet started running
         IN_PROGRESS, // running; on fulfilling an order, goes back to AVAILABLE
+        RESULT_LOCKED, // time's up during any state. show ending screen with a confirm button
         RESULT, // time's up during any state. show ending screen with a confirm button
     };
     [Header("States")]
@@ -34,6 +35,8 @@ public class BRushHourMissionHandler : MonoBehaviour
     public BOrderRadar orderRadar;
 
     public float endTime = 0;
+    public float lockResultScreenForSec = 2;
+    public float lockResultScreenUntil = -1;
     // Start is called before the first frame update
 
     RushHourDeliveryResults metrics = new RushHourDeliveryResults();
@@ -82,6 +85,14 @@ public class BRushHourMissionHandler : MonoBehaviour
                 OnTimesUp();
             }
         }
+
+        if (state == States.RESULT_LOCKED)
+        {
+            if (Time.time >= lockResultScreenUntil)
+            {
+                UnlockResultNextButton();
+            }
+        }
     }
 
     public void OnOfferTriggerEnter(BDeliveryOrder order)
@@ -91,6 +102,7 @@ public class BRushHourMissionHandler : MonoBehaviour
         if (order == currentOrder) return;
 
         currentOrder = order;
+        GetComponent<BCargoSpace>().OnApproachPickupPoint(currentOrder.offerCollider.transform);
         ShowOffer(order);
     }
 
@@ -102,6 +114,7 @@ public class BRushHourMissionHandler : MonoBehaviour
             RemoveTriggersFromOrder(order);
             return;
         };
+        GetComponent<BCargoSpace>().OnLeavePickupPoint();
         currentOrder = null;
         HideOffer();
         DisableUI(missionUI.distanceUI);
@@ -196,6 +209,9 @@ public class BRushHourMissionHandler : MonoBehaviour
         }
 
         orderRadar.isRadarEnabled = false;
+
+
+        GetComponent<BCargoSpace>().OnOrderPickedUp(currentOrder);
         HideOffer();
     }
     public void OnOrderDepart(BDeliveryOrder order)
@@ -221,6 +237,8 @@ public class BRushHourMissionHandler : MonoBehaviour
         state = States.AVAILABLE;
         ToggleOrdersAvailable(true);
         orderRadar.isRadarEnabled = true;
+
+        GetComponent<BCargoSpace>().OnOrderArrive(order.destCollider.transform);
     }
 
     public void OnTimesUp()
@@ -237,10 +255,18 @@ public class BRushHourMissionHandler : MonoBehaviour
             missionUI.rushHourResultsPanel.SetResultLabels(metrics);
             missionUI.rushHourResultsPanel.SetRecordLabels(record);
 
+            DisableUI(missionUI.rushHourResultsPanel.nextButton);
             EnableUI(missionUI.rushHourResultsPanel);
 
-            state = States.RESULT;
+            lockResultScreenUntil = Time.time + lockResultScreenForSec;
+            state = States.RESULT_LOCKED;
         }
+    }
+
+    public void UnlockResultNextButton()
+    {
+        EnableUI(missionUI.rushHourResultsPanel.nextButton);
+        state = States.RESULT;
     }
 
     public void UpdateScore(BDeliveryOrder order)

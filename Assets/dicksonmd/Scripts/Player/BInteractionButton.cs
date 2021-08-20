@@ -60,4 +60,8 @@ public class BInteractionButton : MonoBehaviour
         color.r = color.g = color.b = (val ? 1 : 0.5f);
         icon.color = color;
     }
+    void OnDestroy()
+    {
+        DOTween.Kill(icon.transform);
+    }
 }
