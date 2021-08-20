@@ -428,11 +428,11 @@ public class BPlayer : MonoBehaviour
             canSprint = 0;
         }
 
-        if (sprintPS.isPlaying && canSprint < sprintRunUp)
+        if ((sprintPS.isPlaying && canSprint < sprintRunUp) || !controller.collisions.below)
         {
             sprintPS.Stop();
         }
-        else if (!sprintPS.isPlaying && canSprint >= sprintRunUp)
+        else if (!sprintPS.isPlaying && canSprint >= sprintRunUp && controller.collisions.below)
         {
             sprintPS.Play();
         }
