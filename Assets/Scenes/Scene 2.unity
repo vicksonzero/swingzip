@@ -36890,6 +36890,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2993941556231187483, guid: 7849976045f0857409333dde625bc94f,
         type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993941556231187483, guid: 7849976045f0857409333dde625bc94f,
+        type: 3}
       propertyPath: ShapeModule.m_Rotation.x
       value: 0
       objectReference: {fileID: 0}
