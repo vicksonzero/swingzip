@@ -105,7 +105,11 @@ public class BPlayerSwing : MonoBehaviour
         float signedAngle = Vector3.SignedAngle(displacementFromGrapple, (Vector2)player.velocity, Vector3.forward);
         // var dir = Quaternion.AngleAxis(90, Vector3.up) * displacementFromGrapple;
         var sign = directionalInput.x < 0 ? -1 : (directionalInput.x > 0 ? 1 : 0);
-        player.velocity += (Vector3)veloToGrapple.normalized * Mathf.Sign(signedAngle) * sign * swingBoost * Time.deltaTime;
+        var maxSpeed = player.GetMoveSpeed();
+        if (veloToGrapple.magnitude < maxSpeed) // don't add speed if already enough speed
+        {
+            player.velocity += (Vector3)veloToGrapple.normalized * Mathf.Sign(signedAngle) * sign * swingBoost * Time.deltaTime;
+        }
     }
     private void DoGrappleConstraint()
     {

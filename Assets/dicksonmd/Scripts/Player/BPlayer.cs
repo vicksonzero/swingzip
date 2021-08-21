@@ -281,6 +281,7 @@ public class BPlayer : MonoBehaviour
         playerAnimator.SetBool("IsWall", (controller.collisions.left || controller.collisions.right) && !controller.collisions.below);
         playerAnimator.SetFloat("SpeedX", velocity.x);
         playerAnimator.SetBool("IsMovingX", velocity.x < -0.5f || velocity.x > 0.5f);
+        playerAnimator.SetBool("IsSprinting", canSprint >= sprintRunUp);
         playerAnimator.SetFloat("SpeedY", velocity.y);
         playerAnimator.SetBool("IsMovingY", velocity.y < -0.01f || velocity.x > 0.01f);
         playerAnimator.SetBool("IsShooting", playerSwing.IsShooting());
