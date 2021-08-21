@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 951688280849176210}
   - component: {fileID: 951688280849176213}
   m_Layer: 8
-  m_Name: Sprint PS
+  m_Name: Run PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -918,7 +918,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.8
       minScalar: 0
       maxCurve:
         serializedVersion: 2

@@ -50,6 +50,7 @@ public class BPlayer : MonoBehaviour
     public Transform footAnchor;
     public ParticleSystem jumpPS;
     public ParticleSystem landingPS;
+    public ParticleSystem runPS;
     public ParticleSystem sprintPS;
     #endregion
     [Header("Swing")]
@@ -426,6 +427,17 @@ public class BPlayer : MonoBehaviour
         else
         {
             canSprint = 0;
+        }
+
+        
+
+        if ((runPS.isPlaying && canSprint >= sprintRunUp) || !controller.collisions.below)
+        {
+            runPS.Stop();
+        }
+        else if (!runPS.isPlaying && canSprint < sprintRunUp && controller.collisions.below)
+        {
+            runPS.Play();
         }
 
         if ((sprintPS.isPlaying && canSprint < sprintRunUp) || !controller.collisions.below)
