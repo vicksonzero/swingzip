@@ -144,7 +144,7 @@ public class BPlayer : MonoBehaviour
         playerDash = GetComponent<BPlayerDash>();
         playerBattery = GetComponent<BPlayerBattery>();
 
-        playerBattery.onChargesUsed += (charges) => this.onChargesUsed(charges);
+        playerBattery.onChargesUsed += (charges) => this.onChargesUsed?.Invoke(charges);
     }
 
     void Update()
@@ -430,24 +430,26 @@ public class BPlayer : MonoBehaviour
             canSprint = 0;
         }
 
-        
 
-        if ((runPS.isPlaying && canSprint >= sprintRunUp) || !controller.collisions.below)
+        if (runPS != null && sprintPS != null)
         {
-            runPS.Stop();
-        }
-        else if (!runPS.isPlaying && canSprint < sprintRunUp && controller.collisions.below)
-        {
-            runPS.Play();
-        }
+            if ((runPS.isPlaying && canSprint >= sprintRunUp) || !controller.collisions.below)
+            {
+                runPS.Stop();
+            }
+            else if (!runPS.isPlaying && canSprint < sprintRunUp && controller.collisions.below)
+            {
+                runPS.Play();
+            }
 
-        if ((sprintPS.isPlaying && canSprint < sprintRunUp) || !controller.collisions.below)
-        {
-            sprintPS.Stop();
-        }
-        else if (!sprintPS.isPlaying && canSprint >= sprintRunUp && controller.collisions.below)
-        {
-            sprintPS.Play();
+            if ((sprintPS.isPlaying && canSprint < sprintRunUp) || !controller.collisions.below)
+            {
+                sprintPS.Stop();
+            }
+            else if (!sprintPS.isPlaying && canSprint >= sprintRunUp && controller.collisions.below)
+            {
+                sprintPS.Play();
+            }
         }
     }
 

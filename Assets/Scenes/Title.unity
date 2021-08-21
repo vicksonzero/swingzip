@@ -286,7 +286,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play Sandbox
+  m_Text: Roaming mode
 --- !u!222 &142145322
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 2089763693}
   onPressButton: 1
-  sceneName: Scene 1
+  sceneName: Scene 3
 --- !u!114 &1713401047
 MonoBehaviour:
   m_ObjectHideFlags: 0
