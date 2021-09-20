@@ -16,23 +16,19 @@ Delivery over the rooftop and along ziplines. Grapples included!
 
 # Play here
 
-// Under construction
+https://vicksonzero.itch.io/swingzip-in-dev
 
 # How to play
 
-Touch screen:
 
-- **Tap-hold** to swing
-- **Double tap** to zip to point
-- **Tap shortly** to jump / air dash
-- **Swipe or use on-screen joystick** to fine-tune
+- WASD to Move
+- You cannot shoot the grapple while on ground
+- Click the screen to jump from the ground 
+- When you are in the air,
+  - Click-hold to swing
+  - Click shortly to air-dash
+  - Double click when in air to zip-to-point
 
-PC:
-
-- **Click-hold** to swing
-- **Double-click** to zip to point
-- **Click shortly** to jump / air dash
-- **WASD / Arrows** to fine-tune
 
 
 # Roadmap

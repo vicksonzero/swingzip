@@ -4,4 +4,6 @@ using UnityEngine;
 
 public abstract class IStep : ScriptableObject
 {
+    public string label;
+
 }

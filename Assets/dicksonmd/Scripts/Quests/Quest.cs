@@ -10,17 +10,8 @@ public class Quest : ScriptableObject
 
     [Tooltip("Placeholder for a condition object")]
     public string condition = ""; // TODO: point to a condition object
-    public Line[] script = new[] {
-        new Line() { label = "Step1", step = null, nextLine = "" }
-    };
-
-    [System.Serializable]
-    public struct Line
-    {
-        public string label;
-        public IStep step;
-        
-        [Tooltip("Name of next line. Keep empty to default to next immediate line")]
-        public string nextLine;
-    }
+    
+    
+    [HideInInspector]
+    public IStep[] script;
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TitleEvent", menuName = "Quest System/Events/Title Event", order = 51)]
 public class TitleEvent : IEvent
 {
+    [Header("TitleEvent")]
     [Tooltip("Will be shown if not empty")]
     public string title = "";
 

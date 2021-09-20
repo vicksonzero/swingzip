@@ -6,6 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class DialogEvent : IEvent
 {
+    [Header("DialogEvent")]
     public DialogData data;
 
 
