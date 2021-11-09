@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class BPlayerController : BRaycastController
 {
@@ -83,17 +85,17 @@ public class BPlayerController : BRaycastController
                 // Debug.DrawLine(hit.transform.position, hit.transform.position + hit.transform.up);
                 // Debug.DrawLine(hit.point, hit.point + hit.normal);
 
-                // if (hit.collider.tag == "Through" && Vector3.Angle(hit.normal, hit.transform.up) >= 85)
-                // {
-                //     continue;
-                // }
-
-
-                if (hit.collider.tag == "Through")
+                if (hit.collider.tag == "Through" && (playerInput.y <= -1f || moveAmount.y > 0 || Vector3.Angle(hit.normal, hit.transform.up) >= 85))
                 {
-                    // old one-way platforms. can only handle horizontal
                     continue;
                 }
+
+
+                // if (hit.collider.tag == "Through")
+                // {
+                //     // old one-way platforms. can only handle horizontal
+                //     continue;
+                // }
 
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
@@ -136,38 +138,32 @@ public class BPlayerController : BRaycastController
         float directionY = Mathf.Sign(moveAmount.y);
         float rayLength = Mathf.Abs(moveAmount.y) + skinWidth;
 
+        List<RaycastHit2D> hitList = new List<RaycastHit2D>();
         for (int i = 0; i < verticalRayCount; i++)
         {
-
             Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
             rayOrigin += Vector2.right * (verticalRaySpacing * i + moveAmount.x);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
 
             Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
+            if (hit) hitList.Add(hit);
+        }
 
-            if (hit)
+
+        if (hitList.Count() > 0)
+        {
+            var hit = hitList.Aggregate((hit, bestHit) => (hit.distance < bestHit.distance ? hit : bestHit));
+            hitList.ForEach(hit =>
             {
-                if (hit.collider.tag == "Through")
-                {
-                    // Debug.Log("Through directionY " + directionY + " " + playerInput.y);
-                    // old one-way platforms. can only handle horizontal
-                    if (directionY == 1 || hit.distance == 0)
-                    {
-                        continue;
-                    }
-                    if (collisions.fallingThroughPlatform)
-                    {
-                        collisions.fallingThroughPlatform = false;
-                        continue;
-                    }
-                    if (playerInput.y <= -1f)
-                    {
-                        collisions.fallingThroughPlatform = true;
-                        //Invoke("ResetFallingThroughPlatform",.5f);
-                        continue;
-                    }
-                }
-
+                Debug.Log("d  " + hit.distance);
+            });
+            bool doStop = hitList.Any(hit => (hit.distance > 0)) && !hitList.Any(hit => (hit.distance == 0));
+            if (hit.collider.tag == "Through" && (playerInput.y <= -1f || directionY == 1))
+            {
+                doStop = false;
+            }
+            if (doStop)
+            {
                 moveAmount.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
 
@@ -180,6 +176,7 @@ public class BPlayerController : BRaycastController
                 collisions.above = directionY == 1;
             }
         }
+
 
         if (collisions.climbingSlope)
         {
