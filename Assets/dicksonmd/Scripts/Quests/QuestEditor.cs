@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -210,3 +211,4 @@ public class QuestDataEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif
