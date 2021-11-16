@@ -6,6 +6,7 @@ public class BDeliveryOrder : MonoBehaviour
 {
     public bool isOrderEnabled = true;
     public bool isDrawGizmo = true;
+    public string key = "";
     public string itemName = "Item";
     [TextArea]
     public string itemDescription = "Item Description";
@@ -52,16 +53,16 @@ public class BDeliveryOrder : MonoBehaviour
     public void OnOfferTriggerEnter(Collider2D other)
     {
         Debug.Log("triggerEnter");
-        var missionHandler = other.gameObject.GetComponent<BRushHourMissionHandler>();
-        if (missionHandler)
+        var missionHandler = other.gameObject.GetComponent<IOrderHandler>();
+        if (missionHandler != null)
         {
             missionHandler.OnOfferTriggerEnter(this);
         }
     }
     public void OnOfferTriggerExit(Collider2D other)
     {
-        var missionHandler = other.gameObject.GetComponent<BRushHourMissionHandler>();
-        if (missionHandler)
+        var missionHandler = other.gameObject.GetComponent<IOrderHandler>();
+        if (missionHandler != null)
         {
             missionHandler.OnOfferTriggerExit(this);
         }

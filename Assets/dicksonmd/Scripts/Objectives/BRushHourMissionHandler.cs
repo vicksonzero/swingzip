@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static BRushHourResultsPanel;
 
-public class BRushHourMissionHandler : MonoBehaviour
+public class BRushHourMissionHandler : MonoBehaviour, IOrderHandler
 {
     public string objectiveStr = "Rush Hour Delivery %countTargets%";
     [Tooltip("In Seconds， Default 300s = 5min")]
@@ -96,7 +96,7 @@ public class BRushHourMissionHandler : MonoBehaviour
         }
     }
 
-    public void OnOfferTriggerEnter(BDeliveryOrder order)
+    void IOrderHandler.OnOfferTriggerEnter(BDeliveryOrder order)
     {
         Debug.Log("OnOfferTriggerEnter");
         if (state != States.AVAILABLE) return;
@@ -107,7 +107,7 @@ public class BRushHourMissionHandler : MonoBehaviour
         ShowOffer(order);
     }
 
-    public void OnOfferTriggerExit(BDeliveryOrder order)
+    void IOrderHandler.OnOfferTriggerExit(BDeliveryOrder order)
     {
         if (state != States.AVAILABLE) return;
         if (order != currentOrder)

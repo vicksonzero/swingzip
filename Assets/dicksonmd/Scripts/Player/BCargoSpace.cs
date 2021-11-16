@@ -24,24 +24,56 @@ public class BCargoSpace : MonoBehaviour
 
     }
 
+    private BCargoFollower GetVacantDrone()
+    {
+        // TODO: get a vacant drone instead of default to #0
+        return drones[0];
+    }
+
+    private BCargoFollower GetAssignedDrone(Transform t)
+    {
+        // TODO: get assigned drone instead of default to #0
+        return drones[0];
+    }
+
+
     public void OnApproachPickupPoint(Transform pickupPoint)
     {
-        drones[0].FollowTarget(pickupPoint);
+        // TODO: set self state to parked state, and coordinate all child drones
+        var drone = GetVacantDrone();
+        if (drone == null) return;
+
+        // TODO: store this drone in holder
+
+        drone.FollowTarget(pickupPoint);
     }
+
     public void OnLeavePickupPoint()
     {
-        drones[0].FollowTargetAfterTime(cargoAnchor, Time.time + 0.7f);
+        // TODO: set self state to parked state, and coordinate all child drones
+        for (int i = 0; i < drones.Length; i++)
+        {
+            drones[i].FollowTargetAfterTime(cargoAnchor, Time.time + 0.7f);
+        }
     }
+
     public void OnOrderPickedUp(BDeliveryOrder order)
     {
-        drones[0].AttachItem(order.itemIcon);
-        drones[0].FollowTarget(cargoAnchor);
+        // TODO: get drone from holder instead of getting a vacant one agin
+        var drone = GetVacantDrone();
+        if (drone == null) return;
+
+        drone.AttachItem(order.itemIcon);
+        drone.FollowTarget(cargoAnchor);
     }
 
     public void OnOrderArrive(Transform dropOffPoint)
     {
-        drones[0].FollowTarget(dropOffPoint);
-        drones[0].RemoveItemsAfterTime(Time.time + 0.5f);
-        drones[0].FollowTargetAfterTime(cargoAnchor, Time.time + 1.5f);
+        var drone = GetAssignedDrone(dropOffPoint);
+        if (drone == null) return;
+
+        drone.FollowTarget(dropOffPoint);
+        drone.RemoveItemsAfterTime(Time.time + 0.5f);
+        drone.FollowTargetAfterTime(cargoAnchor, Time.time + 1.5f);
     }
 }
