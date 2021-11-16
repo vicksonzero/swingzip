@@ -37456,7 +37456,7 @@ PrefabInstance:
     - target: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
         type: 3}
       propertyPath: npcName
-      value: Deborah
+      value: Joyce
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 046c9ff8eda9b2141803cbd1c85d52f7, type: 3}
@@ -43465,7 +43465,7 @@ PrefabInstance:
     - target: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
         type: 3}
       propertyPath: npcName
-      value: Debra
+      value: Violet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 046c9ff8eda9b2141803cbd1c85d52f7, type: 3}
@@ -60407,7 +60407,7 @@ PrefabInstance:
     - target: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
         type: 3}
       propertyPath: npcName
-      value: Adam
+      value: Richard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 046c9ff8eda9b2141803cbd1c85d52f7, type: 3}
@@ -60654,7 +60654,7 @@ PrefabInstance:
     - target: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
         type: 3}
       propertyPath: npcName
-      value: Dylan
+      value: Charlotte
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 046c9ff8eda9b2141803cbd1c85d52f7, type: 3}
