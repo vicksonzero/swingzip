@@ -193,6 +193,7 @@ MonoBehaviour:
   npcName: Isabella
   npcKey: 
   npcSprite: {fileID: 3127339264957366466}
+  nameTag: {fileID: 7353383178088773551}
 --- !u!1 &5708957319400948688
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
-public class BColliderHandlers2D : MonoBehaviour
+public class BNpcTrigger2D : MonoBehaviour
 {
     public delegate void TriggerEnterEvent(Collider2D collider);
     public TriggerEnterEvent triggerEnter;
