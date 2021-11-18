@@ -541,19 +541,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 23502418}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-25
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1207598159}
-  departCollider: {fileID: 1207598159}
-  destCollider: {fileID: 737817267}
+  fromNpc: {fileID: 1207598161}
+  toNpc: {fileID: 737817269}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -561,6 +559,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 4
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!4 &33575984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
@@ -888,19 +888,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 39347233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-54
   itemName: Angle Grinder
   itemDescription: Pain is Temporary; Glory is Forever
   itemIcon: {fileID: 21300000, guid: 91e2d232c182a864995fff55963e35a9, type: 3}
-  offerCollider: {fileID: 1182010927}
-  departCollider: {fileID: 1182010927}
-  destCollider: {fileID: 1189731266}
+  fromNpc: {fileID: 1182010929}
+  toNpc: {fileID: 1189731268}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -908,6 +906,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 8
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &39888309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,19 +1631,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 55974001}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-69
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1316299938}
-  departCollider: {fileID: 1316299938}
-  destCollider: {fileID: 239742312}
+  fromNpc: {fileID: 1316299940}
+  toNpc: {fileID: 239742314}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -1651,6 +1649,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 8
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &57309601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,19 +2213,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 89123505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-78
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1771832664}
-  departCollider: {fileID: 1771832664}
-  destCollider: {fileID: 2017643179}
+  fromNpc: {fileID: 1771832666}
+  toNpc: {fileID: 2017643181}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -2233,6 +2231,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 10
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &94944535
 GameObject:
   m_ObjectHideFlags: 0
@@ -2273,19 +2273,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 94944535}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-16
   itemName: Glass Mug
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 83e491541ac3e6e4aad0f7800d4ab3ad, type: 3}
-  offerCollider: {fileID: 484095855}
-  departCollider: {fileID: 484095855}
-  destCollider: {fileID: 1305954777}
+  fromNpc: {fileID: 484095857}
+  toNpc: {fileID: 1305954779}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -2293,6 +2291,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 13
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &97303343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2743,19 +2743,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 118384442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-36
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 125690059}
-  departCollider: {fileID: 125690059}
-  destCollider: {fileID: 2130906011}
+  fromNpc: {fileID: 125690061}
+  toNpc: {fileID: 2130906013}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -2763,6 +2761,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 11
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &120280817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3094,19 +3094,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 124739151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-23
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1308971601}
-  departCollider: {fileID: 1308971601}
-  destCollider: {fileID: 1900447273}
+  fromNpc: {fileID: 1308971603}
+  toNpc: {fileID: 1900447275}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -3114,6 +3112,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 17
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1001 &125690056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3253,6 +3253,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &125690061 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 125690056}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125690058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &136140988
 GameObject:
   m_ObjectHideFlags: 0
@@ -4486,19 +4498,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 177607990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-67
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1019352847}
-  departCollider: {fileID: 1019352847}
-  destCollider: {fileID: 1771832664}
+  fromNpc: {fileID: 1019352849}
+  toNpc: {fileID: 1771832666}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -4506,6 +4516,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 16
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &186249469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5576,6 +5588,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &217263200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 217263195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217263197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &218822681
 GameObject:
   m_ObjectHideFlags: 0
@@ -6209,19 +6233,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 233227393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-1
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 508217704}
-  departCollider: {fileID: 508217704}
-  destCollider: {fileID: 2130906011}
+  fromNpc: {fileID: 508217706}
+  toNpc: {fileID: 2130906013}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -6229,6 +6251,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 10
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &236013913
 GameObject:
   m_ObjectHideFlags: 0
@@ -6476,6 +6500,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &239742314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 239742309}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239742311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &242466381
 GameObject:
   m_ObjectHideFlags: 0
@@ -7428,19 +7464,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 275543475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-58
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 2129934214}
-  departCollider: {fileID: 2129934214}
-  destCollider: {fileID: 1983007846}
+  fromNpc: {fileID: 2129934216}
+  toNpc: {fileID: 1983007848}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -7448,6 +7482,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 9
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &286481180
 GameObject:
   m_ObjectHideFlags: 0
@@ -7648,19 +7684,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 306104637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-6
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 2142443867}
-  departCollider: {fileID: 2142443867}
-  destCollider: {fileID: 732903517}
+  fromNpc: {fileID: 2142443869}
+  toNpc: {fileID: 732903519}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -7668,6 +7702,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 12
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &312479159
 GameObject:
   m_ObjectHideFlags: 0
@@ -7987,19 +8023,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 315182832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-30
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 2130906011}
-  departCollider: {fileID: 2130906011}
-  destCollider: {fileID: 1305954777}
+  fromNpc: {fileID: 2130906013}
+  toNpc: {fileID: 1305954779}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -8007,6 +8041,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 6
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!114 &322003961 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1757716465918192704, guid: d6bd346e7f915be4f96b566049cf2842,
@@ -8059,19 +8095,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 322735017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-79
   itemName: Tea Cup
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 88e055ef85eb7164b98832f9b37e1854, type: 3}
-  offerCollider: {fileID: 1223363883}
-  departCollider: {fileID: 1223363883}
-  destCollider: {fileID: 651131616}
+  fromNpc: {fileID: 1223363885}
+  toNpc: {fileID: 651131618}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -8079,6 +8113,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 11
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &323917268
 GameObject:
   m_ObjectHideFlags: 0
@@ -8240,19 +8276,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 327056416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-13
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 484095855}
-  departCollider: {fileID: 484095855}
-  destCollider: {fileID: 2072699555}
+  fromNpc: {fileID: 484095857}
+  toNpc: {fileID: 2072699557}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -8260,6 +8294,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 14
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &327951440
 GameObject:
   m_ObjectHideFlags: 0
@@ -9019,19 +9055,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 355345836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-46
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 217263198}
-  departCollider: {fileID: 217263198}
-  destCollider: {fileID: 239742312}
+  fromNpc: {fileID: 217263200}
+  toNpc: {fileID: 239742314}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -9039,6 +9073,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 11
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1001 &355964773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9178,6 +9214,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &355964778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 355964773}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355964775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &356446548
 GameObject:
   m_ObjectHideFlags: 0
@@ -9218,19 +9266,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 356446548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-77
   itemName: Calculator
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: a50a13fc398b8d54ca65bdfdbd94eeb7, type: 3}
-  offerCollider: {fileID: 1223363883}
-  departCollider: {fileID: 1223363883}
-  destCollider: {fileID: 579908776}
+  fromNpc: {fileID: 1223363885}
+  toNpc: {fileID: 579908778}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -9238,6 +9284,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 14
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &358809838
 GameObject:
   m_ObjectHideFlags: 0
@@ -9278,19 +9326,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 358809838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-80
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1189731266}
-  departCollider: {fileID: 1189731266}
-  destCollider: {fileID: 239742312}
+  fromNpc: {fileID: 1189731268}
+  toNpc: {fileID: 239742314}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -9298,6 +9344,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 8
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &360464618
 GameObject:
   m_ObjectHideFlags: 0
@@ -10212,19 +10260,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 406213403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-71
   itemName: Bizzare Music Instrument
   itemDescription: Item Descriptions
   itemIcon: {fileID: 21300000, guid: d5164738c296d5c419221dac04efdb45, type: 3}
-  offerCollider: {fileID: 1189731266}
-  departCollider: {fileID: 1189731266}
-  destCollider: {fileID: 508217704}
+  fromNpc: {fileID: 1189731268}
+  toNpc: {fileID: 508217706}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -10232,6 +10278,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 14
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &410051896
 GameObject:
   m_ObjectHideFlags: 0
@@ -10272,19 +10320,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 410051896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-0
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 217263198}
-  departCollider: {fileID: 217263198}
-  destCollider: {fileID: 579908776}
+  fromNpc: {fileID: 217263200}
+  toNpc: {fileID: 579908778}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -10292,6 +10338,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 12
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &413074819
 GameObject:
   m_ObjectHideFlags: 0
@@ -11944,19 +11992,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 473744193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-66
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1019352847}
-  departCollider: {fileID: 1019352847}
-  destCollider: {fileID: 2130906011}
+  fromNpc: {fileID: 1019352849}
+  toNpc: {fileID: 2130906013}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -11964,6 +12010,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 11
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1001 &484095852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12103,6 +12151,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &484095857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 484095852}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484095854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &485196800
 GameObject:
   m_ObjectHideFlags: 0
@@ -12472,6 +12532,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &508217706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 508217701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508217703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &509178542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13121,19 +13193,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 521239217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-44
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 484095855}
-  departCollider: {fileID: 484095855}
-  destCollider: {fileID: 1771832664}
+  fromNpc: {fileID: 484095857}
+  toNpc: {fileID: 1771832666}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -13141,6 +13211,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 3
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &523659338
 GameObject:
   m_ObjectHideFlags: 0
@@ -13435,19 +13507,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 539227545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-49
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1207598159}
-  departCollider: {fileID: 1207598159}
-  destCollider: {fileID: 508217704}
+  fromNpc: {fileID: 1207598161}
+  toNpc: {fileID: 508217706}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -13455,6 +13525,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 4
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &542767535
 GameObject:
   m_ObjectHideFlags: 0
@@ -13799,19 +13871,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 556603884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-63
   itemName: Writing board
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 1910ca6e3ce2d0b4d92f0c5e4661ba10, type: 3}
-  offerCollider: {fileID: 239742312}
-  departCollider: {fileID: 239742312}
-  destCollider: {fileID: 1019352847}
+  fromNpc: {fileID: 239742314}
+  toNpc: {fileID: 1019352849}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -13819,6 +13889,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 10
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!4 &557966267 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
@@ -13973,19 +14045,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 573593346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-42
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1305954777}
-  departCollider: {fileID: 1305954777}
-  destCollider: {fileID: 355964776}
+  fromNpc: {fileID: 1305954779}
+  toNpc: {fileID: 355964778}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -13993,6 +14063,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 12
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &575866965
 GameObject:
   m_ObjectHideFlags: 0
@@ -14033,19 +14105,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 575866965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-18
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 579908776}
-  departCollider: {fileID: 579908776}
-  destCollider: {fileID: 484095855}
+  fromNpc: {fileID: 579908778}
+  toNpc: {fileID: 484095857}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -14053,6 +14123,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 15
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &579629091
 GameObject:
   m_ObjectHideFlags: 0
@@ -14093,19 +14165,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 579629091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-56
   itemName: Cutter
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 60ecae2712a8abd48b8f7ed8a9b169c3, type: 3}
-  offerCollider: {fileID: 1316299938}
-  departCollider: {fileID: 1316299938}
-  destCollider: {fileID: 1182010927}
+  fromNpc: {fileID: 1316299940}
+  toNpc: {fileID: 1182010929}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -14113,6 +14183,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 3
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1001 &579908773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14252,6 +14324,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &579908778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 579908773}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579908775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &582747615
 GameObject:
   m_ObjectHideFlags: 0
@@ -15980,6 +16064,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &651131618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 651131613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651131615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &656594711
 GameObject:
   m_ObjectHideFlags: 0
@@ -16668,19 +16764,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 682471457}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-11
   itemName: Headset
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 22d9beff66a269c4c894533d57dcec1b, type: 3}
-  offerCollider: {fileID: 579908776}
-  departCollider: {fileID: 579908776}
-  destCollider: {fileID: 1305954777}
+  fromNpc: {fileID: 579908778}
+  toNpc: {fileID: 1305954779}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -16688,6 +16782,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 14
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &683793938
 GameObject:
   m_ObjectHideFlags: 0
@@ -17670,6 +17766,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &732903519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 732903514}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732903516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &737817264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17809,6 +17917,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &737817269 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 737817264}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737817266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &740272114
 GameObject:
   m_ObjectHideFlags: 0
@@ -19074,19 +19194,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 793134150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-39
   itemName: Wine Glass
   itemDescription: How can you drink wine without glasses? Here, take that
   itemIcon: {fileID: 21300000, guid: 46056dbabcb4a7b48882c9700dd995c0, type: 3}
-  offerCollider: {fileID: 1940694551}
-  departCollider: {fileID: 1940694551}
-  destCollider: {fileID: 1316299938}
+  fromNpc: {fileID: 1940694553}
+  toNpc: {fileID: 1316299940}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -19094,6 +19212,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 10
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &794173757
 GameObject:
   m_ObjectHideFlags: 0
@@ -19501,19 +19621,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 817986278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-7
   itemName: Wrench
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 282d644a46e3f734895f2832eb31f14c, type: 3}
-  offerCollider: {fileID: 1019352847}
-  departCollider: {fileID: 1019352847}
-  destCollider: {fileID: 2072699555}
+  fromNpc: {fileID: 1019352849}
+  toNpc: {fileID: 2072699557}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -19521,6 +19639,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 6
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &818672918
 GameObject:
   m_ObjectHideFlags: 0
@@ -20000,19 +20120,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 840159717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-37
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 355964776}
-  departCollider: {fileID: 355964776}
-  destCollider: {fileID: 508217704}
+  fromNpc: {fileID: 355964778}
+  toNpc: {fileID: 508217706}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -20020,6 +20138,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 13
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &843020751
 GameObject:
   m_ObjectHideFlags: 0
@@ -20168,19 +20288,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 854679833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-21
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1558605446}
-  departCollider: {fileID: 1558605446}
-  destCollider: {fileID: 1308971601}
+  fromNpc: {fileID: 1558605448}
+  toNpc: {fileID: 1308971603}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -20188,6 +20306,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 5
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &858539431
 GameObject:
   m_ObjectHideFlags: 0
@@ -20781,19 +20901,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 882370121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-81
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 239742312}
-  departCollider: {fileID: 239742312}
-  destCollider: {fileID: 651131616}
+  fromNpc: {fileID: 239742314}
+  toNpc: {fileID: 651131618}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -20801,6 +20919,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 6
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &890255410
 GameObject:
   m_ObjectHideFlags: 0
@@ -20841,19 +20961,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 890255410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-28
   itemName: Spade
   itemDescription: Do as I say. It is for your own good
   itemIcon: {fileID: 21300000, guid: 93bf649aa7965364cb05cd92a2388f2f, type: 3}
-  offerCollider: {fileID: 1049391518}
-  departCollider: {fileID: 1049391518}
-  destCollider: {fileID: 125690059}
+  fromNpc: {fileID: 1049391520}
+  toNpc: {fileID: 125690061}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -20861,6 +20979,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 8
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &892359939
 GameObject:
   m_ObjectHideFlags: 0
@@ -21009,19 +21129,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 893359414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-24
   itemName: Med Kit
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 0101438a694d2c34e96cae4430d49298, type: 3}
-  offerCollider: {fileID: 125690059}
-  departCollider: {fileID: 125690059}
-  destCollider: {fileID: 355964776}
+  fromNpc: {fileID: 125690061}
+  toNpc: {fileID: 355964778}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -21029,6 +21147,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 8
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!4 &894478254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
@@ -21655,19 +21775,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 927663428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-34
   itemName: Car Key
   itemDescription: Thanks for the ride the other day
   itemIcon: {fileID: 21300000, guid: 8d1c2f1b936690a4ab514aad08d7ffb5, type: 3}
-  offerCollider: {fileID: 732903517}
-  departCollider: {fileID: 732903517}
-  destCollider: {fileID: 1305954777}
+  fromNpc: {fileID: 732903519}
+  toNpc: {fileID: 1305954779}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -21675,6 +21793,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 7
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &931664415
 GameObject:
   m_ObjectHideFlags: 0
@@ -22199,19 +22319,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 952331442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-65
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1223363883}
-  departCollider: {fileID: 1223363883}
-  destCollider: {fileID: 2019780935}
+  fromNpc: {fileID: 1223363885}
+  toNpc: {fileID: 2019780937}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -22219,6 +22337,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 9
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &953628799
 GameObject:
   m_ObjectHideFlags: 0
@@ -22684,19 +22804,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 974665386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-15
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1771832664}
-  departCollider: {fileID: 1771832664}
-  destCollider: {fileID: 1207598159}
+  fromNpc: {fileID: 1771832666}
+  toNpc: {fileID: 1207598161}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -22704,6 +22822,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 8
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &987153639
 GameObject:
   m_ObjectHideFlags: 0
@@ -23832,6 +23952,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1019352849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1019352844}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019352846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1023308870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
@@ -24176,19 +24308,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1039826149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-41
   itemName: Remote Driving Simulator
   itemDescription: Thanks for the ride the other day
   itemIcon: {fileID: 21300000, guid: a7a496ead3e66834d882817b7837211c, type: 3}
-  offerCollider: {fileID: 1374296981}
-  departCollider: {fileID: 1374296981}
-  destCollider: {fileID: 1558605446}
+  fromNpc: {fileID: 1374296983}
+  toNpc: {fileID: 1558605448}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -24196,6 +24326,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 2
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1001 &1049391515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24335,6 +24467,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1049391520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1049391515}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049391517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1051300612
 GameObject:
   m_ObjectHideFlags: 0
@@ -24604,19 +24748,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1056344624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-22
   itemName: Diamond Disk
   itemDescription: Item Descriptions
   itemIcon: {fileID: 21300000, guid: b8a40d4104caaeb45a6a477fc5caf5fa, type: 3}
-  offerCollider: {fileID: 2129934214}
-  departCollider: {fileID: 2129934214}
-  destCollider: {fileID: 1316299938}
+  fromNpc: {fileID: 2129934216}
+  toNpc: {fileID: 1316299940}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -24624,6 +24766,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 12
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1069490197
 GameObject:
   m_ObjectHideFlags: 0
@@ -24664,19 +24808,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1069490197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-60
   itemName: Red Book
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 69f3b17001ad9be4b93eca3b26b3d356, type: 3}
-  offerCollider: {fileID: 1771832664}
-  departCollider: {fileID: 1771832664}
-  destCollider: {fileID: 1558605446}
+  fromNpc: {fileID: 1771832666}
+  toNpc: {fileID: 1558605448}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -24684,6 +24826,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 9
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1070468617
 GameObject:
   m_ObjectHideFlags: 0
@@ -24724,19 +24868,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1070468617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-32
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 508217704}
-  departCollider: {fileID: 508217704}
-  destCollider: {fileID: 1900447273}
+  fromNpc: {fileID: 508217706}
+  toNpc: {fileID: 1900447275}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -24744,6 +24886,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 20
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1070973841
 GameObject:
   m_ObjectHideFlags: 0
@@ -25221,19 +25365,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1084902136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-74
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1983007846}
-  departCollider: {fileID: 1983007846}
-  destCollider: {fileID: 484095855}
+  fromNpc: {fileID: 1983007848}
+  toNpc: {fileID: 484095857}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -25241,6 +25383,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 9
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1085535953
 GameObject:
   m_ObjectHideFlags: 0
@@ -25403,19 +25547,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1086800924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-35
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1305954777}
-  departCollider: {fileID: 1305954777}
-  destCollider: {fileID: 2142443867}
+  fromNpc: {fileID: 1305954779}
+  toNpc: {fileID: 2142443869}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -25423,6 +25565,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 10
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1088854984
 GameObject:
   m_ObjectHideFlags: 0
@@ -25666,20 +25810,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1091225989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-33
   itemName: Paint Brush
   itemDescription: Nice paint brush. I have bought it the other day, and you may
     like it too!
   itemIcon: {fileID: 21300000, guid: 36225521cdcb1984da29a2d5123fe490, type: 3}
-  offerCollider: {fileID: 737817267}
-  departCollider: {fileID: 737817267}
-  destCollider: {fileID: 125690059}
+  fromNpc: {fileID: 737817269}
+  toNpc: {fileID: 125690061}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -25687,6 +25829,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 14
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1091936986
 GameObject:
   m_ObjectHideFlags: 0
@@ -26172,19 +26316,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1126011239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-12
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1308971601}
-  departCollider: {fileID: 1308971601}
-  destCollider: {fileID: 579908776}
+  fromNpc: {fileID: 1308971603}
+  toNpc: {fileID: 579908778}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -26192,6 +26334,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 12
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1127163732
 GameObject:
   m_ObjectHideFlags: 0
@@ -26575,19 +26719,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132329477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-45
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1983007846}
-  departCollider: {fileID: 1983007846}
-  destCollider: {fileID: 1049391518}
+  fromNpc: {fileID: 1983007848}
+  toNpc: {fileID: 1049391520}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -26595,6 +26737,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 3
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1001 &1139913146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27064,19 +27208,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1150705616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-43
   itemName: Antique Display
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 1fc18e2bfb2269542a64071000ae0e27, type: 3}
-  offerCollider: {fileID: 355964776}
-  departCollider: {fileID: 355964776}
-  destCollider: {fileID: 737817267}
+  fromNpc: {fileID: 355964778}
+  toNpc: {fileID: 737817269}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -27084,6 +27226,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 10
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1158684462
 GameObject:
   m_ObjectHideFlags: 0
@@ -27924,6 +28068,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1182010929 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1182010924}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182010926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1184136890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28301,6 +28457,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1189731268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1189731263}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189731265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1189936059
 GameObject:
   m_ObjectHideFlags: 0
@@ -28341,19 +28509,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1189936059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-9
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1207598159}
-  departCollider: {fileID: 1207598159}
-  destCollider: {fileID: 2019780935}
+  fromNpc: {fileID: 1207598161}
+  toNpc: {fileID: 2019780937}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -28361,6 +28527,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 15
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1192072123
 GameObject:
   m_ObjectHideFlags: 0
@@ -28858,6 +29026,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1207598161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1207598156}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207598158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1211444836
 GameObject:
   m_ObjectHideFlags: 0
@@ -28898,19 +29078,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1211444836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-10
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 737817267}
-  departCollider: {fileID: 737817267}
-  destCollider: {fileID: 2142443867}
+  fromNpc: {fileID: 737817269}
+  toNpc: {fileID: 2142443869}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -28918,6 +29096,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 7
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1214614802
 GameObject:
   m_ObjectHideFlags: 0
@@ -29234,6 +29414,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1223363885 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1223363880}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223363882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1233859367
 GameObject:
   m_ObjectHideFlags: 0
@@ -29689,19 +29881,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1249407868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-70
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 239742312}
-  departCollider: {fileID: 239742312}
-  destCollider: {fileID: 1207598159}
+  fromNpc: {fileID: 239742314}
+  toNpc: {fileID: 1207598161}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -29709,6 +29899,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 9
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1255582452
 GameObject:
   m_ObjectHideFlags: 3
@@ -29836,19 +30028,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258498529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-61
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1940694551}
-  departCollider: {fileID: 1940694551}
-  destCollider: {fileID: 1900447273}
+  fromNpc: {fileID: 1940694553}
+  toNpc: {fileID: 1900447275}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -29856,6 +30046,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 15
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1258923203
 GameObject:
   m_ObjectHideFlags: 3
@@ -30950,6 +31142,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1305954779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1305954774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305954776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1306529013
 GameObject:
   m_ObjectHideFlags: 0
@@ -30990,19 +31194,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1306529013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-8
   itemName: Coffee Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: ee8c267f873470f43862f3a9f26e97cf, type: 3}
-  offerCollider: {fileID: 355964776}
-  departCollider: {fileID: 355964776}
-  destCollider: {fileID: 1940694551}
+  fromNpc: {fileID: 355964778}
+  toNpc: {fileID: 1940694553}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -31010,6 +31212,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 11
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1001 &1308971598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31149,6 +31353,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1308971603 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1308971598}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308971600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1316299935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31288,6 +31504,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1316299940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1316299935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316299937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1329384437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
@@ -31637,19 +31865,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1337067297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-20
   itemName: Sleeping Pills
   itemDescription: Item Descriptions
   itemIcon: {fileID: 21300000, guid: 07eea898873cf88439bf76e805984af8, type: 3}
-  offerCollider: {fileID: 1019352847}
-  departCollider: {fileID: 1019352847}
-  destCollider: {fileID: 1374296981}
+  fromNpc: {fileID: 1019352849}
+  toNpc: {fileID: 1374296983}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -31657,6 +31883,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 8
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!4 &1343274279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
@@ -32221,19 +32449,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1358228955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-59
   itemName: Drawing Palette
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 9b3f62fe84b73224485ea72902eacd99, type: 3}
-  offerCollider: {fileID: 125690059}
-  departCollider: {fileID: 125690059}
-  destCollider: {fileID: 737817267}
+  fromNpc: {fileID: 125690061}
+  toNpc: {fileID: 737817269}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -32241,6 +32467,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 14
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1360464731
 GameObject:
   m_ObjectHideFlags: 0
@@ -32753,6 +32981,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1374296983 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1374296978}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374296980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1376797851
 GameObject:
   m_ObjectHideFlags: 0
@@ -33009,19 +33249,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1387933514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-38
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1900447273}
-  departCollider: {fileID: 1900447273}
-  destCollider: {fileID: 1049391518}
+  fromNpc: {fileID: 1900447275}
+  toNpc: {fileID: 1049391520}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -33029,6 +33267,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 12
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1398042885
 GameObject:
   m_ObjectHideFlags: 0
@@ -33791,19 +34031,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1431631978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-55
   itemName: Pencil Pack
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: b506214024a0dca46b3c08eab5a8bab9, type: 3}
-  offerCollider: {fileID: 239742312}
-  departCollider: {fileID: 239742312}
-  destCollider: {fileID: 125690059}
+  fromNpc: {fileID: 239742314}
+  toNpc: {fileID: 125690061}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -33811,6 +34049,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 9
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1001 &1434070155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34028,19 +34268,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1437269817}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-31
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 732903517}
-  departCollider: {fileID: 732903517}
-  destCollider: {fileID: 1940694551}
+  fromNpc: {fileID: 732903519}
+  toNpc: {fileID: 1940694553}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -34048,6 +34286,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 7
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1441967367
 GameObject:
   m_ObjectHideFlags: 0
@@ -35251,19 +35491,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1494063323}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-29
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 732903517}
-  departCollider: {fileID: 732903517}
-  destCollider: {fileID: 1223363883}
+  fromNpc: {fileID: 732903519}
+  toNpc: {fileID: 1223363885}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -35271,6 +35509,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 7
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1504363299
 GameObject:
   m_ObjectHideFlags: 0
@@ -35311,19 +35551,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1504363299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-52
   itemName: Blue book
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 05164dc4117cba646ab8bff1b16c8b40, type: 3}
-  offerCollider: {fileID: 1049391518}
-  departCollider: {fileID: 1049391518}
-  destCollider: {fileID: 579908776}
+  fromNpc: {fileID: 1049391520}
+  toNpc: {fileID: 579908778}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -35331,6 +35569,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 7
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1507223910
 GameObject:
   m_ObjectHideFlags: 0
@@ -35371,19 +35611,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1507223910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-14
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1207598159}
-  departCollider: {fileID: 1207598159}
-  destCollider: {fileID: 355964776}
+  fromNpc: {fileID: 1207598161}
+  toNpc: {fileID: 355964778}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -35391,6 +35629,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 11
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1510914292
 GameObject:
   m_ObjectHideFlags: 0
@@ -36105,19 +36345,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1541690318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-75
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1207598159}
-  departCollider: {fileID: 1207598159}
-  destCollider: {fileID: 732903517}
+  fromNpc: {fileID: 1207598161}
+  toNpc: {fileID: 732903519}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -36125,6 +36363,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 13
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1542488217
 GameObject:
   m_ObjectHideFlags: 0
@@ -36165,19 +36405,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1542488217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-51
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1900447273}
-  departCollider: {fileID: 1900447273}
-  destCollider: {fileID: 1308971601}
+  fromNpc: {fileID: 1900447275}
+  toNpc: {fileID: 1308971603}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -36185,6 +36423,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 17
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1546402407
 GameObject:
   m_ObjectHideFlags: 0
@@ -36225,19 +36465,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1546402407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-53
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1223363883}
-  departCollider: {fileID: 1223363883}
-  destCollider: {fileID: 651131616}
+  fromNpc: {fileID: 1223363885}
+  toNpc: {fileID: 651131618}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -36245,6 +36483,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 11
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1546509099
 GameObject:
   m_ObjectHideFlags: 0
@@ -36393,19 +36633,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1549140111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-72
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1305954777}
-  departCollider: {fileID: 1305954777}
-  destCollider: {fileID: 125690059}
+  fromNpc: {fileID: 1305954779}
+  toNpc: {fileID: 125690061}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -36413,6 +36651,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 8
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1554274290
 GameObject:
   m_ObjectHideFlags: 0
@@ -36733,6 +36973,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1558605448 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1558605443}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558605445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1559480087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
@@ -36779,19 +37031,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1560496515}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-4
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1983007846}
-  departCollider: {fileID: 1983007846}
-  destCollider: {fileID: 651131616}
+  fromNpc: {fileID: 1983007848}
+  toNpc: {fileID: 651131618}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -36799,6 +37049,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 6
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!4 &1562659981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
@@ -37028,19 +37280,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1584714002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-76
   itemName: Table Wine
   itemDescription: It's a nice whiskey from the river of Livet
   itemIcon: {fileID: 21300000, guid: 9a6411565e77b5c4a89bc7322184f71e, type: 3}
-  offerCollider: {fileID: 1940694551}
-  departCollider: {fileID: 1940694551}
-  destCollider: {fileID: 1316299938}
+  fromNpc: {fileID: 1940694553}
+  toNpc: {fileID: 1316299940}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -37048,6 +37298,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 10
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1589414438
 GameObject:
   m_ObjectHideFlags: 0
@@ -37196,19 +37448,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1591703446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-62
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 2019780935}
-  departCollider: {fileID: 2019780935}
-  destCollider: {fileID: 2017643179}
+  fromNpc: {fileID: 2019780937}
+  toNpc: {fileID: 2017643181}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -37216,6 +37466,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 8
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1592736200
 GameObject:
   m_ObjectHideFlags: 0
@@ -38059,19 +38311,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1616471074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-5
   itemName: Handbag Sample
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 4d475bd49f538804ca761b48b7d3239a, type: 3}
-  offerCollider: {fileID: 239742312}
-  departCollider: {fileID: 239742312}
-  destCollider: {fileID: 2072699555}
+  fromNpc: {fileID: 239742314}
+  toNpc: {fileID: 2072699557}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -38079,6 +38329,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 5
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1616979794
 GameObject:
   m_ObjectHideFlags: 0
@@ -38335,19 +38587,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1621376600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-3
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 355964776}
-  departCollider: {fileID: 355964776}
-  destCollider: {fileID: 2017643179}
+  fromNpc: {fileID: 355964778}
+  toNpc: {fileID: 2017643181}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -38355,6 +38605,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 4
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1623464014
 GameObject:
   m_ObjectHideFlags: 0
@@ -38516,19 +38768,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1624233477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-40
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 125690059}
-  departCollider: {fileID: 125690059}
-  destCollider: {fileID: 217263198}
+  fromNpc: {fileID: 125690061}
+  toNpc: {fileID: 217263200}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -38536,6 +38786,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 2
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1625880934
 GameObject:
   m_ObjectHideFlags: 0
@@ -39348,19 +39600,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1653784605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-64
   itemName: Compass
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 10b159ba186598b42b923eff28db2f81, type: 3}
-  offerCollider: {fileID: 2129934214}
-  departCollider: {fileID: 2129934214}
-  destCollider: {fileID: 1182010927}
+  fromNpc: {fileID: 2129934216}
+  toNpc: {fileID: 1182010929}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -39368,6 +39618,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 10
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1655194346
 GameObject:
   m_ObjectHideFlags: 0
@@ -39408,19 +39660,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1655194346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-73
   itemName: Game Controller
   itemDescription: Item Descriptions
   itemIcon: {fileID: 21300000, guid: 3486e7ab467af204f992f976b47c5a70, type: 3}
-  offerCollider: {fileID: 355964776}
-  departCollider: {fileID: 355964776}
-  destCollider: {fileID: 579908776}
+  fromNpc: {fileID: 355964778}
+  toNpc: {fileID: 579908778}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -39428,6 +39678,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 3
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1670172333
 GameObject:
   m_ObjectHideFlags: 0
@@ -39684,19 +39936,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1672118349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-2
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1983007846}
-  departCollider: {fileID: 1983007846}
-  destCollider: {fileID: 2129934214}
+  fromNpc: {fileID: 1983007848}
+  toNpc: {fileID: 2129934216}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -39704,6 +39954,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 9
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1001 &1682612478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40852,19 +41104,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1750031784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-17
   itemName: Tableware set
   itemDescription: Mo cha yung? i'll give you some cha to use!
   itemIcon: {fileID: 21300000, guid: 98b721f6177452d4c92457f111e2ab62, type: 3}
-  offerCollider: {fileID: 2129934214}
-  departCollider: {fileID: 2129934214}
-  destCollider: {fileID: 737817267}
+  fromNpc: {fileID: 2129934216}
+  toNpc: {fileID: 737817269}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -40872,6 +41122,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 12
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1754024628
 GameObject:
   m_ObjectHideFlags: 0
@@ -41223,19 +41475,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1770471934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-57
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1207598159}
-  departCollider: {fileID: 1207598159}
-  destCollider: {fileID: 125690059}
+  fromNpc: {fileID: 1207598161}
+  toNpc: {fileID: 125690061}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -41243,6 +41493,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 16
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1771654883
 GameObject:
   m_ObjectHideFlags: 0
@@ -41391,19 +41643,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1771705824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-27
   itemName: Microphone
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 1ffe041d7b9191044823082fe1147056, type: 3}
-  offerCollider: {fileID: 355964776}
-  departCollider: {fileID: 355964776}
-  destCollider: {fileID: 484095855}
+  fromNpc: {fileID: 355964778}
+  toNpc: {fileID: 484095857}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -41411,6 +41661,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 16
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1001 &1771832661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41550,6 +41802,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1771832666 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1771832661}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771832663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1773413467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43920,20 +44184,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1852436374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-26
   itemName: Chopping tool
   itemDescription: You said the other day that you can't slice the fish with your
     skinny chef's knife. I guess you need some chopping.
   itemIcon: {fileID: 21300000, guid: 459f32d249e56a44bbedcb1a965417e9, type: 3}
-  offerCollider: {fileID: 1189731266}
-  departCollider: {fileID: 1189731266}
-  destCollider: {fileID: 2142443867}
+  fromNpc: {fileID: 1189731268}
+  toNpc: {fileID: 2142443869}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -43941,6 +44203,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 14
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!4 &1853257392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
@@ -44208,7 +44472,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1870547711}
-  - component: {fileID: 1870547712}
   m_Layer: 0
   m_Name: Entities
   m_TagString: Untagged
@@ -44232,22 +44495,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1870547712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870547710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21523a2629b28eb4fa4c52407d4b170d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orderCount: 0
-  orderFinishedCount: 0
-  updateInterval: 2
-  nextUpdate: 2
 --- !u!4 &1871206130 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
@@ -44666,6 +44913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1880344028}
+  - component: {fileID: 1880344029}
   m_Layer: 0
   m_Name: Route List
   m_TagString: Untagged
@@ -44769,6 +45017,19 @@ Transform:
   m_Father: {fileID: 1870547711}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1880344029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880344027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda0aced27a9ffc46aa158932679903f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orders: []
 --- !u!1 &1886170461
 GameObject:
   m_ObjectHideFlags: 0
@@ -45263,6 +45524,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1900447275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1900447270}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900447272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1901949588
 GameObject:
   m_ObjectHideFlags: 0
@@ -45670,19 +45943,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1932718123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-47
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1049391518}
-  departCollider: {fileID: 1049391518}
-  destCollider: {fileID: 732903517}
+  fromNpc: {fileID: 1049391520}
+  toNpc: {fileID: 732903519}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -45690,6 +45961,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 5
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1001 &1940694548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45829,6 +46102,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1940694553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1940694548}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940694550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1942181763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499578204727286137, guid: 239c60a459e241346ac445c513dd998c,
@@ -45875,19 +46160,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1943013420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-19
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 239742312}
-  departCollider: {fileID: 239742312}
-  destCollider: {fileID: 2017643179}
+  fromNpc: {fileID: 239742314}
+  toNpc: {fileID: 2017643181}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -45895,6 +46178,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 6
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1946379006
 GameObject:
   m_ObjectHideFlags: 0
@@ -46746,19 +47031,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1974725874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-50
   itemName: Toothbrush
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 60119248413b0184db785bb14eed8c50, type: 3}
-  offerCollider: {fileID: 484095855}
-  departCollider: {fileID: 484095855}
-  destCollider: {fileID: 1049391518}
+  fromNpc: {fileID: 484095857}
+  toNpc: {fileID: 1049391520}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -46766,6 +47049,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 10
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1977355980
 GameObject:
   m_ObjectHideFlags: 0
@@ -46806,19 +47091,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1977355980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-48
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1207598159}
-  departCollider: {fileID: 1207598159}
-  destCollider: {fileID: 1940694551}
+  fromNpc: {fileID: 1207598161}
+  toNpc: {fileID: 1940694553}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -46826,6 +47109,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 11
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &1982568791
 GameObject:
   m_ObjectHideFlags: 0
@@ -47073,6 +47358,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &1983007848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1983007843}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983007845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1983555400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48164,6 +48461,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &2017643181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2017643176}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017643178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2019780932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48303,6 +48612,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &2019780937 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2019780932}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019780934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2022732621
 GameObject:
   m_ObjectHideFlags: 0
@@ -49294,6 +49615,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &2072699557 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2072699552}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072699554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2073930071
 GameObject:
   m_ObjectHideFlags: 0
@@ -49623,19 +49956,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2096309748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c710fa7671522d4396df3de3a188e41, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd9c6cb4e344eb4398dd8ca50582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOrderEnabled: 1
   isDrawGizmo: 1
-  isRandomRoute: 1
-  key: 
+  isAutoGenerate: 1
+  key: Generated.Order-68
   itemName: Generic Tea Pot
   itemDescription: Item Description
   itemIcon: {fileID: 21300000, guid: 5f621d78163b6a9418e5e20e3dc3d9cc, type: 3}
-  offerCollider: {fileID: 1558605446}
-  departCollider: {fileID: 1558605446}
-  destCollider: {fileID: 239742312}
+  fromNpc: {fileID: 1558605448}
+  toNpc: {fileID: 239742314}
   interactionIcon: {fileID: 4593106212974307722, guid: 920563829ed709a409f140b297656067,
     type: 3}
   rewardPerDistance: 5
@@ -49643,6 +49974,8 @@ MonoBehaviour:
   penaltyPerMiss: 0
   expectedTimeS: 4
   quickReward: 50
+  isValidOrder: 1
+  isGeneratedRuntime: 0
 --- !u!1 &2105232776
 GameObject:
   m_ObjectHideFlags: 0
@@ -50671,6 +51004,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &2129934216 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2129934211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129934213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2130532304
 GameObject:
   m_ObjectHideFlags: 0
@@ -50918,6 +51263,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &2130906013 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2130906008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130906010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2133811770
 GameObject:
   m_ObjectHideFlags: 0
@@ -51387,6 +51744,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.711516, y: 3.0166054}
   m_EdgeRadius: 0
+--- !u!114 &2142443869 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7508886395461108816, guid: 046c9ff8eda9b2141803cbd1c85d52f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2142443864}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142443866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742f42ae49426774a82c993eaa035203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2144047738
 GameObject:
   m_ObjectHideFlags: 0

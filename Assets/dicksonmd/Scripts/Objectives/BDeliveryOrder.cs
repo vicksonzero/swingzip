@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class BDeliveryOrder : MonoBehaviour
 {
     public bool isOrderEnabled = true;
     public bool isDrawGizmo = true;
-    public bool isRandomRoute = true;
+    public bool isAutoGenerate = true;
     public string key = "";
     public string itemName = "Item";
     [TextArea]
@@ -36,6 +37,9 @@ public class BDeliveryOrder : MonoBehaviour
     public delegate void OrderArriveEvent(BDeliveryOrder order);
     public OrderArriveEvent orderArrive;
 
+    [HideInInspector]
+    public bool isValidOrder = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +47,10 @@ public class BDeliveryOrder : MonoBehaviour
         var interactionIconIsPrefab = (PrefabUtility.GetPrefabAssetType(interactionIcon) != PrefabAssetType.NotAPrefab);
         if (offerCollider.GetComponent<BDoor>())
         {
-            if (interactionIconIsPrefab) interactionIcon = Instantiate(interactionIcon);
+            if (interactionIconIsPrefab)
+            {
+                interactionIcon = Instantiate(interactionIcon, Vector3.zero, Quaternion.identity, transform);
+            }
 
             interactionIcon.transform.position = offerCollider.GetComponent<BDoor>().iconRoot.position;
         }
@@ -132,7 +139,7 @@ public class BDeliveryOrder : MonoBehaviour
         }
 
         var colliders = FindObjectsOfType<BNpcTrigger2D>();
-        if (isRandomRoute && departCollider == null)
+        if (isAutoGenerate && departCollider == null)
         {
             var index = (int)(Random.value * colliders.Length);
             Debug.Log("Random src " + index);
@@ -140,7 +147,7 @@ public class BDeliveryOrder : MonoBehaviour
             offerCollider = departCollider;
         }
 
-        if (isRandomRoute && destCollider == null)
+        if (isAutoGenerate && destCollider == null)
         {
             destCollider = departCollider;
             for (int i = 0; destCollider == departCollider && i < 20; i++)
