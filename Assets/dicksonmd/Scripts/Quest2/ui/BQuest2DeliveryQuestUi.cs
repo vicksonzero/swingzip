@@ -16,6 +16,7 @@ public class BQuest2DeliveryQuestUi : MonoBehaviour
     public RectTransform questPage;
     public BQuest2DeliveryListItem questOverviewItem;
     public Text descriptionsLabel;
+    public Button acceptButton;
 
     public BQuest2Quest selectedQuest = null;
 
@@ -25,6 +26,8 @@ public class BQuest2DeliveryQuestUi : MonoBehaviour
     void Start()
     {
         if (missionUI == null) missionUI = FindObjectOfType<BMissionUI>();
+
+        acceptButton.onClick.AddListener(() => AcceptSelectedQuest());
     }
 
     public BQuest2DeliveryQuestUi SetNpcDialogs(string name, string dialog)
@@ -119,8 +122,9 @@ public class BQuest2DeliveryQuestUi : MonoBehaviour
 
         listingPage.gameObject.SetActive(false);
     }
-    private void AcceptQuest()
+    private void AcceptSelectedQuest()
     {
-
+        if (selectedQuest == null) return;
+        Debug.Log("BQuest2DeliveryQuestUi.AcceptSelectedQuest" + selectedQuest);
     }
 }
