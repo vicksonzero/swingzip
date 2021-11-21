@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BQuest2DeliveryQuestUi : MonoBehaviour
 {
-
     public BQuest2DeliveryListItem listItemPrefab;
     public Button listItemButtonPrefab;
     public RectTransform listingPage;
@@ -22,10 +21,12 @@ public class BQuest2DeliveryQuestUi : MonoBehaviour
 
 
     BMissionUI missionUI;
+    BQuest2Rider rider;
 
     void Start()
     {
         if (missionUI == null) missionUI = FindObjectOfType<BMissionUI>();
+        if (rider == null) rider = FindObjectOfType<BQuest2Rider>();
 
         acceptButton.onClick.AddListener(() => AcceptSelectedQuest());
     }
@@ -126,5 +127,7 @@ public class BQuest2DeliveryQuestUi : MonoBehaviour
     {
         if (selectedQuest == null) return;
         Debug.Log("BQuest2DeliveryQuestUi.AcceptSelectedQuest" + selectedQuest);
+
+        // Do something with rider
     }
 }
