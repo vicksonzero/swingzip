@@ -7,12 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 public static class Dialogs
 {
-    // fillerDialogs from https://www.inklyo.com/18-ways-to-say-hello-in-english/
-    public static string[] fillerDialogs = new string[]{
+    // greetings from https://www.inklyo.com/18-ways-to-say-hello-in-english/
+    public static string[] greetingsList = new string[]{
         "Hello!",
-        "Good morning.",
-        "Good afternoon.",
-        "Good evening.",
+        "Greetings.",
+        "Good day.",
         "It’s nice to meet you.",
         "It’s a pleasure to meet you.",
         "Hi!",
@@ -28,4 +27,12 @@ public static class Dialogs
         "What’s happening",
         "Yo!",
     };
+
+    private static Random random = new Random();
+    public static string GetRandomGreetings()
+    {
+        int randomNumber = random.Next(0, greetingsList.Length);
+        var greetings = greetingsList[randomNumber];
+        return greetings;
+    }
 }

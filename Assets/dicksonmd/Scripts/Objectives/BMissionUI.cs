@@ -27,6 +27,7 @@ public class BMissionUI : MonoBehaviour
     public BCountdownPanel countdownPanel;
 
     public BRushHourResultsPanel rushHourResultsPanel;
+    public BQuest2DeliveryQuestUi deliveryQuestUi;
 
     // Start is called before the first frame update
     void Start()

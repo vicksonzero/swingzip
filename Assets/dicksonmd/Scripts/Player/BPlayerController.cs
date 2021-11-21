@@ -153,10 +153,9 @@ public class BPlayerController : BRaycastController
         if (hitList.Count() > 0)
         {
             var hit = hitList.Aggregate((hit, bestHit) => (hit.distance < bestHit.distance ? hit : bestHit));
-            hitList.ForEach(hit =>
-            {
-                Debug.Log("d  " + hit.distance);
-            });
+            
+            // hitList.ForEach(hit => Debug.Log("d  " + hit.distance));
+
             bool doStop = hitList.Any(hit => (hit.distance > 0)) && !hitList.Any(hit => (hit.distance == 0));
             if (hit.collider.tag == "Through" && (playerInput.y <= -1f || directionY == 1))
             {
