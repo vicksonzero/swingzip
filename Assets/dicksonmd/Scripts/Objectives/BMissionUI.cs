@@ -19,6 +19,8 @@ public class BMissionUI : MonoBehaviour
     public Text timerLabel;
 
     public Camera destCamera;
+
+    public BRouteCamera routeCamera;
     public BDistanceUI distanceUI;
 
     public BScoreToastSet scoreToastSet;

@@ -86,6 +86,7 @@ public class BQuest2DeliveryQuestUi : MonoBehaviour
     }
     public BQuest2DeliveryQuestUi Hide()
     {
+        missionUI.routeCamera.RemoveTargets();
         this.gameObject.SetActive(false);
         return this;
     }
@@ -110,10 +111,7 @@ public class BQuest2DeliveryQuestUi : MonoBehaviour
         {
             var order = (quest as BQuest2DeliveryQuest).order;
             questOverviewItem.descriptionLabel.text = $"From: {order.fromNpc.npcName}\nTo: {order.toNpc.npcName}";
-            var pos = missionUI.destCamera.transform.position;
-            pos.x = order.toNpc.transform.position.x;
-            pos.y = order.toNpc.transform.position.y;
-            missionUI.destCamera.transform.position = pos;
+            missionUI.routeCamera.SetTarget(rider.transform, order.toNpc.transform);
         }
         questOverviewItem.priceLabel.text = quest.reward;
         questOverviewItem.icon.sprite = quest.icon;
