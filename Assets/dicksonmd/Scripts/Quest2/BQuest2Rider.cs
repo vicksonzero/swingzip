@@ -8,10 +8,10 @@ using UnityEngine;
 /// Owns all CargoSpaces, get a CargoSpace and assign cargo
 /// tracks BQuest2Objective progress that are owned by BQuest2ObjectiveList
 /// </summary>
-public class BQuest2Rider : MonoBehaviour, IOrderHandler
+public class BQuest2Rider : MonoBehaviour
 {
     public BQuest2Quest[] currentQuests;
-    
+
     BQuest2UI ui;
     BCargoSpace[] cargoSpaces;
     // Start is called before the first frame update
@@ -25,13 +25,8 @@ public class BQuest2Rider : MonoBehaviour, IOrderHandler
 
     }
 
-    void IOrderHandler.OnOfferTriggerEnter(BDeliveryOrder order)
+    public void TryAcceptQuest(BQuest2Quest quest)
     {
-        Debug.Log("BQuest2Rider.OnOfferTriggerEnter");
-    }
 
-    void IOrderHandler.OnOfferTriggerExit(BDeliveryOrder order)
-    {
-        Debug.Log("BQuest2Rider.OnOfferTriggerEnter");
     }
 }

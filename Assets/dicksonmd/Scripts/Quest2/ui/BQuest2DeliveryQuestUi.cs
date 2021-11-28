@@ -113,11 +113,11 @@ public class BQuest2DeliveryQuestUi : MonoBehaviour
             questOverviewItem.descriptionLabel.text = $"From: {order.fromNpc.npcName}\nTo: {order.toNpc.npcName}";
 
             // missionUI.routeCamera.SetTarget(order.toNpc.transform);
-            // missionUI.routeCamera.SetTargets(rider.transform, order.toNpc.transform);
-            missionUI.routeCamera.SetTargets(new Transform[] {
-                rider.transform,
-                order.toNpc.transform
-            });
+            missionUI.routeCamera.SetTargets(rider.transform, order.toNpc.transform);
+            // missionUI.routeCamera.SetTargets(new Transform[] {
+            //     rider.transform,
+            //     order.toNpc.transform
+            // });
         }
         questOverviewItem.priceLabel.text = quest.reward;
         questOverviewItem.icon.sprite = quest.icon;
@@ -132,6 +132,6 @@ public class BQuest2DeliveryQuestUi : MonoBehaviour
         if (selectedQuest == null) return;
         Debug.Log("BQuest2DeliveryQuestUi.AcceptSelectedQuest" + selectedQuest);
 
-        // Do something with rider
+        rider.TryAcceptQuest(selectedQuest);
     }
 }
