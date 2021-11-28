@@ -10,6 +10,11 @@ public class BQuest2DeliveryQuest : BQuest2Quest
         questGiver.RegisterQuest(this);
     }
 
+    public override bool CanAcceptQuest(BQuest2Rider rider)
+    {
+        return false;
+    }
+
     public override void SetupQuest()
     {
         // nothing

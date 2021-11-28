@@ -40,6 +40,13 @@ public abstract class BQuest2Quest : MonoBehaviour
     public abstract void InitQuest();
 
     /// <summary>
+    /// Whether rider can accept this quest now
+    /// "Quest available or not" is determined by Quest2Director,
+    /// but "Quest acceptable or not" is determined by individual quests
+    /// </summary>
+    public abstract bool CanAcceptQuest(BQuest2Rider rider);
+
+    /// <summary>
     /// Set up the stage for the quest, for example, barriers or extra dangers
     /// </summary>
     public abstract void SetupQuest();
