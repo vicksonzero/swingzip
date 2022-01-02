@@ -130,8 +130,12 @@ public class BQuest2DeliveryQuestUi : MonoBehaviour
     private void AcceptSelectedQuest()
     {
         if (selectedQuest == null) return;
-        Debug.Log("BQuest2DeliveryQuestUi.AcceptSelectedQuest" + selectedQuest);
+        Debug.Log("BQuest2DeliveryQuestUi.AcceptSelectedQuest " + selectedQuest);
 
-        rider.TryAcceptQuest(selectedQuest);
+        var acceptedQuest = rider.TryAcceptQuest(selectedQuest);
+        if (acceptedQuest)
+        {
+            Hide();
+        }
     }
 }

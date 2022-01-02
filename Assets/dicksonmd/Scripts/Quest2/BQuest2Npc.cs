@@ -16,7 +16,7 @@ public class BQuest2Npc : MonoBehaviour, IQuestGiver
     public List<BQuest2Quest> offeredQuests = new List<BQuest2Quest>();
 
 
-    BNpcTrigger2D trigger;
+    public BNpcTrigger2D trigger;
     BMissionUI missionUI;
 
     // Start is called before the first frame update

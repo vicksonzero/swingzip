@@ -4,6 +4,10 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Static data for an item to be delivered
+/// Can generate in editor or in runtime
+/// </summary>
 public class BQuest2Order : MonoBehaviour
 {
     public bool isDrawGizmo = true;
@@ -18,7 +22,7 @@ public class BQuest2Order : MonoBehaviour
 
     public BQuest2Npc toNpc;
 
-    public BInteractionButton interactionIcon;
+    public BInteractionButton interactionIcon; // TODO: move button to be owned by the NPC
 
     public float rewardPerDistance = 0;
     public float reward = 0;

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Tracks quest progression. Is persisted between save/load
+/// </summary>
 public abstract class BQuest2Quest : MonoBehaviour
 {
     // AVAILABLE -> PREPARE or COUNTDOWN
@@ -34,6 +37,8 @@ public abstract class BQuest2Quest : MonoBehaviour
     public delegate void StateChanged(States before, string payload);
     public StateChanged stateChanged;
 
+    private bool stateIsChanging = false;
+
     /// <summary>
     /// Make this quest available to the player, for example, activate NPC, adding this quest to the NPC
     /// </summary>
@@ -49,10 +54,26 @@ public abstract class BQuest2Quest : MonoBehaviour
     /// <summary>
     /// Set up the stage for the quest, for example, barriers or extra dangers
     /// </summary>
-    public abstract void SetupQuest();
+    public abstract void SetupQuest(BQuest2Rider rider);
 
     /// <summary>
     /// Tear down the stage after the quest
     /// </summary>
     public abstract void TearDownQuest();
+
+    /// <summary>
+    /// Change state, signaling its state change as well
+    /// </summary>
+    protected void ChangeState(States newState, string payload = "")
+    {
+        if (stateIsChanging)
+        {
+            throw new System.Exception($"BQuest2Quest cannot ChangeState() while stateIsChanging (title={title})");
+        }
+        stateIsChanging = true;
+        var oldState = state;
+        state = newState;
+        stateChanged?.Invoke(oldState, payload);
+        stateIsChanging = false;
+    }
 }

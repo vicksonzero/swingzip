@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Directory of all Quest2 compatible UI elements for other Quest2 code to call
+/// </summary>
 public class BQuest2UI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public BDistanceUI distanceUI;
+
+    public void EnableUI(Component behaviour){
+        behaviour.gameObject.SetActive(true);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+    public void DisableUI(Component behaviour){
+        behaviour.gameObject.SetActive(false);
     }
 }

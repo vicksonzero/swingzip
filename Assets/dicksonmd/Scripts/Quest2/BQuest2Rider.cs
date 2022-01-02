@@ -11,12 +11,13 @@ using UnityEngine;
 public class BQuest2Rider : MonoBehaviour
 {
     public BQuest2Quest[] currentQuests;
+    public BCargoSpace[] cargoSpaces;
 
     BQuest2UI ui;
-    BCargoSpace[] cargoSpaces;
     // Start is called before the first frame update
     void Start()
     {
+        cargoSpaces = GetComponents<BCargoSpace>();
     }
 
     // Update is called once per frame
@@ -25,8 +26,18 @@ public class BQuest2Rider : MonoBehaviour
 
     }
 
-    public void TryAcceptQuest(BQuest2Quest quest)
+    public bool TryAcceptQuest(BQuest2Quest quest)
     {
+        var canAcceptQuest = quest.CanAcceptQuest(this);
+        if (!canAcceptQuest) return false;
 
+        currentQuests = currentQuests.Concat(new[] { quest }).ToArray();
+        quest.SetupQuest(this);
+        return true; // return success
+    }
+
+    public bool HasFreeCargoSpace(int amount = 1)
+    {
+        return cargoSpaces.Where(c => !c.hasCargo).Count() >= amount;
     }
 }

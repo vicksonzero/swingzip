@@ -15238,6 +15238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentQuests: []
+  cargoSpaces: []
 --- !u!1 &586244360
 GameObject:
   m_ObjectHideFlags: 0
@@ -51775,6 +51776,7 @@ GameObject:
   - component: {fileID: 2119921396}
   - component: {fileID: 2119921400}
   - component: {fileID: 2119921401}
+  - component: {fileID: 2119921402}
   m_Layer: 5
   m_Name: Input Canvas
   m_TagString: Untagged
@@ -51921,6 +51923,19 @@ MonoBehaviour:
   countdownPanel: {fileID: 0}
   rushHourResultsPanel: {fileID: 0}
   deliveryQuestUi: {fileID: 333564030}
+--- !u!114 &2119921402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119921395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b223305d2d5e159448976ab17713e461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceUI: {fileID: 465986651}
 --- !u!1 &2121549044
 GameObject:
   m_ObjectHideFlags: 0

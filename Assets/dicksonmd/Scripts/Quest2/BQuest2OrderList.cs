@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
 public class BQuest2OrderList : MonoBehaviour
 {
     public BDeliveryOrder[] orders;
@@ -12,7 +13,9 @@ public class BQuest2OrderList : MonoBehaviour
     {
         orders = FindObjectsOfType<BDeliveryOrder>();
         orders.ToList().ForEach((order) => CleanUp(order));
-        Debug.Log($"BQuest2OrderList: {orders.Where(o => !o.isValidOrder).ToList().Count} Orders are invalid");
+
+        var orderCount = orders.Where(o => !o.isValidOrder).ToList().Count;
+        Debug.Log($"BQuest2OrderList: {orderCount} Orders are invalid");
     }
 
     // Update is called once per frame
@@ -28,9 +31,11 @@ public class BQuest2OrderList : MonoBehaviour
 
     private void CleanUp(BDeliveryOrder order)
     {
-        order.isValidOrder = true;
         if (order.key == "") order.key = $"Generated.Order.{orderKeyIndex++}";
-        if (order.offerCollider == null || order.departCollider == null || order.destCollider == null) order.isValidOrder = false;
-
+        order.isValidOrder = (
+            order.offerCollider != null &&
+            order.departCollider != null &&
+            order.destCollider != null
+        );
     }
 }
