@@ -3,45 +3,55 @@
 title Quest 2 Design
 
 ' skinparam sequenceMessageAlign direction
-skinparam ParticipantPadding 30
+skinparam ParticipantPadding 50
 ' skinparam BoxPadding 10
 
+' autonumber 1.1.1
+
 participant "Director / Editor" as Director
-participant Quest
-actor Rider
-entity "NPC From" as FromNpc
-entity "NPC To" as ToNpc
-participant QuestUi
-entity Order
+participant Quest               as Quest
+actor "Player : Rider"                     as Rider
+entity "FromNPC : NPC"               as FromNpc
+entity "ToNPC : NPC"                 as ToNpc
+participant "Quest UI"          as QuestUi
 
-[o-> Director : Scene Start
-Director -> Quest ** : Create(Order)
-Quest -> Order ++ : Read FromNPC
-Order --> Quest -- : FromNPC
-Quest ->> FromNpc ++ : Register Quest
+[o-> Director                       : Scene Start
+Director -> Quest                ** : Create(Order)
+Director -> Quest                ++ : InitQuest()
+Quest ->> FromNpc              --++ : Register Quest
 
 ... Rider Moves Around ...
 
-Rider -> FromNpc : TriggerEnter
-note left: may swap trigger caller
-FromNpc -> QuestUi --++ : Show Quest UI(Quest)
-QuestUi -> QuestUi : Use UI
-QuestUi -> Rider -- : Accept quest
-Rider -> Quest : Setup
-Quest ->> FromNpc ++ : Register Depart Triggers
-Quest ->> ToNpc ++ : Register ToNPC Triggers aaa
+Rider -> FromNpc                    : TriggerEnter
+note left                           : may swap trigger caller
+FromNpc ->o]                        : Chit Chat and End
+note left                           : If no quest registered
+FromNpc -> QuestUi             --++ : Show Quest UI(Quest)
+note left                           : If have quest
+QuestUi -> Quest                 ++ : Get quest content
+QuestUi <-- Quest                -- : Quest content
+QuestUi -> QuestUi                  : Choose Quest
+QuestUi -> Rider                 -- : Accept quest
+Rider -> Quest                   ++ : SetupQuest()
+Quest ->> FromNpc                ++ : Register "Depart Triggers"
+Quest ->> ToNpc                --++ : Register "Arrive Triggers"
+note right                          : Replaces chat behaviour \n until quest is aborted
 
-... Rider Moves Around ...
+... Wait for Rider ...
 
-Rider -> FromNpc : TriggerLeave
-FromNpc -> Quest -- : Start Quest
+Rider -> FromNpc                    : TriggerLeave
+FromNpc -> Quest                 -- : Start Quest
 
-... Rider Moves Around ...
+... Rider Delivers Package ...
 
-Rider -> ToNpc : TriggerEnter
-ToNpc -> Quest -- : Finish
-note right : If doing quest
+Rider -> ToNpc                      : TriggerEnter
+ToNpc -> Quest                 --++ : TearDownQuest()
+note right                          : In quest mode because \n it is a toNPC of an \n ongoing quest
+Quest ->o]                      --  : End
 ...
+
+
+
 
 
 @enduml
