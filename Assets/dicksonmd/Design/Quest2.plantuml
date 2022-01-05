@@ -1,0 +1,47 @@
+@startuml Quest2
+
+title Quest 2 Design
+
+' skinparam sequenceMessageAlign direction
+skinparam ParticipantPadding 30
+' skinparam BoxPadding 10
+
+participant "Director / Editor" as Director
+participant Quest
+actor Rider
+entity "NPC From" as FromNpc
+entity "NPC To" as ToNpc
+participant QuestUi
+entity Order
+
+[o-> Director : Scene Start
+Director -> Quest ** : Create(Order)
+Quest -> Order ++ : Read FromNPC
+Order --> Quest -- : FromNPC
+Quest ->> FromNpc ++ : Register Quest
+
+... Rider Moves Around ...
+
+Rider -> FromNpc : TriggerEnter
+note left: may swap trigger caller
+FromNpc -> QuestUi --++ : Show Quest UI(Quest)
+QuestUi -> QuestUi : Use UI
+QuestUi -> Rider -- : Accept quest
+Rider -> Quest : Setup
+Quest ->> FromNpc ++ : Register Depart Triggers
+Quest ->> ToNpc ++ : Register ToNPC Triggers aaa
+
+... Rider Moves Around ...
+
+Rider -> FromNpc : TriggerLeave
+FromNpc -> Quest -- : Start Quest
+
+... Rider Moves Around ...
+
+Rider -> ToNpc : TriggerEnter
+ToNpc -> Quest -- : Finish
+note right : If doing quest
+...
+
+
+@enduml
